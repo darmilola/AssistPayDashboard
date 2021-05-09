@@ -19,9 +19,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-    <meta name="author" content="Creative Tim">
-    <title>Assits Dashboard</title>
+    <meta name="description" content="Assist.ng One place for all things Assists"/>
+    <title>Assist Dashboard</title>
     <!-- Favicon -->
 
 
@@ -39,6 +38,7 @@
     <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
     <!-- Argon CSS -->
     <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
+    <link href="assets/css/search-filter.css" rel="stylesheet">
 
 </head>
 
@@ -117,7 +117,7 @@
                     </div>
                     <div class="col-lg-6 col-5 text-right">
                         <a id="add_new_product" href="#" class="btn btn-sm btn-neutral">New</a>
-                        <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+                        <a href="#" class="btn btn-sm btn-neutral" data-toggle="modal" data-target="#staticBackdrop">Filters</a>
                     </div>
                 </div>
             </div>
@@ -127,7 +127,7 @@
     <div class="container-fluid mt--6">
         <div class="row">
             <div class="col">
-                <div class="card">
+                <div class="card" id="product-list">
                     <!-- Card header -->
                     <div class="card-header border-0">
                         <h3 class="mb-0">MarketPlace</h3>
@@ -277,57 +277,101 @@
         </div>
 
 
-        <div class="page-wrapper bg-dark p-t-100 p-b-50">
+
+
+
+
+        <!--- Add product Page ---->
+
+        <div class="page-wrapper bg-dark p-t-100 p-b-50" id="add-new-product" style="display: none">
             <div class="wrapper wrapper--w900">
                 <div class="cardm cardm-6">
                     <div class="cardm-heading">
-                        <h2 class="title">Apply for job</h2>
+                        <h2 class="title">Add New Product</h2>
                     </div>
                     <div class="cardm-body">
                         <form method="POST">
                             <div class="form-row">
-                                <div class="name">Full name</div>
+                                <div class="name">Product Name</div>
                                 <div class="value">
                                     <input class="input--style-6" type="text" name="full_name">
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="name">Email address</div>
+                                <div class="name">Price</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-6" type="email" name="email" placeholder="example@email.com">
+                                        <input class="input--style-6" type="number" name="price" placeholder="$$$">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="name">Message</div>
+                                <div class="name">Description</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <textarea class="textarea--style-6" name="message" placeholder="Message sent to the employer"></textarea>
+                                        <textarea class="textarea--style-6" name="message" placeholder="Product Descriptopn..."></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="name">Upload CV</div>
+                                <div class="name">Upload Images</div>
                                 <div class="value">
                                     <div class="input-group js-input-file">
-                                        <input class="input-file" type="file" name="file_cv" id="file">
-                                        <label class="label--file" for="file">Choose file</label>
-                                        <span class="input-file__info">No file chosen</span>
+                                        <input class="input-file" type="image" name="file_cv" id="file">
+                                        <label class="label--file" for="file">Choose Image</label>
+                                        <span class="input-file__info">No Image chosen</span>
                                     </div>
-                                    <div class="label--desc">Upload your CV/Resume or any other relevant file. Max file size 50 MB</div>
+                                    <div class="label--desc">Upload Product images. Max image size 500kb</div>
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="cardm-footer">
-                        <button class="btn btn--radius-2 btn--blue-2" type="submit">Send Application</button>
+                        <button class="btn btn--radius-2 btn--blue-2" id="upload-product" type="submit">Upload</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+ <!--- End of Add Product Page ---->
+
+
+
+
+
+    <!---  Filter Dropdown Begins Here  ----->
+
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Filter Products</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-sm-12" id="filter-container">
+                        <div class="input-group">
+                            <ul class="category_filters" >
+
+                                <label class="category_filter_item" for="x"><input type="checkbox" id="x" /> <span class="filter-label">Label</span></label>
+                                <label class="category_filter_item" for="y"><input type="checkbox" id="y" /> <span class="filter-label">Label text y</span></label>
+                                <label class="category_filter_item" for="z"><input type="checkbox" id="z" /> <span class="filter-label">Label text z</span></label>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Filter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!----- filter dropdown ends here  ---->
 
 
 
@@ -344,12 +388,8 @@
 <script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
 <!-- Argon JS -->
 <script src="assets/js/argon.js?v=1.2.0"></script>
-<script src="js/global.js"></script>
-
-<script>
-    var addNewProduct =  getE
-
-</script>
+<script src="assetsjs/global.js"></script>
+<script src="assets/js/marketplace.js"></script>
 
 </body>
 

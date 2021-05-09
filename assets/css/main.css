@@ -685,7 +685,15 @@ textarea {
   border-bottom-right-radius: 3px;
   padding: 50px 55px;
 }
+#upload-product{
+  background-color: #1d32aa;
+  border-radius: 5px;
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 200px;
 
+}
 @media (max-width: 767px) {
   .cardm-6 .cardm-footer {
     padding: 50px 30px;
