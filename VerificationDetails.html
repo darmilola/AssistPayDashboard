@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="assets/css/productdetail.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+    <!------ Include the above in your HEAD tag ---------->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>eCommerce Product Detail</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <!-- Main CSS-->
+    <link href="./assets/css/main.css" rel="stylesheet" media="all">
+
+</head>
+
+<body>
+
+<div class="container" id="product_detail">
+    <div class="card">
+        <div class="container-fliud">
+            <div class="wrapper row">
+                <div class="preview col-md-6">
+                    <div class="splide" style="margin-top: 20px;">
+                        <div class="splide__track">
+                            <ul class="splide__list">
+                                <li class="splide__slide"><img src="https://cdn.pixabay.com/photo/2020/09/17/12/41/cafe-5579069_960_720.jpg" style="height: 400px; width: 100%;"></li>
+                                 </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="details col-md-6">
+                    <h3 class="product-title">Name</h3>
+                    <p class="product-description">Some Info goes here</p>
+                    <div class="action">
+                        <button class="add-to-cart btn btn-default" id="edit_product" type="button">Set as Verified</button>
+                        <button class="delete_button" type="button">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+<script src="assets/js/productdetail.js"></script>
+<script>
+    document.addEventListener( 'DOMContentLoaded', function () {
+        new Splide( '.splide' ).mount();
+    } );
+</script>
+</body>
+</html>

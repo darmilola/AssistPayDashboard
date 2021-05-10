@@ -136,17 +136,17 @@
                     <div class="table-responsive">
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
-                            <tr>
-                                <th scope="col" class="sort" data-sort="name">Product Name</th>
-                                <th scope="col" class="sort" data-sort="budget">Price</th>
-                                <th scope="col" class="sort" data-sort="status">Delivery Location</th>
-                                <th scope="col" class="sort" data-sort="completion">Availability</th>
+                            <tr id="product-item">
+                                <th scope="col" class="sort" >Product Name</th>
+                                <th scope="col" class="sort">Price</th>
+                                <th scope="col" class="sort">Delivery Location</th>
+                                <th scope="col" class="sort">Availability</th>
                                 <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody class="list">
                             <tr>
-                                <th scope="row">
+                                <th scope="row" class="product_item">
                                     <div class="media align-items-center">
                                         <div class="media-body">
                                             <span class="name mb-0 text-sm">Birds Set Free</span>
@@ -176,99 +176,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="media align-items-center">
-                                        <div class="media-body">
-                                            <span class="name mb-0 text-sm">Birds Set Free</span>
-                                        </div>
-                                    </div>
-                                </th>
-                                <td class="budget">
-                                    25,000
-                                </td>
-                                <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">Lagos Island</span>
-                      </span>
-                                </td>
-                                <td class="text-left">
-                                    Available
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="media align-items-center">
-                                        <div class="media-body">
-                                            <span class="name mb-0 text-sm">Birds Set Free</span>
-                                        </div>
-                                    </div>
-                                </th>
-                                <td class="budget">
-                                    25,000
-                                </td>
-                                <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">Lagos Island</span>
-                      </span>
-                                </td>
-                                <td class="text-left">
-                                    Available
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="media align-items-center">
-                                        <div class="media-body">
-                                            <span class="name mb-0 text-sm">Birds Set Free</span>
-                                        </div>
-                                    </div>
-                                </th>
-                                <td class="budget">
-                                    25,000
-                                </td>
-                                <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">Lagos Island</span>
-                      </span>
-                                </td>
-                                <td class="text-left">
-                                    Available
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -328,6 +236,7 @@
                     </div>
                     <div class="cardm-footer">
                         <button class="btn btn--radius-2 btn--blue-2" id="upload-product" type="submit">Upload</button>
+                        <button class="btn btn--radius-2 btn--blue-2" id="cancel-edit" type="submit">Cancel</button>
                     </div>
                 </div>
             </div>

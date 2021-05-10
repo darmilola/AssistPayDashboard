@@ -24,6 +24,8 @@
     <title>Assits Dashboard</title>
     <!-- Favicon -->
     <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
+    <!-- Main CSS-->
+    <link href="./assets/css/main.css" rel="stylesheet" media="all">
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
     <!-- Icons -->
@@ -107,7 +109,7 @@
                         <h6 class="h2 text-white d-inline-block mb-0">Accomodation</h6>
                     </div>
                     <div class="col-lg-6 col-5 text-right">
-                        <a href="#" class="btn btn-sm btn-neutral">New</a>
+                        <a href="#" class="btn btn-sm btn-neutral" id="add-new-accommodation-button">Add New</a>
                         <a href="#" class="btn btn-sm btn-neutral">Filters</a>
                     </div>
                 </div>
@@ -116,7 +118,7 @@
     </div>
     <!-- Page content -->
     <div class="container-fluid mt--6">
-        <div class="row">
+        <div class="row" id="accomdation-list">
             <div class="col">
                 <div class="card">
                     <!-- Card header -->
@@ -166,229 +168,13 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
+                                            <a class="dropdown-item" id="view_accommodation" href="#">View Accomodation</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="media align-items-center">
-                                        <div class="media-body">
-                                            <span class="name mb-0 text-sm">Electric Bird Hotel</span>
-                                        </div>
-                                    </div>
-                                </th>
-                                <td class="budget">
-                                    Hotel
-                                </td>
-                                <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">Lagos</span>
-                      </span>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="completion mr-2">30</span>
-                                    </div>
-                                </td>
-                                <td class="text-left">
-                                    +2348102853533
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="media align-items-center">
-                                        <div class="media-body">
-                                            <span class="name mb-0 text-sm">Electric Bird Hotel</span>
-                                        </div>
-                                    </div>
-                                </th>
-                                <td class="budget">
-                                    Hotel
-                                </td>
-                                <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">Lagos</span>
-                      </span>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="completion mr-2">30</span>
-                                    </div>
-                                </td>
-                                <td class="text-left">
-                                    +2348102853533
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="media align-items-center">
-                                        <div class="media-body">
-                                            <span class="name mb-0 text-sm">Electric Bird Hotel</span>
-                                        </div>
-                                    </div>
-                                </th>
-                                <td class="budget">
-                                    Hotel
-                                </td>
-                                <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">Lagos</span>
-                      </span>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="completion mr-2">30</span>
-                                    </div>
-                                </td>
-                                <td class="text-left">
-                                    +2348102853533
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="media align-items-center">
-                                        <div class="media-body">
-                                            <span class="name mb-0 text-sm">Electric Bird Hotel</span>
-                                        </div>
-                                    </div>
-                                </th>
-                                <td class="budget">
-                                    Hotel
-                                </td>
-                                <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">Lagos</span>
-                      </span>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="completion mr-2">30</span>
-                                    </div>
-                                </td>
-                                <td class="text-left">
-                                    +2348102853533
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="media align-items-center">
-                                        <div class="media-body">
-                                            <span class="name mb-0 text-sm">Electric Bird Hotel</span>
-                                        </div>
-                                    </div>
-                                </th>
-                                <td class="budget">
-                                    Hotel
-                                </td>
-                                <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">Lagos</span>
-                      </span>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="completion mr-2">30</span>
-                                    </div>
-                                </td>
-                                <td class="text-left">
-                                    +2348102853533
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="media align-items-center">
-                                        <div class="media-body">
-                                            <span class="name mb-0 text-sm">Electric Bird Hotel</span>
-                                        </div>
-                                    </div>
-                                </th>
-                                <td class="budget">
-                                    Hotel
-                                </td>
-                                <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">Lagos</span>
-                      </span>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="completion mr-2">30</span>
-                                    </div>
-                                </td>
-                                <td class="text-left">
-                                    +2348102853533
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -397,6 +183,87 @@
         </div>
 
     </div>
+
+
+
+
+
+    <!--- Add Accomodation Page ---->
+
+    <div class="page-wrapper bg-dark p-t-100 p-b-50" id="add-new-accomodation" style="display: none">
+        <div class="wrapper wrapper--w900">
+            <div class="cardm cardm-6">
+                <div class="cardm-heading">
+                    <h2 class="title">Add New Accomodation</h2>
+                </div>
+                <div class="cardm-body">
+                    <form method="POST">
+                        <div class="form-row">
+                            <div class="name">Title</div>
+                            <div class="value">
+                                <input class="input--style-6" type="text" name="full_name">
+                            </div>
+                        </div>
+
+
+                        <div class="form-row">
+                            <div class="name">Type</div>
+                            <div class="value">
+                                <input class="input--style-6" type="text" name="full_name">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name">Location</div>
+                            <div class="value">
+                                <input class="input--style-6" type="text" name="full_name">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name">Price</div>
+                            <div class="value">
+                                <input class="input--style-6" type="text" name="full_name">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Description</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <textarea class="textarea--style-6" name="message" placeholder="Product Descriptopn..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name">Contact Phone</div>
+                            <div class="value">
+                                <input class="input--style-6" type="text" name="full_name">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Upload Images</div>
+                            <div class="value">
+                                <div class="input-group js-input-file">
+                                    <input class="input-file" type="image" name="file_cv" id="file">
+                                    <label class="label--file" for="file">Choose Image</label>
+                                    <span class="input-file__info">No Image chosen</span>
+                                </div>
+                                <div class="label--desc">Upload Images Max image size 500kb</div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="cardm-footer">
+                    <button class="btn btn--radius-2 btn--blue-2" id="upload-product" type="submit">Upload</button>
+                    <button class="btn btn--radius-2 btn--blue-2" id="cancel-add" type="submit">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 </div>
 <!-- Argon Scripts -->
 <!-- Core -->
@@ -407,6 +274,7 @@
 <script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
 <!-- Argon JS -->
 <script src="assets/js/argon.js?v=1.2.0"></script>
+<script src="assets/js/acommodation.js"></script>
 </body>
 
 </html>

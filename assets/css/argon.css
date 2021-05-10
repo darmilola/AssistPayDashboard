@@ -6326,7 +6326,7 @@ input[type='button'].btn-block
 {
     margin-bottom: 0;
     padding: 1.25rem 1.5rem;
-
+    display: flex;
     border-bottom: 1px solid rgba(0, 0, 0, .05); 
     background-color: #fff;
 }
