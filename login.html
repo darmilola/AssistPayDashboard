@@ -19,14 +19,16 @@
   <meta name="author" content="Creative Tim">
   <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
   <!-- Favicon -->
-  <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
+  <link rel="icon" href="./assets/img/brand/favicon.png" type="image/png">
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
-  <link rel="stylesheet" href="assets/vendor/nucleo/css/nucleo.css" type="text/css">
-  <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <link rel="stylesheet" href="./assets/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="./assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Argon CSS -->
-  <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
+  <link rel="stylesheet" href="./assets/css/argon.css?v=1.2.0" type="text/css">
+  <script src="./assets/js/loader.js"></script>
+  <link rel="stylesheet" href="./assets/css/loader.css" />  
 </head>
 
 <body class="bg-default">
@@ -59,7 +61,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Email" type="email">
+                    <input class="form-control" id="admin_email" placeholder="Email" type="email">
                   </div>
                 </div>
                 <div class="form-group">
@@ -67,17 +69,11 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Password" type="password">
+                    <input class="form-control" id="admin_password" placeholder="Password" type="password">
                   </div>
                 </div>
-                <div class="custom-control custom-control-alternative custom-checkbox">
-                  <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
-                  <label class="custom-control-label" for=" customCheckLogin">
-                    <span class="text-muted">Remember me</span>
-                  </label>
-                </div>
                 <div class="text-center">
-                  <button type="button" class="btn btn-primary my-4">Sign in</button>
+                  <button type="button" id="admin_login_button" class="btn btn-primary my-4">Sign in</button>
                 </div>
               </form>
             </div>
@@ -87,15 +83,72 @@
     </div>
   </div>
 
+
+
   <!-- Argon Scripts -->
   <!-- Core -->
-  <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/js-cookie/js.cookie.js"></script>
-  <script src="assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-  <script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <script src="./assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="./assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/vendor/js-cookie/js.cookie.js"></script>
+  <script src="./assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="./assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
   <!-- Argon JS -->
-  <script src="assets/js/argon.js?v=1.2.0"></script>
+  <script src="./assets/js/argon.js?v=1.2.0"></script>
+    <script>
+    function Login() {
+
+      if(!$("#admin_email").val() || !$("#admin_password").val()){
+            
+            alert("Please provide your credentials")
+        
+        } 
+        else{
+    
+          Loader.open()    
+      var adminEmail = $("#admin_email").val();
+      var adminPassword = $("#admin_password").val();
+      const loginUrl = "https://protected-garden-55416.herokuapp.com/public/api/users/admin/auth";
+      const data = {
+        email:adminEmail,
+        password:adminPassword
+      }
+
+      $.ajax({
+        url:loginUrl,
+        type:'POST',
+        data:data,
+        success: function(result){
+              Loader.close()
+             console.log("result",result)
+             sessionStorage.setItem("isLoggedIn",adminEmail)
+            window.location.href = "index.html";
+        },
+        error: function(error){
+          Loader.close()
+             alert("Incorrect Email or password")
+        }
+      })
+      
+   /*   $.post(loginUrl,data,function(mData,status){
+        Loader.close()       
+        if(mData["status"] === "failure"){
+            alert("Incorrect Username or Password")
+        }
+        else{
+            sessionStorage.setItem("isLoggedIn",adminEmail)
+            window.location.href = "index.html";
+        }  
+      });*/
+
+    }
+}
+
+$( "#admin_login_button" ).click(function() {
+         Login()
+});
+      
+    </script>
+  </div>
 </body>
 
 </html>

@@ -32,6 +32,14 @@
   <!-- Page plugins -->
   <!-- Argon CSS -->
   <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
+
+  <script>
+    email = sessionStorage.getItem("isLoggedIn")
+    if(email === null){
+      window.location.href = "login.html";
+    }
+  </script>
+
 </head>
 
 <body>
@@ -85,11 +93,11 @@
                 <span class="nav-link-text">Verification</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="login.html">
+            <li class="nav-item" id="logout_item">
+              <div class="nav-link">
                 <i class="ni ni-send text-dark"></i>
                 <span class="nav-link-text">Log Out</span>
-              </a>
+              </div>
             </li>
           </ul>
         </div>
@@ -278,6 +286,13 @@
   <script src="assets/vendor/chart.js/dist/Chart.extension.js"></script>
   <!-- Argon JS -->
   <script src="assets/js/argon.js?v=1.2.0"></script>
+
+  <script>
+    $( "#logout_item" ).click(function() {
+         sessionStorage.removeItem("isLoggedIn")
+         window.location.href = "login.html"
+});
+  </script>
 </body>
 
 </html>

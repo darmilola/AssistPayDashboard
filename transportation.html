@@ -21,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>Assits Dashboard</title>
+  <title>Assist Dashboard</title>
   <!-- Favicon -->
   <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
   <!-- Fonts -->
@@ -33,6 +33,9 @@
   <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Argon CSS -->
   <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
+  <script src="./assets/js/loader.js"></script>
+  <link rel="stylesheet" href="./assets/css/loader.css"/>
+  <link rel="stylesheet" href="./assets/css/dropdown.css"/>  
 
 </head>
 
@@ -110,7 +113,7 @@
               <h6 class="h2 text-white d-inline-block mb-0">Transportation</h6>
             </div>
             <div class="col-lg-6 col-5 text-right">
-              <a href="#" class="btn btn-sm btn-neutral" id="add-new-company-button">Add New Company</a>
+              <a href="#" class="btn btn-sm btn-neutral" id="add-new-route-button">Add New Route</a>
             </div>
           </div>
         </div>
@@ -125,57 +128,23 @@
           <div class="card">
             <!-- Card header -->
             <div class="card-header border-0">
-              <h3 class="mb-0">Drivers</h3>
+              <h3 class="mb-0">Routes</h3>
             </div>
             <!-- Light table -->
             <div class="table-responsive">
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                   <tr>
-                    <th scope="col" class="sort" data-sort="name">Name</th>
-                    <th scope="col" class="sort" data-sort="budget">Gender</th>
-                    <th scope="col" class="sort" data-sort="status">Location</th>
-                    <th scope="col">Total Rides</th>
+                    <th scope="col" class="sort" data-sort="name">Type</th>
+                    <th scope="col" class="sort" data-sort="budget">From</th>
+                    <th scope="col" class="sort" data-sort="status">To</th>
+                    <th scope="col">Fare</th>
                     <th scope="col" class="sort" data-sort="completion">Phone</th>
-                    <th scope="col"></th>
+                    <th scope="col" class="sort" data-sort="completion">Available Seats</th>
                   </tr>
                 </thead>
-                <tbody class="list">
-                  <tr>
-                    <th scope="row">
-                      <div class="media align-items-center">
-                        <div class="media-body">
-                          <span class="name mb-0 text-sm">Electric Bird</span>
-                        </div>
-                      </div>
-                    </th>
-                    <td class="budget">
-                      M
-                    </td>
-                    <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">Lagos</span>
-                      </span>
-                    </td>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <span class="completion mr-2">30</span>
-                      </div>
-                    </td>
-                    <td class="text-left">
-                      +2348102853533
-                      <div class="dropdown">
-                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-ellipsis-v"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                          <a class="dropdown-item" href="#">Ban Driver</a>
-                          <a class="dropdown-item" href="#">Delete Driver</a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
+                <tbody class="list" id="transport_list">
+                 
                 </tbody>
               </table>
             </div>
@@ -185,267 +154,30 @@
 
       <!-- drivers ends here ---->
 
+      
 
-<!--- company starts here --->
-      <div class="row" id="company-list">
+       
+       <!-- bookings Starts here ---->
+       <div class="row" id="booking_list_root" style="display: none;">
         <div class="col">
           <div class="card">
             <!-- Card header -->
-            <div class="card-header border-0">
-              <h3 class="mb-0">Companies</h3>
+            <div class="card-header border-0" style="display: flex; justify-content: space-between;">
+              <h3 class="mb-0">Bookings</h3>
+              <h3 class="mb-0" id="dismiss_bookings" style="color: blue;">Dismiss</h3>
             </div>
             <!-- Light table -->
             <div class="table-responsive">
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
-                <tr>
-                  <th scope="col" class="sort" data-sort="name">Company Name</th>
-                  <th scope="col" class="sort" data-sort="status">Location</th>
-                  <th scope="col" class="sort" data-sort="completion">Contact Phone</th>
-                  <th scope="col" class="sort" data-sort="completion">Total Rides</th>
-                  <th scope="col"></th>
-                </tr>
+                  <tr>
+                    <th scope="col" class="sort" data-sort="email">Email</th>
+                    <th scope="col" class="sort" data-sort="phone">Contact Phone</th>
+                    <th scope="col" class="sort" data-sort="status">Payment Status</th>
+                  </tr>
                 </thead>
-                <tbody class="list">
-                <tr>
-                  <th scope="row">
-                    <div class="media align-items-center">
-                      <div class="media-body">
-                        <span class="name mb-0 text-sm">GIG Logistics</span>
-                      </div>
-                    </div>
-                  </th>
-                  <td class="budget">
-                    Lagos
-                  </td>
-                  <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">+2348102853533</span>
-                      </span>
-                  </td>
-                  <td>
-                    <div class="d-flex align-items-center">
-                      <span class="completion mr-2">300</span>
-                    </div>
-                  </td>
-                  <td class="text-left">
-                    <div class="dropdown">
-                      <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v"></i>
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                        <a class="dropdown-item" id="view_company_routes" href="#">View Routes</a>
-                        <a class="dropdown-item" id="add_new_comapny_route" href="#">Add New Route</a>
-                        <a class="dropdown-item" href="#">Delete Company</a>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-<!--- company ends here  --->
-
-
-
-      <!--- company routes starts here --->
-
-      <div class="row" id="company_routes_list" style="display: none">
-        <div class="col">
-          <div class="card">
-            <!-- Card header -->
-            <div class="card-header border-0">
-              <h3 class="mb-0">GIG Routes</h3>
-              <button class="btn btn--radius-2 btn--blue-2" id="close_route" type="submit">Close</button>
-            </div>
-            <!-- Light table -->
-            <div class="table-responsive">
-              <table class="table align-items-center table-flush">
-                <thead class="thead-light">
-                <tr>
-                  <th scope="col" class="sort" data-sort="name">Name</th>
-                  <th scope="col" class="sort" data-sort="budget">From</th>
-                  <th scope="col" class="sort" data-sort="status">To</th>
-                  <th scope="col">Time/Date</th>
-                  <th scope="col" class="sort" data-sort="completion">Price</th>
-                  <th scope="col"></th>
-                </tr>
-                </thead>
-                <tbody class="list">
-                <tr>
-                  <th scope="row">
-                    <div class="media align-items-center">
-                      <div class="media-body">
-                        <span class="name mb-0 text-sm">GIG</span>
-                      </div>
-                    </div>
-                  </th>
-                  <td class="budget">
-                    Ibadan
-                  </td>
-                  <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">Lagos</span>
-                      </span>
-                  </td>
-                  <td>
-                    <div class="d-flex align-items-center">
-                      <span class="completion mr-2">14/05/2021 7am</span>
-                    </div>
-                  </td>
-                  <td class="text-left">
-                    5,000
-                    <div class="dropdown">
-                      <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v"></i>
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                        <a class="dropdown-item" href="#">Delete Route</a>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <div class="media align-items-center">
-                      <div class="media-body">
-                        <span class="name mb-0 text-sm">GIG</span>
-                      </div>
-                    </div>
-                  </th>
-                  <td class="budget">
-                    Ibadan
-                  </td>
-                  <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">Lagos</span>
-                      </span>
-                  </td>
-                  <td>
-                    <div class="d-flex align-items-center">
-                      <span class="completion mr-2">14/05/2021 7am</span>
-                    </div>
-                  </td>
-                  <td class="text-left">
-                    5,000
-                    <div class="dropdown">
-                      <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v"></i>
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                        <a class="dropdown-item" href="#">Delete Route</a>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <div class="media align-items-center">
-                      <div class="media-body">
-                        <span class="name mb-0 text-sm">GIG</span>
-                      </div>
-                    </div>
-                  </th>
-                  <td class="budget">
-                    Ibadan
-                  </td>
-                  <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">Lagos</span>
-                      </span>
-                  </td>
-                  <td>
-                    <div class="d-flex align-items-center">
-                      <span class="completion mr-2">14/05/2021 7am</span>
-                    </div>
-                  </td>
-                  <td class="text-left">
-                    5,000
-                    <div class="dropdown">
-                      <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v"></i>
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                        <a class="dropdown-item" href="#">Delete Route</a>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <div class="media align-items-center">
-                      <div class="media-body">
-                        <span class="name mb-0 text-sm">GIG</span>
-                      </div>
-                    </div>
-                  </th>
-                  <td class="budget">
-                    Ibadan
-                  </td>
-                  <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">Lagos</span>
-                      </span>
-                  </td>
-                  <td>
-                    <div class="d-flex align-items-center">
-                      <span class="completion mr-2">14/05/2021 7am</span>
-                    </div>
-                  </td>
-                  <td class="text-left">
-                    5,000
-                    <div class="dropdown">
-                      <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v"></i>
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                        <a class="dropdown-item" href="#">Delete Route</a>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <div class="media align-items-center">
-                      <div class="media-body">
-                        <span class="name mb-0 text-sm">GIG</span>
-                      </div>
-                    </div>
-                  </th>
-                  <td class="budget">
-                    Ibadan
-                  </td>
-                  <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">Lagos</span>
-                      </span>
-                  </td>
-                  <td>
-                    <div class="d-flex align-items-center">
-                      <span class="completion mr-2">14/05/2021 7am</span>
-                    </div>
-                  </td>
-                  <td class="text-left">
-                    5,000
-                    <div class="dropdown">
-                      <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v"></i>
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                        <a class="dropdown-item" href="#">Delete Route</a>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
+                <tbody class="list" id="booking_list">
+                 
                 </tbody>
               </table>
             </div>
@@ -453,9 +185,7 @@
         </div>
       </div>
 
-      <!--- company routes ends here --->
-
-
+      <!-- bookings ends here ---->
 
       <!--- Add New Route Page ---->
 
@@ -463,42 +193,65 @@
         <div class="wrapper wrapper--w900">
           <div class="cardm cardm-6">
             <div class="cardm-heading">
-              <h2 class="title">Add New Route</h2>
+              <h2 class="title" id="add_route_button">Add New Route</h2>
             </div>
             <div class="cardm-body">
               <form method="POST">
                 <div class="form-row">
                   <div class="name">From</div>
-                  <div class="value">
-                    <input class="input--style-6" type="text" name="full_name">
-                  </div>
+                  <select id="from">
+                    <option selected value="0">Select From</option>
+                    <option value="Lagos">Lagos</option>
+                    <option value="Abuja">Abuja</option>
+                    <option value="Kano">Kano</option>
+                  </select>
                 </div>
 
 
-                <div class="form-row">
+              <div class="form-row">
                   <div class="name">To</div>
-                  <div class="value">
-                    <input class="input--style-6" type="text" name="full_name">
-                  </div>
+                  <select id="to">
+                    <option selected value="0">Select To</option>
+                    <option value="Lagos">Lagos</option>
+                    <option value="Abuja">Abuja</option>
+                    <option value="Kano">Kano</option>
+                  </select>
                 </div>
 
 
                 <div class="form-row">
-                  <div class="name">Date/Time</div>
+                  <div class="name">Type</div>
+                  <select id="type">
+                    <option selected value="0">Select Type</option>
+                    <option value="bus">Bus</option>
+                    <option value="car">Car</option>
+                  </select>
+                </div>
+
+                <div class="form-row">
+                  <div class="name">Fare</div>
                   <div class="value">
-                    <input class="input--style-6" type="text" name="full_name">
+                    <input class="input--style-6" id="fare" type="number">
                   </div>
                 </div>
+
                 <div class="form-row">
-                  <div class="name">Price</div>
+                  <div class="name">Seats</div>
                   <div class="value">
-                    <input class="input--style-6" type="text" name="full_name">
+                    <input class="input--style-6" id="seats" type="number">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="name">Contact Phone</div>
+                  <div class="value">
+                    <input class="input--style-6" id="phone" type="number">
                   </div>
                 </div>
               </form>
             </div>
             <div class="cardm-footer">
-              <button class="btn btn--radius-2 btn--blue-2" id="add-route" type="submit">Upload</button>
+              <button class="btn btn--radius-2 btn--blue-2" id="add-route" type="submit">Save</button>
               <button class="btn btn--radius-2 btn--blue-2" id="cancel-add" type="submit">Cancel</button>
             </div>
           </div>
@@ -506,65 +259,9 @@
       </div>
     </div>
 
-    <!--- End of Add Product Page ---->
 
 
 
-    <!--- Add Company Page ---->
-
-    <div class="page-wrapper bg-dark p-t-100 p-b-50" id="add-new-company" style="display: none">
-      <div class="wrapper wrapper--w900">
-        <div class="cardm cardm-6">
-          <div class="cardm-heading">
-            <h2 class="title">Add New Company</h2>
-          </div>
-          <div class="cardm-body">
-            <form method="POST">
-              <div class="form-row">
-                <div class="name">Company Name</div>
-                <div class="value">
-                  <input class="input--style-6" type="text" name="full_name">
-                </div>
-              </div>
-
-
-              <div class="form-row">
-                <div class="name">Location</div>
-                <div class="value">
-                  <input class="input--style-6" type="text" name="full_name">
-                </div>
-              </div>
-
-
-              <div class="form-row">
-                <div class="name">Contact Phone</div>
-                <div class="value">
-                  <input class="input--style-6" type="text" name="full_name">
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="name">Upload Company Logo</div>
-                <div class="value">
-                  <div class="input-group js-input-file">
-                    <input class="input-file" type="image" name="file_cv" id="file">
-                    <label class="label--file" for="file">Choose Image</label>
-                    <span class="input-file__info">No Image chosen</span>
-                  </div>
-                  <div class="label--desc">Upload Comapny Logo. Max image size 500kb</div>
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="cardm-footer">
-            <button class="btn btn--radius-2 btn--blue-2" id="upload-product" type="submit">Upload</button>
-            <button class="btn btn--radius-2 btn--blue-2" id="cancel-edit" type="submit">Cancel</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-<!--- End of Add Product Page ---->
 
 
 
@@ -582,6 +279,144 @@
   <!-- Argon JS -->
   <script src="assets/js/argon.js?v=1.2.0"></script>
   <script src="assets/js/transportation.js"></script>
+
+
+  <script>
+   loadPage()
+
+   $('#add-route').click(function(event) {
+    event.preventDefault();
+    CreateTransport()
+   
+});
+
+
+   function CreateTransport(){
+        
+      
+      if($("#from").val() === '0' || !$("#to").val() === '0' || !$("#type").val() === '0' || !$("#fare").val() || !$("#phone").val() || !$("#seats").val()){
+            
+            alert("Provide all required input")
+        
+      }else{ 
+
+        Loader.open()
+      
+      from = $("#from").val()
+      to   = $("#to").val()
+      type = $("#type").val()
+      fare = $("#fare").val()
+      phone = $("#phone").val()
+      seats = $("#seats").val()  
+      
+      const createRouteUrl = "https://protected-garden-55416.herokuapp.com/public/api/drivers/create"
+
+      const data = {
+        mType:type,
+        mFrom:from,
+        mTo:to,
+        seats:seats,
+        phone:phone,
+        fare:fare
+      }
+
+      $.ajax({
+        url:createRouteUrl,
+        type:'POST',
+        data:data,
+        success: function(result){
+              Loader.close()
+              alert("Route Created Successfully")
+              $('#drivers_list').toggle();
+              $('#add-new-route').toggle();
+              loadPage()
+                    
+          },
+        error: function(error){
+          Loader.close()
+          alert("Error Occured please try again")
+        }
+      })
+    }
+
+    }
+  
+
+    function loadPage(){
+      Loader.open()
+      const transportUrl = "https://protected-garden-55416.herokuapp.com/public/api/drivers/buses/all";;
+      $.ajax({
+        url:transportUrl,
+        type:'POST',
+        success: function(result){
+              Loader.close()
+             var strHTML = '';
+             result["data"].forEach(element => {
+              strHTML += "<tr><th scope='row'><div class='media align-items-center'><div class='media-body'> <span class='name mb-0 text-sm'>"+element.mType+"</span>"
+                       + " </div></div></th><td class='budget'>"+element.mFrom+"</td><td><span class='badge badge-dot mr-4'><i class='bg-warning'></i> <span class='status'>"+element.mTo+"</span>"
+                     + "  </span> </td><td><div class='d-flex align-items-center'><span class='completion mr-2'>"+element.fare+"</span> </div> </td>"
+                    +"  <td class='text-left'>"+ element.phone +"</div></td><td class='text-left'>"+element.seats+"<div class='dropdown'>"
+                    +"    <a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'> <i class='fas fa-ellipsis-v'></i>"
+                   +"     </a><div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'><a class='dropdown-item' onClick=getBookings("+element.id+")>"+"View Bookings" +"</a>"
+                   +"       <a class='dropdown-item' href='#'>"+ "Delete Route" +"</a> </div> </div></td></tr>";
+
+                    });
+                    $("#transport_list").empty()
+                    $("#transport_list").append(strHTML)
+             
+        },
+        error: function(error){
+          Loader.close()
+        }
+      })
+
+    }
+
+    
+
+      function getBookings(transportId){
+           Loader.open()
+      
+      const transportBookingsUrl = "https://protected-garden-55416.herokuapp.com/public/api/drivers/buses/bookings"
+
+      const data = {
+        transport_id:transportId
+      }
+
+      $.ajax({
+        url:transportBookingsUrl,
+        type:'POST',
+        data:data,
+        success: function(result){
+              Loader.close()
+             var strHTML = '';
+             console.log(result["data"])
+             result["data"].forEach(element => {
+               strHTML += "<tr><th scope='row'><div class='media align-items-center'><div class='media-body'> <span class='name mb-0 text-sm'>"+element.userId+"</span>"
+                       + " </div></div></th><td class='budget'>"+element.contactPhone+"</td><td><span class='badge badge-dot mr-4'><i class='bg-warning'></i> <span class='status'>"+element.paymentStatus+"</span>"
+                       + "  </span> </td></tr>";
+
+                    });
+                    $("#booking_list").empty()
+                    $("#booking_list").append(strHTML)
+                    $('#booking-list').toggle();
+                    $('#booking_list_root').toggle();
+                    $('#transport_list').toggle();
+                    $('#add-new-route-button').toggle();
+                    $('#drivers_list').toggle();
+                    
+          },
+        error: function(error){
+          Loader.close()
+          alert("No Bookings Available")
+        }
+      })
+    }
+      
+
+
+  </script>
+
 </body>
 
 </html>
