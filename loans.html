@@ -31,6 +31,11 @@
     <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
     <!-- Argon CSS -->
     <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
+    <script src="./assets/js/loader.js"></script>
+    <link rel="stylesheet" href="./assets/css/loader.css"/>
+    <link rel="stylesheet" href="./assets/css/dropdown.css"/>
+    <link rel="stylesheet" href="./assets/css/userprofile.css"/>
+    <link rel="stylesheet" href="./assets/css/transactionstb.css"/>
 </head>
 
 <body>
@@ -66,18 +71,7 @@
                             <span class="nav-link-text">Loans</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="marketplace.html">
-                            <i class="ni ni-bullet-list-67 text-default"></i>
-                            <span class="nav-link-text">MarketPlace</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Accomodation.html">
-                            <i class="ni ni-key-25 text-info"></i>
-                            <span class="nav-link-text">Accomodation</span>
-                        </a>
-                    </li>
+                
                     <li class="nav-item">
                         <a class="nav-link" href="verification.html">
                             <i class="ni ni-circle-08 text-pink"></i>
@@ -107,423 +101,96 @@
                         <h6 class="h2 text-white d-inline-block mb-0">Loans</h6>
                     </div>
                     <div class="col-lg-6 col-5 text-right">
-                        <a href="#" class="btn btn-sm btn-neutral">New</a>
-                        <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+                        <a href="#" class="btn btn-sm btn-neutral">View Approved</a>
+                        <a href="#" class="btn btn-sm btn-neutral">View Recurring Debit</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <!-- Page content -->
-    <div class="container-fluid mt--6">
+    <div class="container-fluid mt--6" id="userprofile_card" style="display: none;">
         <div class="row">
             <div class="col">
                 <div class="card">
                     <!-- Card header -->
                     <div class="card-header border-0">
-                        <h3 class="mb-0">Awaiting Disbursement</h3>
+                        <h3 class="mb-0">User Profile</h3>
+                        <a href="#" class="btn btn-sm btn-neutral" style="margin-left: 70px;" onclick="ShowProfile()">Dismiss</a>
+                    </div>
+<div class="user-profile">
+	<img class="avatar" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTF_erFD1SeUnxEpvFjzBCCDxLvf-wlh9ZuPMqi02qGnyyBtPWdE-3KoH3s" alt="Ash" />
+    <div class="username">Will Smith</div>
+    <div class="description">
+      damilolaakinterinwa@gmail.com
+  </div>
+  <div class="description">
+    08102853533
+</div>
+</div>
+
+</div>
+</div>
+</div>
+    </div>
+
+    <div class="container-fluid mt--6" id="transactions_card" style = "display:none;">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header border-0">
+                        <h3 class="mb-0">Transactions</h3>
+                        <a href="#" class="btn btn-sm btn-neutral" style = "margin-left:60px;" id = "transactions_dismiss">Dismiss</a>
+                    </div>
+        <table>
+    <thead>
+      <tr>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Naration</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody id = "transaction_list">
+    
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+</div>
+
+
+
+    <!-- Page content -->
+    <div class="container-fluid mt--6" id="loan_application_card">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <!-- Card header -->
+                    <div class="card-header border-0">
+                        <h3 class="mb-0">Pending Applications</h3>
                     </div>
                     <!-- Light table -->
-                    <div class="table-responsive">
+                    <div class="table-responsive" style="min-height: 300px;">
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                             <tr>
-                                <th scope="col" class="sort" data-sort="name">Name</th>
-                                <th scope="col" class="sort" data-sort="budget">Gender</th>
-                                <th scope="col" class="sort" data-sort="status">Location</th>
-                                <th scope="col">Amount</th>
-                                <th scope="col" class="sort" data-sort="completion">Phone</th>
-                                <th scope="col"></th>
+                                <th scope="col" class="sort" data-sort="name">User Id</th>
+                                <th scope="col" class="sort" data-sort="budget">Amount</th>
                             </tr>
                             </thead>
-                            <tbody class="list">
-                            <tr>
-                                <th scope="row">
-                                    <div class="media align-items-center">
-                                        <div class="media-body">
-                                            <span class="name mb-0 text-sm">Electric Bird</span>
-                                        </div>
-                                    </div>
-                                </th>
-                                <td class="budget">
-                                    M
-                                </td>
-                                <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">Lagos</span>
-                      </span>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="completion mr-2">30</span>
-                                    </div>
-                                </td>
-                                <td class="text-left">
-                                    +2348102853533
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="media align-items-center">
-                                        <div class="media-body">
-                                            <span class="name mb-0 text-sm">Electric Bird</span>
-                                        </div>
-                                    </div>
-                                </th>
-                                <td class="budget">
-                                    M
-                                </td>
-                                <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">Lagos</span>
-                      </span>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="completion mr-2">30</span>
-                                    </div>
-                                </td>
-                                <td class="text-left">
-                                    +2348102853533
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="media align-items-center">
-                                        <div class="media-body">
-                                            <span class="name mb-0 text-sm">Electric Bird</span>
-                                        </div>
-                                    </div>
-                                </th>
-                                <td class="budget">
-                                    M
-                                </td>
-                                <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">Lagos</span>
-                      </span>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="completion mr-2">30</span>
-                                    </div>
-                                </td>
-                                <td class="text-left">
-                                    +2348102853533
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="media align-items-center">
-                                        <div class="media-body">
-                                            <span class="name mb-0 text-sm">Electric Bird</span>
-                                        </div>
-                                    </div>
-                                </th>
-                                <td class="budget">
-                                    M
-                                </td>
-                                <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">Lagos</span>
-                      </span>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="completion mr-2">30</span>
-                                    </div>
-                                </td>
-                                <td class="text-left">
-                                    +2348102853533
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="media align-items-center">
-                                        <div class="media-body">
-                                            <span class="name mb-0 text-sm">Electric Bird</span>
-                                        </div>
-                                    </div>
-                                </th>
-                                <td class="budget">
-                                    M
-                                </td>
-                                <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">Lagos</span>
-                      </span>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="completion mr-2">30</span>
-                                    </div>
-                                </td>
-                                <td class="text-left">
-                                    +2348102853533
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                            <tbody class="list" id="pending_loan_list">
+                           
+                        
+                         
                             </tbody>
                         </table>
                     </div>
                 </div>
 
-                <div class="card">
-                    <!-- Card header -->
-                    <div class="card-header border-0">
-                        <h3 class="mb-0">Awaiting Bank Approval</h3>
-                    </div>
-                    <!-- Light table -->
-                    <div class="table-responsive">
-                        <table class="table align-items-center table-flush">
-                            <thead class="thead-light">
-                            <tr>
-                                <th scope="col" class="sort" data-sort="name">Name</th>
-                                <th scope="col" class="sort" data-sort="budget">Gender</th>
-                                <th scope="col" class="sort" data-sort="status">Location</th>
-                                <th scope="col">Amount</th>
-                                <th scope="col" class="sort" data-sort="completion">Phone</th>
-                                <th scope="col"></th>
-                            </tr>
-                            </thead>
-                            <tbody class="list">
-                            <tr>
-                                <th scope="row">
-                                    <div class="media align-items-center">
-                                        <div class="media-body">
-                                            <span class="name mb-0 text-sm">Electric Bird</span>
-                                        </div>
-                                    </div>
-                                </th>
-                                <td class="budget">
-                                    M
-                                </td>
-                                <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">Lagos</span>
-                      </span>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="completion mr-2">30</span>
-                                    </div>
-                                </td>
-                                <td class="text-left">
-                                    +2348102853533
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="media align-items-center">
-                                        <div class="media-body">
-                                            <span class="name mb-0 text-sm">Electric Bird</span>
-                                        </div>
-                                    </div>
-                                </th>
-                                <td class="budget">
-                                    M
-                                </td>
-                                <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">Lagos</span>
-                      </span>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="completion mr-2">30</span>
-                                    </div>
-                                </td>
-                                <td class="text-left">
-                                    +2348102853533
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="media align-items-center">
-                                        <div class="media-body">
-                                            <span class="name mb-0 text-sm">Electric Bird</span>
-                                        </div>
-                                    </div>
-                                </th>
-                                <td class="budget">
-                                    M
-                                </td>
-                                <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">Lagos</span>
-                      </span>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="completion mr-2">30</span>
-                                    </div>
-                                </td>
-                                <td class="text-left">
-                                    +2348102853533
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="media align-items-center">
-                                        <div class="media-body">
-                                            <span class="name mb-0 text-sm">Electric Bird</span>
-                                        </div>
-                                    </div>
-                                </th>
-                                <td class="budget">
-                                    M
-                                </td>
-                                <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">Lagos</span>
-                      </span>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="completion mr-2">30</span>
-                                    </div>
-                                </td>
-                                <td class="text-left">
-                                    +2348102853533
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="media align-items-center">
-                                        <div class="media-body">
-                                            <span class="name mb-0 text-sm">Electric Bird</span>
-                                        </div>
-                                    </div>
-                                </th>
-                                <td class="budget">
-                                    M
-                                </td>
-                                <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">Lagos</span>
-                      </span>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="completion mr-2">30</span>
-                                    </div>
-                                </td>
-                                <td class="text-left">
-                                    +2348102853533
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+             
                 </div>
             </div>
         </div>
@@ -540,5 +207,90 @@
 <!-- Argon JS -->
 <script src="assets/js/argon.js?v=1.2.0"></script>
 </body>
+
+<script>
+    loadApplications()   
+
+
+function loadApplications(){
+      Loader.open()
+      const loanUrl = "https://protected-garden-55416.herokuapp.com/public/api/users/loan/applications";
+      $.ajax({
+        url:loanUrl,
+        type:'POST',
+        success: function(result){
+             Loader.close()
+             var strHTML = '';
+             result["data"].forEach(element => {
+                 mtoken = element.accountToken;
+                 alert(mtoken)
+              strHTML += "<tr><th scope='row'><div class='media align-items-center'><div class='media-body'>"
+                           +"<span class='name mb-0 text-sm'>"+element.userId+"</span></div></div>"
+                            +"</th><td class='budget'>"+ element.amount+"<div class='dropdown'>"
+                                +"<a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>"
+                                  +"<i class='fas fa-ellipsis-v'></i> </a>"
+                                  +"<div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'>"
+                                   +"<a class='dropdown-item' href='#'  onClick=ShowTransactions("+`mtoken`+")>"+"View Transactions</a>"
+                                    +"<a class='dropdown-item' href='#'>View Bank Details</a>"
+                                    +"<a class='dropdown-item' id = 'view_profile' onClick=ShowProfile()>"+"View Profile</a>"
+                                    +"<a class='dropdown-item' href='#'>View Loan History</a>"
+                                    +"<a class='dropdown-item' href='#'>Set as Approved</a> </div> </div> </td></tr>";
+
+                    });
+                    $("#pending_loan_list").empty()
+                    $("#pending_loan_list").append(strHTML)
+             
+        },
+        error: function(error){
+          Loader.close()
+        }
+      })
+    }
+
+    function ShowProfile(){
+    $("#userprofile_card").toggle()
+    $("#loan_application_card").toggle()
+
+   }    
+
+
+function ShowTransactions(mToken){
+    $("#loan_application_card").toggle()
+    $("#transactions_card").toggle()
+    const settings = {
+    
+    "async": true,
+    "crossDomain": true,
+    "url": "https://api.withmono.com/accounts/"+mToken+"/statement?period=last6month",
+    "method": "GET",
+    "headers": {
+      "Accept": "application/json",
+      "mono-sec-key": "test_sk_PZx0GiRjkY3NAbvACgtp"
+    }
+  };
+  
+  $.ajax(settings).done(function (response) {
+      Loader.close()
+  
+      var strHTML = '';
+               response["data"].forEach(element => {
+                strHTML += "  <tr><td data-column='Amount'>"+element.amount+"</td><td data-column='Date'>"+element.date+"</td>"
+          +"<td data-column='Narration'>"+element.narration+"</td><td data-column='Type'>"+element.type+"</td></tr>";
+  
+                      });
+                      $("#transaction_list").empty()
+                      $("#transaction_list").append(strHTML)
+            });
+  
+} 
+
+$('#transactions_dismiss').click(function(event) {
+    event.preventDefault();
+    $("#loan_application_card").toggle()
+    $("#transactions_card").toggle();
+});
+
+
+</script>
 
 </html>

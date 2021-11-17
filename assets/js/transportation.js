@@ -12,6 +12,7 @@ $('#cancel-edit').click(function(event) {
     $('#drivers_list').toggle();
 });
 
+
 $('#view_company_routes').click(function(event) {
     event.preventDefault();
     $('#company-list').toggle();

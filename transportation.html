@@ -73,18 +73,6 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="marketplace.html">
-              <i class="ni ni-bullet-list-67 text-default"></i>
-              <span class="nav-link-text">MarketPlace</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Accomodation.html">
-              <i class="ni ni-key-25 text-info"></i>
-              <span class="nav-link-text">Accomodation</span>
-            </a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="verification.html">
               <i class="ni ni-circle-08 text-pink"></i>
               <span class="nav-link-text">Verification</span>
@@ -357,7 +345,7 @@
                      + "  </span> </td><td><div class='d-flex align-items-center'><span class='completion mr-2'>"+element.fare+"</span> </div> </td>"
                     +"  <td class='text-left'>"+ element.phone +"</div></td><td class='text-left'>"+element.seats+"<div class='dropdown'>"
                     +"    <a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'> <i class='fas fa-ellipsis-v'></i>"
-                   +"     </a><div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'><a class='dropdown-item' onClick=getBookings("+element.id+")>"+"View Bookings" +"</a>"
+                   +"     </a><div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'><a class='dropdown-item' onClick=getBookings("+element.id+")>"+"View Bookings"+"</a>"
                    +"       <a class='dropdown-item' href='#'>"+ "Delete Route" +"</a> </div> </div></td></tr>";
 
                     });
@@ -372,6 +360,7 @@
 
     }
 
+   
     
 
       function getBookings(transportId){
