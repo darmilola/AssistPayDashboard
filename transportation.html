@@ -236,6 +236,18 @@
                     <input class="input--style-6" id="phone" type="number">
                   </div>
                 </div>
+                <div class="form-row">
+                  <div class="name">Meeting Point</div>
+                  <div class="value">
+                    <input class="input--style-6" id="meeting_point" type="text">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="name">Company</div>
+                  <div class="value">
+                    <input class="input--style-6" id="company" type="text">
+                  </div>
+                </div>
               </form>
             </div>
             <div class="cardm-footer">
@@ -282,7 +294,7 @@
    function CreateTransport(){
         
       
-      if($("#from").val() === '0' || !$("#to").val() === '0' || !$("#type").val() === '0' || !$("#fare").val() || !$("#phone").val() || !$("#seats").val()){
+      if($("#from").val() === '0' || !$("#to").val() === '0' || !$("#type").val() === '0' || !$("#fare").val() || !$("#meeting_point").val() || !$("#company").val() || !$("#phone").val() || !$("#seats").val()){
             
             alert("Provide all required input")
         
@@ -296,6 +308,8 @@
       fare = $("#fare").val()
       phone = $("#phone").val()
       seats = $("#seats").val()  
+      meetingpoint = $("#meeting_point").val()  
+      company = $("#company").val()  
       
       const createRouteUrl = "https://protected-garden-55416.herokuapp.com/public/api/drivers/create"
 
@@ -305,7 +319,9 @@
         mTo:to,
         seats:seats,
         phone:phone,
-        fare:fare
+        fare:fare,
+        meetingpoint:meetingpoint,
+        company:company
       }
 
       $.ajax({
