@@ -248,6 +248,30 @@
                     <input class="input--style-6" id="company" type="text">
                   </div>
                 </div>
+                <div class="form-row">
+                  <div class="name">From Area</div>
+                  <div class="value">
+                    <input class="input--style-6" id="from_area" type="text">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="name">To Area</div>
+                  <div class="value">
+                    <input class="input--style-6" id="to_area" type="text">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="name">Travel Date</div>
+                  <div class="value">
+                    <input class="input--style-6" id="travel_date" type="text">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="name">Departure Time</div>
+                  <div class="value">
+                    <input class="input--style-6" id="departure_time" type="text">
+                  </div>
+                </div>
               </form>
             </div>
             <div class="cardm-footer">
@@ -294,7 +318,7 @@
    function CreateTransport(){
         
       
-      if($("#from").val() === '0' || !$("#to").val() === '0' || !$("#type").val() === '0' || !$("#fare").val() || !$("#meeting_point").val() || !$("#company").val() || !$("#phone").val() || !$("#seats").val()){
+      if($("#from").val() === '0' || !$("#to").val() === '0' || !$("#type").val() === '0' || !$("#fare").val() || !$("#meeting_point").val() || !$("#company").val() || !$("#phone").val() || !$("#seats").val()|| !$("#from_area").val()|| !$("#to_area").val()|| !$("#travel_date").val()|| !$("#departure_time").val()){
             
             alert("Provide all required input")
         
@@ -309,7 +333,11 @@
       phone = $("#phone").val()
       seats = $("#seats").val()  
       meetingpoint = $("#meeting_point").val()  
-      company = $("#company").val()  
+      company = $("#company").val()
+      fromArea = $("#from_area").val()  
+      toArea = $("#to_area").val() 
+      travelDate = $("#travel_date").val()  
+      departureTime = $("#departure_time").val()   
       
       const createRouteUrl = "https://protected-garden-55416.herokuapp.com/public/api/drivers/create"
 
@@ -321,7 +349,11 @@
         phone:phone,
         fare:fare,
         meetingpoint:meetingpoint,
-        company:company
+        company:company,
+        fromArea:fromArea,
+        toArea:toArea,
+        travelDate:travelDate,
+        departureTime:departureTime
       }
 
       $.ajax({
