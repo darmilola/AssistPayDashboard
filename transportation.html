@@ -339,7 +339,7 @@
       travelDate = $("#travel_date").val()  
       departureTime = $("#departure_time").val()   
       
-      const createRouteUrl = "https://protected-garden-55416.herokuapp.com/public/api/drivers/create"
+      const createRouteUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/drivers/create"
 
       const data = {
         mType:type,
@@ -380,7 +380,7 @@
 
     function loadPage(){
       Loader.open()
-      const transportUrl = "https://protected-garden-55416.herokuapp.com/public/api/drivers/buses/all";;
+      const transportUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/drivers/buses/all";
       $.ajax({
         url:transportUrl,
         type:'POST',
@@ -414,7 +414,7 @@
       function getBookings(transportId){
            Loader.open()
       
-      const transportBookingsUrl = "https://protected-garden-55416.herokuapp.com/public/api/drivers/buses/bookings"
+      const transportBookingsUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/drivers/buses/bookings"
 
       const data = {
         transport_id:transportId
