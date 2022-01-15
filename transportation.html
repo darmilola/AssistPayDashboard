@@ -67,6 +67,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="eccomerce.html">
+              <i class="ni ni-circle-08 text-pink"></i>
+              <span class="nav-link-text">Eccommerce</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="loans.html">
               <i class="ni ni-single-02 text-yellow"></i>
               <span class="nav-link-text">Loans</span>
@@ -380,12 +386,12 @@
 
     function loadPage(){
       Loader.open()
-      const transportUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/drivers/buses/all";
+      const transportUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/drivers/buses/all/buses";
       $.ajax({
         url:transportUrl,
         type:'POST',
         success: function(result){
-              Loader.close()
+             Loader.close()
              var strHTML = '';
              result["data"].forEach(element => {
               strHTML += "<tr><th scope='row'><div class='media align-items-center'><div class='media-body'> <span class='name mb-0 text-sm'>"+element.mType+"</span>"
@@ -394,7 +400,7 @@
                     +"  <td class='text-left'>"+ element.phone +"</div></td><td class='text-left'>"+element.seats+"<div class='dropdown'>"
                     +"    <a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'> <i class='fas fa-ellipsis-v'></i>"
                    +"     </a><div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'><a class='dropdown-item' onClick=getBookings("+element.id+")>"+"View Bookings"+"</a>"
-                   +"       <a class='dropdown-item' href='#'>"+ "Delete Route" +"</a> </div> </div></td></tr>";
+                   +"       <a class='dropdown-item' href=" +'https://gentle-mountain-10412.herokuapp.com/public/api/drivers/delete/'+ element.id+">"+ "Delete Route" +"</a> </div> </div></td></tr>";
 
                     });
                     $("#transport_list").empty()
@@ -408,7 +414,8 @@
 
     }
 
-   
+
+
     
 
       function getBookings(transportId){
@@ -448,7 +455,8 @@
           alert("No Bookings Available")
         }
       })
-    }
+
+   }
       
 
 

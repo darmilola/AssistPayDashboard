@@ -71,7 +71,12 @@
                             <span class="nav-link-text">Loans</span>
                         </a>
                     </li>
-                
+                    <li class="nav-item">
+                        <a class="nav-link" href="eccomerce.html">
+                            <i class="ni ni-circle-08 text-pink"></i>
+                            <span class="nav-link-text">Eccommerce</span>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="verification.html">
                             <i class="ni ni-circle-08 text-pink"></i>
@@ -222,15 +227,14 @@ function loadApplications(){
              Loader.close()
              var strHTML = '';
              result["data"].forEach(element => {
-                 mtoken = element.accountToken;
-                 alert(mtoken)
+
               strHTML += "<tr><th scope='row'><div class='media align-items-center'><div class='media-body'>"
                            +"<span class='name mb-0 text-sm'>"+element.userId+"</span></div></div>"
                             +"</th><td class='budget'>"+ element.amount+"<div class='dropdown'>"
                                 +"<a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>"
                                   +"<i class='fas fa-ellipsis-v'></i> </a>"
                                   +"<div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'>"
-                                   +"<a class='dropdown-item' href='#'  onClick=ShowTransactions("+`mtoken`+")>"+"View Transactions</a>"
+                                   +"<a class='dropdown-item' href = " +'https://secure-ocean-32806.herokuapp.com/Transactions.html?token='+ element.accountToken+">"+"View Transactions</a>"
                                     +"<a class='dropdown-item' href='#'>View Bank Details</a>"
                                     +"<a class='dropdown-item' id = 'view_profile' onClick=ShowProfile()>"+"View Profile</a>"
                                     +"<a class='dropdown-item' href='#'>View Loan History</a>"
