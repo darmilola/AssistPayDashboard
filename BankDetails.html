@@ -51,10 +51,7 @@
         };
 
         $.ajax(settings).done(function (response) {
-            var strHTML = '';
-            alert(response)
             var bankName =   response["account"]["institution"]["name"]
-            alert(bankName)
             var type  = response["account"]["institution"]["type"]
             var name =   response["account"]["name"]
             var accountNumber  = response["account"]["accountNumber"]
@@ -66,8 +63,33 @@
             var bankNameStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
                 "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Bank Name</span> <span class=\"amount\">"+bankName+"</span> </div>\n" +
                 "        </div>"
+            var bankingTypeStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
+                "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Banking Type</span> <span class=\"amount\">"+type+"</span> </div>\n" +
+                "        </div>"
+            var accountName = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
+                "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Account Name</span> <span class=\"amount\">"+name+"</span> </div>\n" +
+                "        </div>"
+            var accountNumber = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
+                "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Account Number</span> <span class=\"amount\">"+accountNumber+"</span> </div>\n" +
+                "        </div>"
+            var accountType = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
+                "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Account Type</span> <span class=\"amount\">"+accountType+"</span> </div>\n" +
+                "        </div>"
+            var balance = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
+                "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Account Balance</span> <span class=\"amount\">"+balance+"</span> </div>\n" +
+                "        </div>"
+            var bvn = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
+                "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">BVN</span> <span class=\"amount\">"+bvn+"</span> </div>\n" +
+                "        </div>"
 
             $("#account_details").append(bankNameStr)
+            $("#account_details").append(bankingTypeStr)
+            $("#account_details").append(accountName)
+            $("#account_details").append(accountNumber)
+            $("#account_details").append(accountType)
+            $("#account_details").append(balance)
+            $("#account_details").append(bvn)
+
 
         });
     }
