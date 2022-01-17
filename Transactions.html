@@ -106,6 +106,7 @@
 
         $.ajax(settings).done(function (response) {
             Loader.close()
+            alert(response)
 
             var strHTML = '';
             response["data"].forEach(element => {
