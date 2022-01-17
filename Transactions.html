@@ -47,7 +47,7 @@
 
 
 
-    <div class="container-fluid mt--6" id="transactions_card" style = "display:none;">
+    <div class="container-fluid mt--6">
         <div class="row">
             <div class="col">
                 <div class="card">
@@ -88,7 +88,6 @@
 <script>
     let params = new URLSearchParams(location.search);
     mToken = params.get('token')
-    //alert(mToken)
     ShowTransactions(mToken)
 
     function ShowTransactions(mToken){
@@ -105,18 +104,15 @@
 
         $.ajax(settings).done(function (response) {
             Loader.close()
-            //alert(response)
-
             var strHTML = '';
             response["data"].forEach(element => {
                 strHTML += "  <tr><td data-column='Amount'>"+element.amount+"</td><td data-column='Date'>"+element.date+"</td>"
                     +"<td data-column='Narration'>"+element.narration+"</td><td data-column='Type'>"+element.type+"</td></tr>";
             });
-            alert(strHTML)
-            //$("#transaction_list").empty()
             $("#transaction_list").append(strHTML)
         });
     }
+
 </script>
 
 
