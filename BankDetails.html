@@ -51,9 +51,10 @@
         };
 
         $.ajax(settings).done(function (response) {
-            Loader.close()
             var strHTML = '';
+            alert(response)
             var bankName =   response["account"]["institution"]["name"]
+            alert(bankName)
             var type  = response["account"]["institution"]["type"]
             var name =   response["account"]["name"]
             var accountNumber  = response["account"]["accountNumber"]
