@@ -52,18 +52,18 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header border-0">
-                        <h3 class="mb-0">Transactions</h3>
+                        <h3 class="mb-0">Applications</h3>
                     </div>
                     <table>
                         <thead>
                         <tr>
+                            <th>User Id</th>
                             <th>Amount</th>
-                            <th>Date</th>
-                            <th>Naration</th>
-                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Timestamp</th>
                         </tr>
                         </thead>
-                        <tbody id = "transaction_list">
+                        <tbody id = "loan_list">
 
                         </tbody>
                     </table>
@@ -85,31 +85,38 @@
 </body>
 
 <script>
+
     let params = new URLSearchParams(location.search);
-    mToken = params.get('token')
-    ShowTransactions(mToken)
+    mUserId = params.get('userId')
 
-    function ShowTransactions(mToken){
-        const settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": "https://api.withmono.com/accounts/"+mToken+"/statement?period=last6month",
-            "method": "GET",
-            "headers": {
-                "Accept": "application/json",
-                "mono-sec-key": "test_sk_PZx0GiRjkY3NAbvACgtp"
+    getHistory(mUserId)
+
+    function getHistory(userId){
+
+        const url = "https://gentle-mountain-10412.herokuapp.com/public/api/users/loan/applications/get"
+
+        const data = {
+            userId:userId
+        }
+
+        $.ajax({
+            url:url,
+            type:'POST',
+            data:data,
+            success: function(result){
+                var strHTML = '';
+                result["data"].forEach(element => {
+                    strHTML += "  <tr><td data-column='Amount'>"+element.userId+"</td><td data-column='Date'>"+element.amount+"</td>"
+                        +"<td data-column='Narration'>"+element.status+"</td><td data-column='Type'>"+element.timestamp+"</td></tr>";
+
+                });
+                $("#loan_list").append(strHTML)
+            },
+            error: function(error){
+
             }
-        };
+        })
 
-        $.ajax(settings).done(function (response) {
-            Loader.close()
-            var strHTML = '';
-            response["data"].forEach(element => {
-                strHTML += "  <tr><td data-column='Amount'>"+element.amount+"</td><td data-column='Date'>"+element.date+"</td>"
-                    +"<td data-column='Narration'>"+element.narration+"</td><td data-column='Type'>"+element.type+"</td></tr>";
-            });
-            $("#transaction_list").append(strHTML)
-        });
     }
 
 </script>

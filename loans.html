@@ -107,65 +107,11 @@
                     </div>
                     <div class="col-lg-6 col-5 text-right">
                         <a href="#" class="btn btn-sm btn-neutral">View Approved</a>
-                        <a href="#" class="btn btn-sm btn-neutral">View Recurring Debit</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Page content -->
-    <div class="container-fluid mt--6" id="userprofile_card" style="display: none;">
-        <div class="row">
-            <div class="col">
-                <div class="card">
-                    <!-- Card header -->
-                    <div class="card-header border-0">
-                        <h3 class="mb-0">User Profile</h3>
-                        <a href="#" class="btn btn-sm btn-neutral" style="margin-left: 70px;" onclick="ShowProfile()">Dismiss</a>
-                    </div>
-<div class="user-profile">
-	<img class="avatar" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTF_erFD1SeUnxEpvFjzBCCDxLvf-wlh9ZuPMqi02qGnyyBtPWdE-3KoH3s" alt="Ash" />
-    <div class="username">Will Smith</div>
-    <div class="description">
-      damilolaakinterinwa@gmail.com
-  </div>
-  <div class="description">
-    08102853533
-</div>
-</div>
-
-</div>
-</div>
-</div>
-    </div>
-
-    <div class="container-fluid mt--6" id="transactions_card" style = "display:none;">
-        <div class="row">
-            <div class="col">
-                <div class="card">
-                    <div class="card-header border-0">
-                        <h3 class="mb-0">Transactions</h3>
-                        <a href="#" class="btn btn-sm btn-neutral" style = "margin-left:60px;" id = "transactions_dismiss">Dismiss</a>
-                    </div>
-        <table>
-    <thead>
-      <tr>
-        <th>Amount</th>
-        <th>Date</th>
-        <th>Naration</th>
-        <th>Type</th>
-      </tr>
-    </thead>
-    <tbody id = "transaction_list">
-    
-    </tbody>
-  </table>
-</div>
-</div>
-</div>
-</div>
-
 
 
     <!-- Page content -->
@@ -179,17 +125,15 @@
                     </div>
                     <!-- Light table -->
                     <div class="table-responsive" style="min-height: 300px;">
-                        <table class="table align-items-center table-flush">
-                            <thead class="thead-light">
+                        <table>
+                            <thead>
                             <tr>
-                                <th scope="col" class="sort" data-sort="name">User Id</th>
-                                <th scope="col" class="sort" data-sort="budget">Amount</th>
+                                <th>User Id</th>
+                                <th>Amount</th>
                             </tr>
                             </thead>
-                            <tbody class="list" id="pending_loan_list">
+                            <tbody id="pending_loan_list">
                            
-                        
-                         
                             </tbody>
                         </table>
                     </div>
@@ -229,17 +173,16 @@ function loadApplications(){
              var strHTML = '';
              result["data"].forEach(element => {
 
-              strHTML += "<tr><th scope='row'><div class='media align-items-center'><div class='media-body'>"
-                           +"<span class='name mb-0 text-sm'>"+element.userId+"</span></div></div>"
-                            +"</th><td class='budget'>"+ element.amount+"<div class='dropdown'>"
+              strHTML += "<tr><td class='budget'>"+element.userId+"</td>"
+                            +"<td class='budget'>"+ element.amount+"<div class='dropdown'>"
                                 +"<a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>"
                                   +"<i class='fas fa-ellipsis-v'></i> </a>"
                                   +"<div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'>"
                                    +"<a class='dropdown-item' href = " +'https://secure-ocean-32806.herokuapp.com/Transactions.html?token='+ element.accountToken+">"+"View Transactions</a>"
                                     +"<a class='dropdown-item' href = " +'https://secure-ocean-32806.herokuapp.com/BankDetails.html?token='+ element.accountToken+">"+"View Bank Details</a>"
-                                    +"<a class='dropdown-item' id = 'view_profile' onClick=ShowProfile()>"+"View Profile</a>"
-                                    +"<a class='dropdown-item' href='#'>View Loan History</a>"
-                                    +"<a class='dropdown-item' href='#'>Set as Approved</a> </div> </div> </td></tr>";
+                                    +"<a class='dropdown-item' href = " +'https://secure-ocean-32806.herokuapp.com/LoanHistory.html?userId='+ element.userId+">"+"View Loan History</a>"
+                                    +"<a class='dropdown-item' href='#'>Approve</a> </div> </div> </td></tr>"
+                                    +"<a class='dropdown-item' href='#'>Reject</a> </div> </div> </td></tr>";
 
                     });
                     $("#pending_loan_list").empty()
@@ -258,36 +201,6 @@ function loadApplications(){
 
    }    
 
-
-function ShowTransactions(mToken){
-    $("#loan_application_card").toggle()
-    $("#transactions_card").toggle()
-    const settings = {
-    
-    "async": true,
-    "crossDomain": true,
-    "url": "https://api.withmono.com/accounts/"+mToken+"/statement?period=last6month",
-    "method": "GET",
-    "headers": {
-      "Accept": "application/json",
-      "mono-sec-key": "test_sk_PZx0GiRjkY3NAbvACgtp"
-    }
-  };
-  
-  $.ajax(settings).done(function (response) {
-      Loader.close()
-  
-      var strHTML = '';
-               response["data"].forEach(element => {
-                strHTML += "  <tr><td data-column='Amount'>"+element.amount+"</td><td data-column='Date'>"+element.date+"</td>"
-          +"<td data-column='Narration'>"+element.narration+"</td><td data-column='Type'>"+element.type+"</td></tr>";
-  
-                      });
-                      $("#transaction_list").empty()
-                        $("#transaction_list").append(strHTML)
-            });
-  
-} 
 
 $('#transactions_dismiss').click(function(event) {
     event.preventDefault();
