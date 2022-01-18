@@ -44,6 +44,9 @@
     mAmount = params.get('amount')
 
     var intAmt = parseInt(mAmount);
+
+    alert(intAmt)
+
     var mPayBackPeriod = ""
     var totalRepayment = 0;
     var TotalpaybackCount = 0;
@@ -60,6 +63,8 @@
         mPayBackPeriod = "3 months"
         TotalpayBackCount = 3
     }
+
+    alert(TotalpaybackCount)
 
     var myMonthlyDue = intAmt/TotalpaybackCount
 
