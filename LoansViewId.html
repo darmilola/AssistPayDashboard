@@ -95,9 +95,14 @@
             data:data,
             success: function(result){
                 var strHTML = '';
-                var id =  result["data"]["valid_id"]
-                alert(id)
+                var data =  result["data"]
+
+                for(var i = 0; i < data.length; i++){
+                    var idUrl =   data[i].valid_id
+                    alert(idUrl)
+                }
                 $("#id_img").attr("src",id);
+
             },
             error: function(error){
 
