@@ -61,6 +61,8 @@
         TotalpayBackCount = 3
     }
 
+    var myMonthlyDue = intAmt/TotalpaybackCount
+
     var amountStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
         "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Amount</span> <span class=\"amount\">"+mAmount+"</span> </div>\n" +
         "        </div>"
@@ -68,7 +70,7 @@
         "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Payback</span> <span class=\"amount\">"+mPayBackPeriod+"</span> </div>\n" +
         "        </div>"
     var monthlyDue = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
-        "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Monthly Due</span> <span class=\"amount\">"+parseInt(mAmount/TotalpaybackCount)+"</span> </div>\n" +
+        "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Monthly Due</span> <span class=\"amount\">"+myMonthlyDue+"</span> </div>\n" +
         "        </div>"
     var totalRepayment = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
         "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Total Repayment</span> <span class=\"amount\">"+mAmount+"</span> </div>\n" +
