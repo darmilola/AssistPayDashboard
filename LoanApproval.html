@@ -43,7 +43,6 @@
     mToken = params.get('token')
     mAmount = params.get('amount')
 
-    alert(mToken)
     var intAmt = parseInt(mAmount);
     var mPayBackPeriod = ""
     var totalRepayment = 0;
@@ -69,7 +68,7 @@
         "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Payback</span> <span class=\"amount\">"+mPayBackPeriod+"</span> </div>\n" +
         "        </div>"
     var monthlyDue = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
-        "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Monthly Due</span> <span class=\"amount\">"+mAmount/TotalpaybackCount+"</span> </div>\n" +
+        "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Monthly Due</span> <span class=\"amount\">"+parseInt(mAmount/TotalpaybackCount)+"</span> </div>\n" +
         "        </div>"
     var totalRepayment = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
         "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Total Repayment</span> <span class=\"amount\">"+mAmount+"</span> </div>\n" +
