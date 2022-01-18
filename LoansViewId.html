@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
     <script src="./assets/js/loader.js"></script>
     <link rel="stylesheet" href="./assets/css/loader.css"/>
-    <link rel="stylesheet" href="./assets/css/dropdown.css"/> 
+    <link rel="stylesheet" href="./assets/css/dropdown.css"/>
     <script src="./assets/js/loader.js"></script>
     <link rel="stylesheet" href="./assets/css/loader.css"/>
 </head>
@@ -44,29 +44,24 @@
 <div class="main-content" id="panel">
 
 
-       <div class="page-wrapper p-t-100 p-b-50" id="show_id">
+    <div class="page-wrapper p-t-100 p-b-50" id="show_id">
         <div class="wrapper wrapper--w900" style="
     width: 100vw;
     height: 100vh;
     text-align: center;
-    margin-top: 150px;">
-          <div class="cardm cardm-6">
+    margin-top: 150px;
+">
+            <div class="cardm cardm-6">
 
+                <img id="id_img" style="width: 60%; height: 300px; background-color: cadetblue;">
 
-            <img id="id_img" style="width: 60%; height: 300px; background-color: cadetblue;">
-
-            
-            <div class="cardm-footer">
-              <button class="btn btn--radius-2 btn--blue-2" id="verify_reject" type="submit">Reject</button>
-              <button class="btn btn--radius-2 btn--blue-2" id="verify_approve" type="submit">Approve</button>
             </div>
-          </div>
         </div>
-      </div>
     </div>
+</div>
 
 
-    </div>
+</div>
 <!-- Argon Scripts -->
 <!-- Core -->
 <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
@@ -79,48 +74,34 @@
 <script src="assets/js/verification.js"></script>
 
 <script>
+    let params = new URLSearchParams(location.search);
+    mUserId = params.get('userId')
 
-// https://www.example.com?name=n1&name=n2
-let params = new URLSearchParams(location.search);
-mImageUrl = params.get('imageUrl')
-mUserId = params.get('userId')
-$("#id_img").attr("src",mImageUrl);
+    getValidId(mUserId)
 
+    function getValidId(userId){
 
+        const url = "https://gentle-mountain-10412.herokuapp.com/public/api/verification/id"
 
-$('#verify_approve').click(function(event) {
-    verifyUser("approved",mUserId,"true")
-});
+        const data = {
+            userId:userId
+        }
 
-$('#verify_reject').click(function(event) {
-    verifyUser("rejected",mUserId,"false")
-});
+        $.ajax({
+            url:url,
+            type:'POST',
+            data:data,
+            success: function(result){
+                var strHTML = '';
+                var id =  result["data"]["valid_id"]
+                $("#id_img").attr("src",id);
+            },
+            error: function(error){
 
+            }
+        })
 
-function verifyUser(status,userId,isVerified){
-    Loader.open()
-    const verifyUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/verification/verify"
-
-const data = {
-  userId:userId,
-  status:status,
-  isVerified:isVerified
-}
-
-$.ajax({
-  url:verifyUrl,
-  type:'POST',
-  data:data,
-  success: function(result){
-        Loader.close()
-        alert("Completed Successfully")
-},
-  error: function(error){
-    Loader.close()
-    alert("Error Occured")
-  }
-})
-}
+    }
 
 </script>
 
