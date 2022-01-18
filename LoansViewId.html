@@ -99,9 +99,9 @@
 
                 for(var i = 0; i < data.length; i++){
                     var idUrl =   data[i].valid_id
-                    alert(idUrl)
+                    $("#id_img").attr("src",idUrl);
                 }
-                $("#id_img").attr("src",id);
+
 
             },
             error: function(error){
