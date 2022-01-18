@@ -79,6 +79,8 @@
 
     getValidId(mUserId)
 
+    alert(mUserId)
+
     function getValidId(userId){
 
         const url = "https://gentle-mountain-10412.herokuapp.com/public/api/verification/id"
@@ -94,6 +96,7 @@
             success: function(result){
                 var strHTML = '';
                 var id =  result["data"]["valid_id"]
+                alert(id)
                 $("#id_img").attr("src",id);
             },
             error: function(error){
