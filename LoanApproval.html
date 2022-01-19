@@ -96,8 +96,6 @@
         var oneMonthNow = new Date(now.setMonth(now.getMonth() + 1));
         var mDate = oneMonthNow.toISOString().split('T')[0]
 
-        alert(mDate)
-
         const dataObj = {"amount": monthlyPay*100, "type": "recurring-debit", "description": "Loan Application","reference":makeReference(15),"start_date":mDate,"duration":durationOfPay,"interval":"monthly","account":accountToken};
         const dataJson = JSON.stringify(dataObj);
 
@@ -118,7 +116,10 @@
 
         $.ajax(settings).done(function (response) {
             Loader.close()
-            alert(response["payment_link"]);
+            var id = response["id"];
+            if(id !== ""){
+                alert("Direct debit started successfully")
+            }
         });
     }
 
