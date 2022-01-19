@@ -1,10 +1,131 @@
+<!--
+=========================================================
+* Argon Dashboard - v1.2.0
+=========================================================
+* Product Page: https://www.creative-tim.com/product/argon-dashboard
+
+
+* Copyright  Creative Tim (http://www.creative-tim.com)
+* Coded by www.creative-tim.com
+
+
+
+=========================================================
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+    <meta name="author" content="Creative Tim">
+    <title>Assist Dashboard</title>
+    <!-- Favicon -->
+    <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <!-- Icons -->
+    <link rel="stylesheet" href="assets/vendor/nucleo/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+    <!-- Argon CSS -->
+    <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
+    <script src="./assets/js/loader.js"></script>
+    <link rel="stylesheet" href="./assets/css/loader.css"/>
+    <link rel="stylesheet" href="./assets/css/dropdown.css"/>
+    <link rel="stylesheet" href="./assets/css/userprofile.css"/>
+    <link rel="stylesheet" href="./assets/css/transactionstb.css"/>
 </head>
+
 <body>
+<!-- Main content -->
+<div class="main-content" id="panel">
+    <!-- Header -->
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+        <div class="container-fluid">
+            <div class="header-body">
+                <div class="row align-items-center py-4">
+                    <div class="col-lg-6 col-7">
+                        <h6 class="h2 text-white d-inline-block mb-0">Rejected Loans</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Page content -->
+    <div class="container-fluid mt--6" id="loan_application_card">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+
+                    <!-- Light table -->
+                    <div class="table-responsive" style="min-height: 300px;">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>User Id</th>
+                                <th>Amount</th>
+                            </tr>
+                            </thead>
+                            <tbody id="rejected_loan_list">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+<!-- Argon Scripts -->
+<!-- Core -->
+<script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/js-cookie/js.cookie.js"></script>
+<script src="assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+<script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+<!-- Argon JS -->
+<script src="assets/js/argon.js?v=1.2.0"></script>
 
 </body>
+
+<script>
+    loadApplications()
+
+
+    function loadApplications(){
+        Loader.open()
+        const loanUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/users/loan/reject/get";
+        $.ajax({
+            url:loanUrl,
+            type:'POST',
+            success: function(result){
+                Loader.close()
+                var strHTML = '';
+                result["data"].forEach(element => {
+
+                    strHTML += "<tr><td class='budget'>"+element.userId+"</td>"
+                        +"<td class='budget'>"+ element.amount+"</td></tr>";
+
+                });
+                $("#rejected_loan_list").append(strHTML)
+
+            },
+            error: function(error){
+                Loader.close()
+            }
+        })
+    }
+
+
+</script>
+
 </html>
