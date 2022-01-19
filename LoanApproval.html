@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
     <!-- Argon CSS -->
     <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
+    <script src="./assets/js/loader.js"></script>
+    <link rel="stylesheet" href="./assets/css/loader.css"/>
 </head>
 <body>
 
@@ -23,7 +25,7 @@
 
     <div class="cardm-footer">
         <button class="btn btn--radius-2 btn--blue-2" id="verify_reject" type="submit">Reject</button>
-        <button class="btn btn--radius-2 btn--blue-2" id="verify_approve" type="submit">Approve</button>
+        <button class="btn btn--radius-2 btn--blue-2" id="loan_approve" type="submit">Approve</button>
     </div>
 </div>
 
@@ -84,33 +86,52 @@
     $("#account_details").append(monthlyDue)
     $("#account_details").append(totalRepayment)
 
+    $('#loan_approve').click(function(event) {
+        StartRecurringDebit(monthlyDue,TotalpaybackCount,mToken)
+    });
 
-    function ShowBankDetails(mToken){
+    function StartRecurringDebit(monthlyPay,durationOfPay,accountToken){
+
+        Loader.open()
+        var now = new Date();
+        // Add one month to the current date
+        var oneMonthNow = new Date(now.setMonth(now.getMonth() + 1));
+        oneMonthNow.toISOString().split('T')[0]
+
+        alert(oneMonthNow)
+
+        const dataObj = {amount: monthlyPay, type: "recurring-debit", description: "Loan Application",reference:makeReference(15),start_date:oneMonthNow,duration:durationOfPay,interval:"monthly",account:accountToken};
+        const dataJson = JSON.stringify(dataObj);
+
         const settings = {
             "async": true,
             "crossDomain": true,
-            "url": "https://api.withmono.com/accounts/"+mToken,
-            "method": "GET",
+            "url": "https://api.withmono.com/v1/payments/initiate",
+            "method": "POST",
             "headers": {
                 "Accept": "application/json",
-                "mono-sec-key": "test_sk_PZx0GiRjkY3NAbvACgtp"
-            }
+                "mono-sec-key": "jkklnmklmklmlkmkmkmkmnkmknjnj",
+                "Content-Type": "application/json"
+            },
+            "processData": false,
+            "data": dataJson
         };
 
         $.ajax(settings).done(function (response) {
-            var bankName =   response["account"]["institution"]["name"]
-            var type  = response["account"]["institution"]["type"]
-            var name =   response["account"]["name"]
-            var accountNumber  = response["account"]["accountNumber"]
-            var accountType =   response["account"]["type"]
-            var balance  = response["account"]["balance"]
-            var currency =   response["account"]["currency"]
-            var bvn  = response["account"]["bvn"]
-
-
-
-
+            Loader.close()
+            alert(response);
         });
+    }
+
+    function makeReference(length) {
+        var result           = '';
+        var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for ( var i = 0; i < length; i++ ) {
+            result += characters.charAt(Math.floor(Math.random() *
+                charactersLength));
+        }
+        return result;
     }
 
 </script>
