@@ -24,7 +24,7 @@
     </div>
 
     <div class="cardm-footer">
-        <button class="btn btn--radius-2 btn--blue-2" id="verify_reject" type="submit">Reject</button>
+        <button class="btn btn--radius-2 btn--blue-2" id="loan_reject" type="submit">Reject</button>
         <button class="btn btn--radius-2 btn--blue-2" id="loan_approve" type="submit">Approve</button>
     </div>
 </div>
@@ -44,6 +44,7 @@
     let params = new URLSearchParams(location.search);
     mToken = params.get('token')
     mAmount = params.get('amount')
+    mUserId = params.get('userId')
 
     var intAmt = parseInt(mAmount);
 
@@ -88,6 +89,10 @@
         StartRecurringDebit(myMonthlyDue,TotalpaybackCount,mToken)
     });
 
+    $('#loan_reject').click(function(event) {
+        RejectLoan(mUserId)
+    });
+
     function StartRecurringDebit(monthlyPay,durationOfPay,accountToken){
 
         Loader.open()
@@ -99,7 +104,6 @@
         const dataObj = {"amount": monthlyPay*100, "type": "recurring-debit", "description": "Loan Application","reference":makeReference(15),"start_date":mDate,"duration":durationOfPay,"interval":"monthly","account":accountToken};
         const dataJson = JSON.stringify(dataObj);
 
-        alert(dataJson)
         const settings = {
             "async": true,
             "crossDomain": true,
@@ -118,7 +122,9 @@
             Loader.close()
             var id = response["id"];
             if(id !== ""){
+                ApproveLoan(mUserId)
                 alert("Direct debit started successfully")
+                history.back()
             }
         });
     }
@@ -133,6 +139,54 @@
         }
         return result;
     }
+
+
+    function ApproveLoan(userId){
+
+        const url = "https://gentle-mountain-10412.herokuapp.com/public/api/users/loan/approve"
+
+        const data = {
+            userId:userId
+        }
+
+        $.ajax({
+            url:url,
+            type:'POST',
+            data:data,
+            success: function(result){
+               // var strHTML = '';
+               // var data =  result["data"]
+            },
+            error: function(error){
+
+            }
+        })
+
+    }
+
+    function RejectLoan(userId){
+
+        const url = "https://gentle-mountain-10412.herokuapp.com/public/api/users/loan/reject"
+
+        const data = {
+            userId:userId
+        }
+
+        $.ajax({
+            url:url,
+            type:'POST',
+            data:data,
+            success: function(result){
+                alert("Application Rejected")
+                history.back()
+            },
+            error: function(error){
+
+            }
+        })
+
+    }
+
 
 </script>
 
