@@ -167,7 +167,7 @@
     function RejectLoan(userId){
 
         const url = "https://gentle-mountain-10412.herokuapp.com/public/api/users/loan/reject"
-
+        Loader.open()
         const data = {
             userId:userId
         }
@@ -177,6 +177,7 @@
             type:'POST',
             data:data,
             success: function(result){
+                Loader.close()
                 alert("Application Rejected")
                 history.back()
             },
