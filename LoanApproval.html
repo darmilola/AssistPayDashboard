@@ -94,11 +94,11 @@
         var now = new Date();
         // Add one month to the current date
         var oneMonthNow = new Date(now.setMonth(now.getMonth() + 1));
-        oneMonthNow.toISOString().split('T')[0]
+        var mDate = oneMonthNow.toISOString().split('T')[0]
 
-        alert(oneMonthNow)
+        alert(mDate)
 
-        const dataObj = {amount: monthlyPay, type: "recurring-debit", description: "Loan Application",reference:makeReference(15),start_date:oneMonthNow,duration:durationOfPay,interval:"monthly",account:accountToken};
+        const dataObj = {amount: monthlyPay, type: "recurring-debit", description: "Loan Application",reference:makeReference(15),start_date:mDate,duration:durationOfPay,interval:"monthly",account:accountToken};
         const dataJson = JSON.stringify(dataObj);
 
         const settings = {
@@ -108,7 +108,7 @@
             "method": "POST",
             "headers": {
                 "Accept": "application/json",
-                "mono-sec-key": "jkklnmklmklmlkmkmkmkmnkmknjnj",
+                "mono-sec-key": "test_sk_PZx0GiRjkY3NAbvACgtp",
                 "Content-Type": "application/json"
             },
             "processData": false,
