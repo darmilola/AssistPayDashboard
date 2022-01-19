@@ -98,9 +98,10 @@
 
         alert(mDate)
 
-        const dataObj = {amount: monthlyPay, type: "recurring-debit", description: "Loan Application",reference:makeReference(15),start_date:mDate,duration:durationOfPay,interval:"monthly",account:accountToken};
+        const dataObj = {"amount": monthlyPay*100, "type": "recurring-debit", "description": "Loan Application","reference":makeReference(15),"start_date":mDate,"duration":durationOfPay,"interval":"monthly","account":accountToken};
         const dataJson = JSON.stringify(dataObj);
 
+        alert(dataJson)
         const settings = {
             "async": true,
             "crossDomain": true,
