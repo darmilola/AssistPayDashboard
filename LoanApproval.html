@@ -85,7 +85,7 @@
     $("#account_details").append(totalRepayment)
 
     $('#loan_approve').click(function(event) {
-        StartRecurringDebit(monthlyDue,TotalpaybackCount,mToken)
+        StartRecurringDebit(myMonthlyDue,TotalpaybackCount,mToken)
     });
 
     function StartRecurringDebit(monthlyPay,durationOfPay,accountToken){
