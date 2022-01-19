@@ -118,7 +118,7 @@
 
         $.ajax(settings).done(function (response) {
             Loader.close()
-            alert(response);
+            alert(response["payment_link"]);
         });
     }
 
