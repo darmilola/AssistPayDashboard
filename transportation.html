@@ -165,9 +165,10 @@
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                   <tr>
+                    <th scope="col" class="sort" data-sort="email">Firstname</th>
+                    <th scope="col" class="sort" data-sort="email">Lastname</th>
                     <th scope="col" class="sort" data-sort="email">Email</th>
                     <th scope="col" class="sort" data-sort="phone">Contact Phone</th>
-                    <th scope="col" class="sort" data-sort="status">Payment Status</th>
                   </tr>
                 </thead>
                 <tbody class="list" id="booking_list">
@@ -436,9 +437,7 @@
              var strHTML = '';
              console.log(result["data"])
              result["data"].forEach(element => {
-               strHTML += "<tr><th scope='row'><div class='media align-items-center'><div class='media-body'> <span class='name mb-0 text-sm'>"+element.userId+"</span>"
-                       + " </div></div></th><td class='budget'>"+element.contactPhone+"</td><td><span class='badge badge-dot mr-4'><i class='bg-warning'></i> <span class='status'>"+element.paymentStatus+"</span>"
-                       + "  </span> </td></tr>";
+               strHTML += "<tr><td class='budget'>"+element.firstname+"</td><td class='budget'>"+element.lastname+"</td><td class='budget'>"+element.userId+"</td><td class='budget'>"+element.contactPhone+"</td></tr>";
 
                     });
                     $("#booking_list").empty()
