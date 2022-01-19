@@ -420,7 +420,11 @@
     
 
       function getBookings(transportId){
+
+     alert(transportId)
+
            Loader.open()
+
       
       const transportBookingsUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/drivers/buses/bookings"
 
@@ -433,7 +437,7 @@
         type:'POST',
         data:data,
         success: function(result){
-              Loader.close()
+             Loader.close()
              var strHTML = '';
              console.log(result["data"])
              result["data"].forEach(element => {
