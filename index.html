@@ -23,15 +23,18 @@
   <meta name="author" content="Creative Tim">
   <title>AssistPay Admin</title>
   <!-- Favicon -->
+  <link rel="stylesheet" href="./assets/css/bankdetails.css"/>
+  <!-- Favicon -->
   <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
   <link rel="stylesheet" href="assets/vendor/nucleo/css/nucleo.css" type="text/css">
   <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
-  <!-- Page plugins -->
   <!-- Argon CSS -->
   <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
+  <script src="./assets/js/loader.js"></script>
+  <link rel="stylesheet" href="./assets/css/loader.css"/>
 
   <script>
     email = sessionStorage.getItem("isLoggedIn")
@@ -81,6 +84,18 @@
                 <span class="nav-link-text">Verification</span>
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Withdrawals.html">
+                <i class="ni ni-circle-08 text-pink"></i>
+                <span class="nav-link-text">Withdrawals</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Refunds.html">
+                <i class="ni ni-circle-08 text-pink"></i>
+                <span class="nav-link-text">Refund</span>
+              </a>
+            </li>
             <li class="nav-item" id="logout_item">
               <div class="nav-link">
                 <i class="ni ni-send text-dark"></i>
@@ -95,12 +110,56 @@
   <!-- Main content -->
   <div class="main-content" id="panel">
 
-    <!-- Page content -->
-    <div class="container-fluid mt--6">
 
-
-
+    <div class="header bg-primary">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">Dashboard</h6>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <div class="container justify-content-center mt-5" style="text-align: -webkit-center; display: flex; flex-wrap: wrap">
+      <div class="card" style="margin-left: 20px;">
+        <div class="middle-container d-flex justify-content-between align-items-center mt-3 p-2">
+          <div class="d-flex flex-column mr-2"> <span class="current-balance">Total Platform Charge</span> <span class="amount">20,000</span> </div>
+        </div>
+        <div class="cardm-footer">
+          <button class="btn btn--radius-2 btn--blue-2" style="color: blue; top: 10px;" id="loan_approve" type="submit">Withdraw</button>
+        </div>
+      </div>
+
+          <div class="card" style="margin-left: 20px;">
+          <div class="middle-container d-flex justify-content-between align-items-center mt-3 p-2">
+            <div class="d-flex flex-column mr-2"> <span class="current-balance">Total Transactions Made</span> <span class="amount">25,340,120</span> </div>
+          </div>
+        </div>
+
+      <div class="card" style="margin-left: 20px;">
+        <div class="middle-container d-flex justify-content-between align-items-center mt-3 p-2">
+          <div class="d-flex flex-column mr-2"> <span class="current-balance">Total Users</span> <span class="amount">20,000</span> </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-left: 20px;">
+        <div class="middle-container d-flex justify-content-between align-items-center mt-3 p-2">
+          <div class="d-flex flex-column mr-2"> <span class="current-balance">Total Loan Applications</span> <span class="amount">2220</span> </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-left: 20px;">
+        <div class="middle-container d-flex justify-content-between align-items-center mt-3 p-2">
+          <div class="d-flex flex-column mr-2"> <span class="current-balance">Total Loan Approved</span> <span class="amount">2220</span> </div>
+        </div>
+      </div>
+
+
+
+    </div>
     </div>
 
   </div>
