@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank Details</title>
+    <link rel="stylesheet" href="./assets/css/bankdetails.css"/>
+    <!-- Favicon -->
+    <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <!-- Icons -->
+    <link rel="stylesheet" href="assets/vendor/nucleo/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+    <!-- Argon CSS -->
+    <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
+    <script src="./assets/js/loader.js"></script>
+    <link rel="stylesheet" href="./assets/css/loader.css"/>
+</head>
+<body>
+
+<div class="container justify-content-center mt-5" style="text-align: -webkit-center">
+    <div class="card" id="account_details">
+        <div class="middle-container d-flex justify-content-between align-items-center mt-3 p-2">
+            <div class="d-flex flex-column mr-2"> <span class="current-balance">Provider Phone</span> <span class="amount">081028353553</span> </div>
+        </div>
+        <div class="middle-container d-flex justify-content-between align-items-center mt-3 p-2">
+            <div class="d-flex flex-column mr-2"> <span class="current-balance">Refund Reason</span> <span class="amount">Get your CV professionally rewritten to ensure that yours stands out during this hiring season. There is no sensible reason to allow great new job openings to slip straight through your fingers</span> </div>
+        </div>
+    </div>
+
+    <div class="cardm-footer">
+        <button class="btn btn--radius-2 btn--blue-2" id="loan_reject" type="submit">Reject</button>
+        <button class="btn btn--radius-2 btn--blue-2" id="loan_approve" type="submit">Approve</button>
+    </div>
+</div>
+
+
+<!-- Argon Scripts -->
+<!-- Core -->
+<script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/js-cookie/js.cookie.js"></script>
+<script src="assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+<script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+<!-- Argon JS -->
+<script src="assets/js/argon.js?v=1.2.0"></script>
+
+<script>
+    let params = new URLSearchParams(location.search);
+    mToken = params.get('token')
+    mAmount = params.get('amount')
+    mUserId = params.get('userId')
+
+    var intAmt = parseInt(mAmount);
+
+    var mPayBackPeriod = ""
+    var totalRepayment = 0;
+    var TotalpaybackCount = 0;
+
+    if(intAmt == 10000){
+        mPayBackPeriod = "1 month"
+        TotalpaybackCount = 1
+    }
+    else if(intAmt == 20000){
+        mPayBackPeriod = "2 months"
+        TotalpaybackCount = 2
+    }
+    else if(intAmt == 30000){
+        mPayBackPeriod = "3 months"
+        TotalpaybackCount = 3
+    }
+
+</script>
+
+
+</body>
+</html>
