@@ -52,11 +52,13 @@
     margin-top: 150px;">
           <div class="cardm cardm-6">
 
+              <div class="text-center">
+                  <button type="button" id="admin_login_button" class="btn btn-primary my-4">Go Back</button>
+              </div>
 
-            <img id="id_img" style="width: 60%; height: 300px; background-color: cadetblue;">
+              <img id="id_img" style="width: 60%; height: 300px; background-color: cadetblue;">
 
-            
-            <div class="cardm-footer">
+              <div class="cardm-footer">
               <button class="btn btn--radius-2 btn--blue-2" id="verify_reject" type="submit">Reject</button>
               <button class="btn btn--radius-2 btn--blue-2" id="verify_approve" type="submit">Approve</button>
             </div>
@@ -121,6 +123,10 @@ $.ajax({
   }
 })
 }
+
+$( "#admin_login_button" ).click(function() {
+    history.back()
+});
 
 </script>
 
