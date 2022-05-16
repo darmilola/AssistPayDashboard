@@ -24,7 +24,7 @@
         <button type="button" id="admin_login_button" class="btn btn-primary my-4">Go Back</button>
     </div>
 
-    <div class="card" id="account_details" style="height: 700px!important;">
+    <div class="card" id="account_details">
 
     </div>
 
@@ -56,7 +56,6 @@
     mCharges = (3.5/100) * mAmount;
 
 
-
     var amountStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
         "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Amount</span> <span class=\"amount\">"+mAmount+"</span> </div>\n" +
         "        </div>"
@@ -74,7 +73,6 @@
         "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Service Fee</span> <span class=\"amount\">"+mCharges+"</span> </div>\n" +
         "        </div>"
 
-
     $("#account_details").append(amountStr)
     $("#account_details").append(payBack)
     $("#account_details").append(monthlyDue)
@@ -83,7 +81,7 @@
 
 
     $('#loan_approve').click(function(event) {
-        StartRecurringDebit(myMonthlyDue,TotalpaybackCount,mToken)
+        StartRecurringDebit(mMonthlyDue,mPaybackMonth,mToken)
     });
 
     $('#loan_reject').click(function(event) {
