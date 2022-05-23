@@ -86,27 +86,30 @@
 let params = new URLSearchParams(location.search);
 mImageUrl = params.get('imageUrl')
 mUserId = params.get('userId')
+id = params.get("id")
 $("#id_img").attr("src",mImageUrl);
 
 
 
 $('#verify_approve').click(function(event) {
-    verifyUser("approved",mUserId,"true")
+    verifyUser("approved",mUserId,"true","Approved",id)
 });
 
 $('#verify_reject').click(function(event) {
-    verifyUser("rejected",mUserId,"false")
+    verifyUser("rejected",mUserId,"false","Rejected",id)
 });
 
 
-function verifyUser(status,userId,isVerified){
+function verifyUser(status,userId,isVerified,verifiedStatus,id){
     Loader.open()
     const verifyUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/verification/verify"
 
 const data = {
   userId:userId,
   status:status,
-  isVerified:isVerified
+  isVerified:isVerified,
+  verifiedStatus:verifiedStatus,
+  id:id
 }
 
 $.ajax({

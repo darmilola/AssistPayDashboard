@@ -49,6 +49,7 @@
 
     let params = new URLSearchParams(location.search);
     mUserId = params.get('userId')
+    var id = 1;
     loadPage()
 
 
@@ -79,6 +80,7 @@
                 var validId =   result["data"][0].valid_id
                 var memo_cac =   result["data"][0].memo_cac
                 var cac_cert =   result["data"][0].cac_cert
+                id = result["data"][0].id
 
                 var businessNameStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
                     "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Business Name</span> <span class=\"amount\">"+businessName+"</span> </div>\n" +
@@ -135,22 +137,24 @@
 
 
     $('#verify_approve').click(function(event) {
-        verifyUser("approved",mUserId,"true")
+        verifyUser("approved",mUserId,"true","Approved",id)
     });
 
     $('#verify_reject').click(function(event) {
-        verifyUser("rejected",mUserId,"false")
+        verifyUser("rejected",mUserId,"false","Rejected",id)
     });
 
 
 
-    function verifyUser(status,userId,isVerified){
+    function verifyUser(status,userId,isVerified,verifiedStatus,id){
         Loader.open()
         const verifyUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/verification/business/verify"
         const data = {
             userId:userId,
             status:status,
-            isVerified:isVerified
+            isVerified:isVerified,
+            verifiedStatus:verifiedStatus,
+            id:id
         }
         $.ajax({
             url:verifyUrl,
