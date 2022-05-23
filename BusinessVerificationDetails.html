@@ -48,14 +48,17 @@
     mUserId = params.get('userId')
     loadPage()
 
-    const json = {
-        userId:mUserId
-    }
 
-    const jsonString = JSON.stringify(json);
 
     function loadPage(){
         Loader.open()
+
+        const json = {
+            userId:mUserId
+        }
+
+        const jsonString = JSON.stringify(json);
+
         const transportUrl =   "https://gentle-mountain-10412.herokuapp.com/public/api/verification/business/details";
         $.ajax({
             url:transportUrl,
