@@ -135,7 +135,7 @@
 
 
     $('#verify_approve').click(function(event) {
-        verifyUser("approved","damilolaakinterinwa@gmail.com","true")
+        verifyUser("approved",mUserId,"true")
     });
 
     $('#verify_reject').click(function(event) {
@@ -147,13 +147,11 @@
     function verifyUser(status,userId,isVerified){
         Loader.open()
         const verifyUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/verification/business/verify"
-
         const data = {
             userId:userId,
             status:status,
             isVerified:isVerified
         }
-
         $.ajax({
             url:verifyUrl,
             type:'POST',

@@ -112,7 +112,7 @@
                     </div>
 
                     <div class="col-lg-6 col-5 text-right">
-                        <a href = "https://secure-ocean-32806.herokuapp.com/RejectedLoan.html" class="btn btn-sm btn-neutral">Download Request CSV</a>
+
                     </div>
                 </div>
             </div>
@@ -139,33 +139,7 @@
                         </tr>
                         </thead>
                         <tbody class="list" id="verification_list">
-                        <tr>
-                            <th scope='row'><div class='media align-items-center'><div class='media-body'> <span class='name mb-0 text-sm'>Firstname Lastname</span>
-                            </div></div></th><td class='budget'>damilolaakinterinwa@gmail.com</td><td class='budget'>200000</td><td><span> <span class='status'>200000</span>
-                          </span>
-                            <div class='dropdown'>
-                                <a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><i class='fas fa-ellipsis-v'></i>
-                                </a><div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'>
-                                <a class='dropdown-item' href='https://secure-ocean-32806.herokuapp.com/WithdrawalReview.html'>Review</a> </div></div></td>
-                        </tr>
-                       <tr>
-                           <th scope='row'><div class='media align-items-center'><div class='media-body'> <span class='name mb-0 text-sm'>Firstname Lastname</span>
-                           </div></div></th><td class='budget'>damilolaakinterinwa@gmail.com</td><td class='budget'>200000</td><td><span> <span class='status'>200000</span>
-                          </span>
-                           <div class='dropdown'>
-                               <a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><i class='fas fa-ellipsis-v'></i>
-                               </a><div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'>
-                               <a class='dropdown-item' href='https://secure-ocean-32806.herokuapp.com/WithdrawalReview.html'>Review</a> </div></div></td>
-                       </tr>
-                       <tr>
-                           <th scope='row'><div class='media align-items-center'><div class='media-body'> <span class='name mb-0 text-sm'>Firstname Lastname</span>
-                           </div></div></th><td class='budget'>damilolaakinterinwa@gmail.com</td><td class='budget'>200000</td><td><span> <span class='status'>200000</span>
-                          </span>
-                           <div class='dropdown'>
-                               <a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><i class='fas fa-ellipsis-v'></i>
-                               </a><div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'>
-                               <a class='dropdown-item' href='https://secure-ocean-32806.herokuapp.com/WithdrawalReview.html'>Review</a> </div></div></td>
-                       </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -191,8 +165,43 @@
 
 <script>
 
+    loadPage()
+
+    function loadPage(){
+        Loader.open()
+        const transportUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/withdrawal/show/pending";
+        $.ajax({
+            url:transportUrl,
+            type:'POST',
+            success: function(result){
+                Loader.close()
+
+                var mainContainer = document.getElementById("verification_list");
+                for (var i = 0; i < result["data"].length; i++) {
+                    var mTr = document.createElement("tr");
+                    //div.innerHTML = 'Name: ' + data[i].firstName + ' ' + data[i].lastName;
+                    valid_id = result["data"][i].valid_id;
+                    htmlString = "<th scope='row'><div class='media align-items-center'><div class='media-body'> <span class='name mb-0 text-sm'>"+result["data"][i].firstname+" "+ result["data"][i].lastname+"</span>"
+                        + " </div></div></th><td class='budget'>"+result["data"][i].email+"</td><td><span class='status'>"+result["data"][i].amount+"</span></td><td><span class='status'>"+result["data"][i].walletBalance+"</span></td>"
+                        + "  </span>"
+                        +"<div class='dropdown'>"
+                        +"    <a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'> <i class='fas fa-ellipsis-v'></i>"
+                        +"     </a><div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'>"
+                        +"       <a class='dropdown-item' href="+' https://secure-ocean-32806.herokuapp.com/verification_details.html?imageUrl='+result['data'][i].valid_id+"&"+"userId="+result['data'][i].userId+">"+ "View Details" +"</a> </div> </div></td>"
+                    mTr.innerHTML = htmlString;
+                    mainContainer.appendChild(mTr);
+                }
+
+            },
+            error: function(error){
+                Loader.close()
+            }
+        })
+
+    }
 
 </script>
+
 
 </body>
 
