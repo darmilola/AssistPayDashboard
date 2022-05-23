@@ -25,6 +25,11 @@
 
     </div>
 
+    <div class="cardm-footer">
+        <button class="btn btn--radius-2 btn--blue-2" id="verify_reject" type="submit">Reject</button>
+        <button class="btn btn--radius-2 btn--blue-2" id="verify_approve" type="submit">Approve</button>
+    </div>
+
     <div class="text-center">
         <button type="button" id="admin_login_button" class="btn btn-primary my-4">Go Back</button>
     </div>
@@ -132,6 +137,41 @@
 
     }
 
+
+    $('#verify_approve').click(function(event) {
+        verifyUser("approved",mUserId,"true")
+    });
+
+    $('#verify_reject').click(function(event) {
+        verifyUser("rejected",mUserId,"false")
+    });
+
+
+
+    function verifyUser(status,userId,isVerified){
+        Loader.open()
+        const verifyUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/verification/business/verify"
+
+        const data = {
+            userId:userId,
+            status:status,
+            isVerified:isVerified
+        }
+
+        $.ajax({
+            url:verifyUrl,
+            type:'POST',
+            data:data,
+            success: function(result){
+                Loader.close()
+                alert("Completed Successfully")
+            },
+            error: function(error){
+                Loader.close()
+                alert("Error Occured")
+            }
+        })
+    }
 </script>
 
 
