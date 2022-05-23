@@ -65,15 +65,15 @@
         }
 
         const jsonString = JSON.stringify(json);
+        console.log(jsonString)
 
-        const transportUrl =   "https://gentle-mountain-10412.herokuapp.com/public/api/withdrawal/show/single";
+        const transportUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/withdrawal/show/single";
         $.ajax({
             url:transportUrl,
             type:'POST',
             data:jsonString,
             success: function(result){
                 Loader.close()
-
 
                 var Name =   result["data"][0].firstname +" "+result["data"][0].lastname
                 var email =   result["data"][0].email
@@ -120,8 +120,6 @@
                 $("#account_details").append(accountNameStr)
                 $("#account_details").append(bankNameStr)
                 $("#account_details").append(accountNumberStr)
-
-
 
 
             },
