@@ -48,8 +48,8 @@
 <script>
 
     let params = new URLSearchParams(location.search);
-    mUserId = params.get('userId')
-    mId = params.get("w_id")
+    var mUserId = params.get('userId')
+    var mId = params.get("w_id")
     console.log(mId)
     console.log(mUserId)
     loadPage()
@@ -64,14 +64,12 @@
             id:mId
         }
 
-        const jsonString = JSON.stringify(json);
-        console.log(jsonString)
 
         const transportUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/withdrawal/show/single";
         $.ajax({
             url:transportUrl,
             type:'POST',
-            data:jsonString,
+            data:json,
             success: function(result){
                 Loader.close()
 
