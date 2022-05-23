@@ -75,6 +75,7 @@
                 var businessAddress =   result["data"][0].business_address
                 var mPhone =   result["data"][0].phone
                 var mAddress =   result["data"][0].address
+                var validId =   result["data"][0].valid_id
 
                 var businessNameStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
                     "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Business Name</span> <span class=\"amount\">"+businessName+"</span> </div>\n" +
@@ -97,7 +98,7 @@
                     "        </div>"
 
                 var cacStr = "<div class=\"square>\n" +
-                    "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Valid ID</span> <span class=\"amount\"><img style='width: 100%; height: 100%' src=\"http://i.stack.imgur.com/xkF9Q.jpg\"></span>   </div>\n" +
+                    "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Valid ID</span> <span class=\"amount\"><img style='width: 100%; height: 100%' src="+validId+"></span></div>\n" +
                     "        </div>"
 
 
