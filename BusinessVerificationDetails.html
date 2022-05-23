@@ -67,10 +67,12 @@
             success: function(result){
                 Loader.close()
 
-                alert(result.toString())
 
                 var businessName =   result["data"][0].business_name
                 var RegistrationNumber =   result["data"][0].reg_number
+                var businessAddress =   result["data"][0].business_address
+                var mPhone =   result["data"][0].phone
+                var mAddress =   result["data"][0].address
 
                 var businessNameStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
                     "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Business Name</span> <span class=\"amount\">"+businessName+"</span> </div>\n" +
@@ -80,8 +82,23 @@
                     "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Registration Number</span> <span class=\"amount\">"+RegistrationNumber+"</span> </div>\n" +
                     "        </div>"
 
+                var addressStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
+                    "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Address</span> <span class=\"amount\">"+mAddress+"</span> </div>\n" +
+                    "        </div>"
+
+                var businessAddressStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
+                    "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Business Address</span> <span class=\"amount\">"+businessAddress+"</span> </div>\n" +
+                    "        </div>"
+
+                var phoneNumberStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
+                    "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Phone Number</span> <span class=\"amount\">"+mPhone+"</span> </div>\n" +
+                    "        </div>"
+
                 $("#account_details").append(businessNameStr)
                 $("#account_details").append(registrationNumberStr)
+                $("#account_details").append(addressStr)
+                $("#account_details").append(businessAddressStr)
+                $("#account_details").append(phoneNumberStr)
 
 
             },
