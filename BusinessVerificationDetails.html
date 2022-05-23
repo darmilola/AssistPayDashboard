@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
     <!-- Argon CSS -->
     <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
+
+
 </head>
 <body>
 
@@ -94,11 +96,18 @@
                     "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Phone Number</span> <span class=\"amount\">"+mPhone+"</span> </div>\n" +
                     "        </div>"
 
+                var cacStr = "<div class=\"square>\n" +
+                    "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Valid ID</span>  <img src=\"http://i.stack.imgur.com/xkF9Q.jpg\"> </div>\n" +
+                    "        </div>"
+
+
                 $("#account_details").append(businessNameStr)
                 $("#account_details").append(registrationNumberStr)
                 $("#account_details").append(addressStr)
                 $("#account_details").append(businessAddressStr)
                 $("#account_details").append(phoneNumberStr)
+                $("#account_details").append(cacStr)
+
 
 
             },
@@ -114,4 +123,5 @@
 
 
 </body>
+
 </html>
