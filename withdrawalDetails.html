@@ -142,7 +142,7 @@
 
     function approveWithdrawal(id,userId){
         Loader.open()
-        const verifyUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/verification/withdrawal/pay"
+        const verifyUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/withdrawal/pay"
         const data = {
             userId:userId,
             id:id
@@ -164,7 +164,7 @@
 
     function rejectWithdrawal(id,userId){
         Loader.open()
-        const verifyUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/verification/withdrawal/pay/reject"
+        const verifyUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/withdrawal/pay/reject"
         const data = {
             userId:userId,
             id:id
