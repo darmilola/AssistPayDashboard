@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Withdrawal Details</title>
+    <link rel="stylesheet" href="./assets/css/bankdetails.css"/>
+    <!-- Favicon -->
+    <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <!-- Icons -->
+    <link rel="stylesheet" href="assets/vendor/nucleo/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+    <!-- Argon CSS -->
+    <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
+
+
+</head>
+<body>
+
+<div class="container d-flex justify-content-center mt-5" style="align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;">
+    <div class="card" id="account_details">
+
+    </div>
+
+    <div class="cardm-footer">
+        <button class="btn btn--radius-2 btn--blue-2" id="withdraw_reject" type="submit">Reject</button>
+        <button class="btn btn--radius-2 btn--blue-2" id="withdraw_approve" type="submit">Approve</button>
+    </div>
+
+</div>
+
+
+<!-- Argon Scripts -->
+<!-- Core -->
+<script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/js-cookie/js.cookie.js"></script>
+<script src="assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+<script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+<script src="assets/js/loader.js"/>
+<!-- Argon JS -->
+<script src="assets/js/argon.js?v=1.2.0"></script>
+
+
+<script>
+
+    let params = new URLSearchParams(location.search);
+    mUserId = params.get('userId')
+    mId = params.get("id")
+    loadPage()
+
+
+
+    function loadPage(){
+        Loader.open()
+
+        const json = {
+            userId:mUserId
+        }
+
+        const jsonString = JSON.stringify(json);
+
+        const transportUrl =   "https://gentle-mountain-10412.herokuapp.com/public/api/withdrawal/show";
+        $.ajax({
+            url:transportUrl,
+            type:'POST',
+            data:jsonString,
+            success: function(result){
+                Loader.close()
+
+
+                var Name =   result["data"][0].firstname +" "+result["data"][0].lastname
+                var email =   result["data"][0].email
+                var amount =   result["data"][0].amount
+                var mWalletBalance =   result["data"][0].walletBalance
+                var mAccountName =   result["data"][0].accountName
+                var mBankName =   result["data"][0].bankName
+                var mAccountNumber =   result["data"][0].accountNumber
+
+                var NameStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
+                    "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Name</span> <span class=\"amount\">"+Name+"</span> </div>\n" +
+                    "        </div>"
+
+                var emailStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
+                    "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Email</span> <span class=\"amount\">"+email+"</span> </div>\n" +
+                    "        </div>"
+
+                var amountStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
+                    "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Amount</span> <span class=\"amount\">"+amount+"</span> </div>\n" +
+                    "        </div>"
+
+                var walletBalanceStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
+                    "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Wallet Balance</span> <span class=\"amount\">"+mWalletBalance+"</span> </div>\n" +
+                    "        </div>"
+
+                var accountNameStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
+                    "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Account Name</span> <span class=\"amount\">"+mAccountName+"</span> </div>\n" +
+                    "        </div>"
+
+                var bankNameStr =  "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
+                    "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Bank Name</span> <span class=\"amount\">"+mBankName+"</span> </div>\n" +
+                    "        </div>"
+
+                var accountNumberStr =  "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
+                    "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Account Number</span> <span class=\"amount\">"+mAccountNumber+"</span> </div>\n" +
+                    "        </div>"
+
+
+
+                $("#account_details").append(NameStr)
+                $("#account_details").append(emailStr)
+                $("#account_details").append(amountStr)
+                $("#account_details").append(walletBalanceStr)
+                $("#account_details").append(accountNameStr)
+                $("#account_details").append(bankNameStr)
+                $("#account_details").append(accountNumberStr)
+
+
+
+
+            },
+            error: function(error){
+                Loader.close()
+                alert(error.message)
+            }
+        })
+
+    }
+
+
+    $('#withdraw_approve').click(function(event) {
+        approveWithdrawal(mId,mUserId)
+    });
+
+    $('#withdraw_reject').click(function(event) {
+        rejectWithdrawal(mId,mUserId)
+    });
+
+
+
+    function approveWithdrawal(id,userId){
+        Loader.open()
+        const verifyUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/verification/withdrawal/pay"
+        const data = {
+            userId:userId,
+            id:id
+        }
+        $.ajax({
+            url:verifyUrl,
+            type:'POST',
+            data:data,
+            success: function(result){
+                Loader.close()
+                alert("Completed Successfully")
+            },
+            error: function(error){
+                Loader.close()
+                alert(error.message)
+            }
+        })
+    }
+
+    function rejectWithdrawal(id,userId){
+        Loader.open()
+        const verifyUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/verification/withdrawal/pay/reject"
+        const data = {
+            userId:userId,
+            id:id
+        }
+        $.ajax({
+            url:verifyUrl,
+            type:'POST',
+            data:data,
+            success: function(result){
+                Loader.close()
+                alert("Completed Successfully")
+            },
+            error: function(error){
+                Loader.close()
+                alert(error.message)
+            }
+        })
+    }
+</script>
+
+
+</body>
+
+</html>
