@@ -109,6 +109,10 @@
                     <div class="col-lg-6 col-7">
                         <h6 class="h2 text-white d-inline-block mb-0">Verifications</h6>
                     </div>
+
+                    <div class="col-lg-6 col-5 text-right">
+                        <a href="#" class="btn btn-sm btn-neutral" id="view_business_verification">View Business Verification</a>
+                    </div>
                   
                 </div>
             </div>
@@ -228,6 +232,13 @@ $('#show_id_cancel').click(function(event) {
     $('#show_id').toggle();
     $('#verification_list_header').toggle();
 });
+
+
+    $('#view_business_verification').click(function(event) {
+        event.preventDefault();
+        location.href = 'business_verification.html';
+
+    });
 
 </script>
 

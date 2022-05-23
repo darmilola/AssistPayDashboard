@@ -1,0 +1,185 @@
+<!--
+=========================================================
+* Argon Dashboard - v1.2.0
+=========================================================
+* Product Page: https://www.creative-tim.com/product/argon-dashboard
+
+
+* Copyright  Creative Tim (http://www.creative-tim.com)
+* Coded by www.creative-tim.com
+
+
+
+=========================================================
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+    <meta name="author" content="Creative Tim">
+    <title>Business Verification</title>
+    <!-- Favicon -->
+    <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <!-- Icons -->
+    <link rel="stylesheet" href="assets/vendor/nucleo/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+    <!-- Argon CSS -->
+    <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
+    <script src="./assets/js/loader.js"></script>
+    <link rel="stylesheet" href="./assets/css/loader.css"/>
+    <link rel="stylesheet" href="./assets/css/dropdown.css"/>
+</head>
+
+<body>
+<!-- Main content -->
+<div class="main-content" id="panel">
+    <!-- Header -->
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+        <div class="container-fluid">
+            <div class="header-body">
+                <div class="row align-items-center py-4">
+                    <div class="col-lg-6 col-7">
+                        <h6 class="h2 text-white d-inline-block mb-0">Business Verifications</h6>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- drivers Starts here ---->
+    <div class="row" id="verification_list_header">
+        <div class="col">
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Applications</h3>
+                </div>
+                <!-- Light table -->
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                        <tr>
+                            <th scope="col" class="sort" data-sort="name">Name</th>
+                            <th scope="col" class="sort" data-sort="budget">Address</th>
+                            <th scope="col" class="sort" data-sort="status">Business Name</th>
+                            <th scope="col" class="sort" data-sort="phone">Phone</th>
+                        </tr>
+                        </thead>
+                        <tbody class="list" id="verification_list">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- drivers ends here ---->
+
+
+    <!--- Add New Route Page ---->
+
+    <div class="page-wrapper p-t-100 p-b-50" id="show_id" style="display: none;">
+        <div class="wrapper wrapper--w900">
+            <div class="cardm cardm-6">
+                <div class="cardm-heading">
+                    <h2 class="title" id="add_route_button">Submitted ID</h2>
+                </div>
+
+                <img id="id_img" style="width: 60%; height: 300px; background-color: cadetblue;">
+
+
+                <div class="cardm-footer">
+                    <button class="btn btn--radius-2 btn--blue-2" id="show_id_cancel" type="submit">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+<!-- Argon Scripts -->
+<!-- Core -->
+<script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/js-cookie/js.cookie.js"></script>
+<script src="assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+<script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+<!-- Argon JS -->
+<script src="assets/js/argon.js?v=1.2.0"></script>
+<script src="assets/js/verification.js"></script>
+
+<script>
+
+    loadPage()
+
+    function loadPage(){
+        Loader.open()
+
+
+        const transportUrl =   "https://gentle-mountain-10412.herokuapp.com/public/api/verification/business/get";
+        $.ajax({
+            url:transportUrl,
+            type:'POST',
+            success: function(result){
+                Loader.close()
+
+                var mainContainer = document.getElementById("verification_list");
+                for (var i = 0; i < result["data"].length; i++) {
+                    var mTr = document.createElement("tr");
+                    //div.innerHTML = 'Name: ' + data[i].firstName + ' ' + data[i].lastName;
+                    valid_id = result["data"][i].valid_id;
+                    htmlString = "<th scope='row'><div class='media align-items-center'><div class='media-body'> <span class='name mb-0 text-sm'>"+result["data"][i].firstname+" "+ result["data"][i].lastname+"</span>"
+                        + " </div></div></th><td class='budget'>"+result["data"][i].address+"</td>"+"<td class='status'>"+result["data"][i].business_name+"</td>"+"<td class='phone'>"+result["data"][i].phone+"</td>"
+                        + "  </span>"
+                        +"<div class='dropdown'>"
+                        +"    <a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'> <i class='fas fa-ellipsis-v'></i>"
+                        +"     </a><div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'>"
+                        +"       <a class='dropdown-item' href="+' https://secure-ocean-32806.herokuapp.com/BusinessVerificationDetails.html?imageUrl='+result['data'][i].userId+">"+ "View Details" +"</a> </div> </div></td>"
+                    mTr.innerHTML = htmlString;
+                    mainContainer.appendChild(mTr);
+                }
+
+            },
+            error: function(error){
+                Loader.close()
+            }
+        })
+
+    }
+
+    function loadId(imageUrl){
+        $('#show_id').toggle();
+        $('#id_img').removeAttr('src');
+        $('#verification_list_header').toggle();
+        $("#id_img").attr("src",imageUrl);
+    }
+
+
+    $('#show_id_cancel').click(function(event) {
+        event.preventDefault();
+        $('#show_id').toggle();
+        $('#verification_list_header').toggle();
+    });
+
+
+    $('#view_business_verification').click(function(event) {
+        event.preventDefault();
+        location.href = 'business_verification.html';
+
+    });
+
+</script>
+
+</body>
+
+</html>
