@@ -183,7 +183,7 @@
                     providerId = result["data_from_user"][i].providerId;
                     userId = result["data_from_user"][i].email;
                     amount = result["data_from_user"][i].amount;
-                    var reviewUrl = "https://secure-ocean-32806.herokuapp.com/RefundReview.html?userId="+userId+"&"+"providerId="+providerId+"&"+"phone="+phone+"&"+"amount="+amount+"&"+"reason"+mreason
+                    let reviewUrl = "https://secure-ocean-32806.herokuapp.com/RefundReview.html?userId="+userId+"&"+"providerId="+providerId+"&"+"phone="+phone+"&"+"amount="+amount+"&"+"reason="+mreason
                     htmlString = "<th scope='row'><div class='media align-items-center'><div class='media-body'> <span class='name mb-0 text-sm'>"+result["data_from_user"][i].mfirstname+" "+ result["data_from_user"][i].mlastname+"</span>"
                         + " </div></div></th><td class='budget'>"+result["data_from_user"][i].email+"</td><td><span class='status'>"+result["data_from_user"][i].amount+"</span></td><td><span class='status'>"+result["data_from_user"][i].type+"</span></td><td><span class='status'>"+result["data_from_user"][i].providerId+"</span></td>"
                         + "  </span>"
@@ -203,28 +203,24 @@
                     providerId = result["data_from_business"][j].providerId;
                     userId = result["data_from_business"][j].email;
                     amount = result["data_from_business"][j].amount;
-                    var reviewUrl = "https://secure-ocean-32806.herokuapp.com/RefundReview.html?userId="+userId+"&"+"providerId="+providerId+"&"+"phone="+phone+"&"+"amount="+amount+"&"+"reason"+mreason
+                    let mreviewUrl = "https://secure-ocean-32806.herokuapp.com/RefundReview.html?userId="+userId+"&"+"providerId="+providerId+"&"+"phone="+phone+"&"+"amount="+amount+"&"+"reason="+mreason
                     htmlString = "<th scope='row'><div class='media align-items-center'><div class='media-body'> <span class='name mb-0 text-sm'>"+result["data_from_business"][j].mfirstname+" "+ result["data_from_business"][j].mlastname+"</span>"
                         + " </div></div></th><td class='budget'>"+result["data_from_business"][j].email+"</td><td><span class='status'>"+result["data_from_business"][j].amount+"</span></td><td><span class='status'>"+result["data_from_business"][j].type+"</span></td><td><span class='status'>"+result["data_from_business"][j].providerId+"</span></td>"
                         + "  </span>"
                         +"<div class='dropdown'>"
                         +"    <a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'> <i class='fas fa-ellipsis-v'></i>"
                         +"     </a><div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'>"
-                        +"       <a class='dropdown-item' href="+reviewUrl+">"+ "View Details" +"</a> </div> </div></td>"
+                        +"       <a class='dropdown-item' href="+mreviewUrl+">"+ "View Details" +"</a> </div> </div></td>"
                     mTr.innerHTML = htmlString;
                     mainContainer.appendChild(mTr);
                 }
-
             },
             error: function(error){
                 Loader.close()
             }
         })
-
     }
-
 </script>
-
 
 </body>
 
