@@ -173,11 +173,9 @@
             type:'GET',
             success: function(result){
                 Loader.close()
-
                 var mainContainer = document.getElementById("verification_list");
                 for (var i = 0; i < result["data_from_user"].length; i++) {
                     var mTr = document.createElement("tr");
-                    //div.innerHTML = 'Name: ' + data[i].firstName + ' ' + data[i].lastName;
                     phone = result["data_from_user"][i].phonenumber;
                     mreason = result["data_from_user"][i].reason;
                     providerId = result["data_from_user"][i].providerId;
