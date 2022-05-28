@@ -198,14 +198,14 @@
                 for (var j = 0; j < result["data_from_business"].length; j++) {
                     var mTr = document.createElement("tr");
                     //div.innerHTML = 'Name: ' + data[i].firstName + ' ' + data[i].lastName;
-                    phone = result["data_from_business"][i].phonenumber;
-                    mreason = result["data_from_business"][i].reason;
-                    providerId = result["data_from_business"][i].providerId;
-                    userId = result["data_from_business"][i].email;
-                    amount = result["data_from_business"][i].amount;
+                    phone = result["data_from_business"][j].phone;
+                    mreason = result["data_from_business"][j].reason;
+                    providerId = result["data_from_business"][j].providerId;
+                    userId = result["data_from_business"][j].email;
+                    amount = result["data_from_business"][j].amount;
                     var reviewUrl = "https://secure-ocean-32806.herokuapp.com/RefundReview.html?userId="+userId+"&"+"providerId="+providerId+"&"+"phone="+phone+"&"+"amount="+amount+"&"+"reason"+mreason
-                    htmlString = "<th scope='row'><div class='media align-items-center'><div class='media-body'> <span class='name mb-0 text-sm'>"+result["data_from_business"][i].mfirstname+" "+ result["data_from_business"][i].mlastname+"</span>"
-                        + " </div></div></th><td class='budget'>"+result["data_from_business"][i].email+"</td><td><span class='status'>"+result["data_from_business"][i].amount+"</span></td><td><span class='status'>"+result["data_from_business"][i].type+"</span></td><td><span class='status'>"+result["data_from_business"][i].providerId+"</span></td>"
+                    htmlString = "<th scope='row'><div class='media align-items-center'><div class='media-body'> <span class='name mb-0 text-sm'>"+result["data_from_business"][j].mfirstname+" "+ result["data_from_business"][j].mlastname+"</span>"
+                        + " </div></div></th><td class='budget'>"+result["data_from_business"][j].email+"</td><td><span class='status'>"+result["data_from_business"][j].amount+"</span></td><td><span class='status'>"+result["data_from_business"][j].type+"</span></td><td><span class='status'>"+result["data_from_business"][j].providerId+"</span></td>"
                         + "  </span>"
                         +"<div class='dropdown'>"
                         +"    <a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'> <i class='fas fa-ellipsis-v'></i>"
