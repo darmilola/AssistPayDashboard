@@ -50,7 +50,7 @@
 
 <script>
     urlSearch = decodeURI(window.location.href)
-    alert(urlSearch)
+
     let params = new URLSearchParams(urlSearch);
     providerId = params.get('providerId')
     userId = params.get('userId')
@@ -73,13 +73,13 @@
     });
 
 
-    function approveRefund(userId,amount,bid){
+    function approveRefund(userId,amount,mbid){
         Loader.open()
         const verifyUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/refund/approve"
         const data = {
             userId:userId,
             amount:amount,
-            bid,bid
+            bid,mbid
         }
         $.ajax({
             url:verifyUrl,
@@ -97,12 +97,12 @@
         })
     }
 
-    function rejectRefund(userId,bid){
+    function rejectRefund(userId,mbid){
         Loader.open()
         const verifyUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/refund/reject"
         const data = {
             userId:userId,
-            bid,bid
+            bid,mbid
         }
         $.ajax({
             url:verifyUrl,
