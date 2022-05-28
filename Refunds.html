@@ -182,7 +182,7 @@
                     reason = result["data_from_user"][i].reason;
                     providerId = result["data_from_user"][i].providerId;
                     userId = result["data_from_user"][i].email;
-                    htmlString = "<th scope='row'><div class='media align-items-center'><div class='media-body'> <span class='name mb-0 text-sm'>"+result["data_from_user"][i].firstname+" "+ result["data_from_user"][i].lastname+"</span>"
+                    htmlString = "<th scope='row'><div class='media align-items-center'><div class='media-body'> <span class='name mb-0 text-sm'>"+result["data_from_user"][i].mfirstname+" "+ result["data_from_user"][i].mlastname+"</span>"
                         + " </div></div></th><td class='budget'>"+result["data_from_user"][i].email+"</td><td><span class='status'>"+result["data_from_user"][i].amount+"</span></td><td><span class='status'>"+result["data_from_user"][i].type+"</span></td><td><span class='status'>"+result["data_from_user"][i].providerId+"</span></td>"
                         + "  </span>"
                         +"<div class='dropdown'>"
@@ -200,7 +200,7 @@
                     reason = result["data_from_business"][i].reason;
                     providerId = result["data_from_business"][i].providerId;
                     userId = result["data_from_business"][i].email;
-                    htmlString = "<th scope='row'><div class='media align-items-center'><div class='media-body'> <span class='name mb-0 text-sm'>"+result["data_from_business"][i].firstname+" "+ result["data_from_business"][i].lastname+"</span>"
+                    htmlString = "<th scope='row'><div class='media align-items-center'><div class='media-body'> <span class='name mb-0 text-sm'>"+result["data_from_business"][i].mfirstname+" "+ result["data_from_business"][i].mlastname+"</span>"
                         + " </div></div></th><td class='budget'>"+result["data_from_business"][i].email+"</td><td><span class='status'>"+result["data_from_business"][i].amount+"</span></td><td><span class='status'>"+result["data_from_business"][i].type+"</span></td><td><span class='status'>"+result["data_from_business"][i].providerId+"</span></td>"
                         + "  </span>"
                         +"<div class='dropdown'>"
