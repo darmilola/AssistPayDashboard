@@ -49,7 +49,9 @@
 <script src="assets/js/argon.js?v=1.2.0"></script>
 
 <script>
-    let params = new URLSearchParams(location.search);
+    urlSearch = decodeURI(window.location.href)
+    alert(urlSearch)
+    let params = new URLSearchParams(urlSearch);
     providerId = params.get('providerId')
     userId = params.get('userId')
     amount = params.get('amount')
