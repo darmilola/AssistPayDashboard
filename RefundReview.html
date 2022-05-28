@@ -21,16 +21,16 @@
 <div class="container justify-content-center mt-5" style="text-align: -webkit-center">
     <div class="card" id="account_details">
         <div class="middle-container d-flex justify-content-between align-items-center mt-3 p-2">
-            <div class="d-flex flex-column mr-2"> <span class="current-balance">Provider Phone</span> <span class="amount">081028353553</span> </div>
+            <div id="refund_phone" class="d-flex flex-column mr-2"> <span class="current-balance">Provider Phone</span> <span class="amount">081028353553</span> </div>
         </div>
         <div class="middle-container d-flex justify-content-between align-items-center mt-3 p-2">
-            <div class="d-flex flex-column mr-2"> <span class="current-balance">Refund Reason</span> <span class="amount">Get your CV professionally rewritten to ensure that yours stands out during this hiring season. There is no sensible reason to allow great new job openings to slip straight through your fingers</span> </div>
+            <div id="refund_reason" class="d-flex flex-column mr-2"> <span class="current-balance">Refund Reason</span> <span class="amount">Get your CV professionally rewritten to ensure that yours stands out during this hiring season. There is no sensible reason to allow great new job openings to slip straight through your fingers</span> </div>
         </div>
     </div>
 
     <div class="cardm-footer">
-        <button class="btn btn--radius-2 btn--blue-2" id="loan_reject" type="submit">Reject</button>
-        <button class="btn btn--radius-2 btn--blue-2" id="loan_approve" type="submit">Approve Refund</button>
+        <button class="btn btn--radius-2 btn--blue-2" id="refund_reject" type="submit">Reject</button>
+        <button class="btn btn--radius-2 btn--blue-2" id="refund_approve" type="submit">Approve Refund</button>
     </div>
 </div>
 
@@ -47,28 +47,14 @@
 
 <script>
     let params = new URLSearchParams(location.search);
-    mToken = params.get('token')
-    mAmount = params.get('amount')
-    mUserId = params.get('userId')
+    providerId = params.get('providerId')
+    userId = params.get('userId')
+    amount = params.get('amount')
+    reason = params.get("reason")
+    phone = params.get("phone")
 
-    var intAmt = parseInt(mAmount);
-
-    var mPayBackPeriod = ""
-    var totalRepayment = 0;
-    var TotalpaybackCount = 0;
-
-    if(intAmt == 10000){
-        mPayBackPeriod = "1 month"
-        TotalpaybackCount = 1
-    }
-    else if(intAmt == 20000){
-        mPayBackPeriod = "2 months"
-        TotalpaybackCount = 2
-    }
-    else if(intAmt == 30000){
-        mPayBackPeriod = "3 months"
-        TotalpaybackCount = 3
-    }
+    $("#refund_phone").append(phone);
+    $("#refund_reason").append(reason);
 
 </script>
 
