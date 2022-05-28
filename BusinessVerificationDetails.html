@@ -49,7 +49,6 @@
 
     let params = new URLSearchParams(location.search);
     mUserId = params.get('userId')
-    mid = params.get('id')
     var id = 1;
     loadPage()
 
@@ -59,9 +58,7 @@
         Loader.open()
 
         const json = {
-            userId:mUserId,
-            id,mid
-
+            userId:mUserId
         }
 
         const jsonString = JSON.stringify(json);
