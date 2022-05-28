@@ -179,7 +179,7 @@
                     var mTr = document.createElement("tr");
                     //div.innerHTML = 'Name: ' + data[i].firstName + ' ' + data[i].lastName;
                     phone = result["data_from_user"][i].phonenumber;
-                    reason = result["data_from_user"][i].reason;
+                    mreason = result["data_from_user"][i].reason;
                     providerId = result["data_from_user"][i].providerId;
                     userId = result["data_from_user"][i].email;
                     amount = result["data_from_user"][i].amount;
@@ -189,7 +189,7 @@
                         +"<div class='dropdown'>"
                         +"    <a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'> <i class='fas fa-ellipsis-v'></i>"
                         +"    </a><div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'>"
-                        +"    <a class='dropdown-item' href="+' https://secure-ocean-32806.herokuapp.com/RefundReview.html?userId='+userId+"&"+"providerId="+providerId+"&"+"phone="+phone+"&"+"amount="+amount+">"+ "View Details" +"</a> </div> </div></td>"
+                        +"    <a class='dropdown-item' href="+' https://secure-ocean-32806.herokuapp.com/RefundReview.html?userId='+userId+"&"+"reason="+mreason+"&"+"providerId="+providerId+"&"+"phone="+phone+"&"+"amount="+amount+">"+ "View Details" +"</a> </div> </div></td>"
                     mTr.innerHTML = htmlString;
                     mainContainer.appendChild(mTr);
                 }
@@ -198,7 +198,7 @@
                     var mTr = document.createElement("tr");
                     //div.innerHTML = 'Name: ' + data[i].firstName + ' ' + data[i].lastName;
                     phone = result["data_from_business"][i].phone;
-                    reason = result["data_from_business"][i].reason;
+                    mreason = result["data_from_business"][i].reason;
                     providerId = result["data_from_business"][i].providerId;
                     userId = result["data_from_business"][i].email;
                     amount = result["data_from_business"][i].amount;
@@ -208,7 +208,7 @@
                         +"<div class='dropdown'>"
                         +"    <a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'> <i class='fas fa-ellipsis-v'></i>"
                         +"     </a><div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'>"
-                        +"       <a class='dropdown-item' href="+' https://secure-ocean-32806.herokuapp.com/RefundReview.html?userId='+userId+"&"+"providerId="+providerId+"&"+"phone="+phone+"&"+"amount="+amount+">"+ "View Details" +"</a> </div> </div></td>"
+                        +"       <a class='dropdown-item' href="+' https://secure-ocean-32806.herokuapp.com/RefundReview.html?userId='+userId+"&"+"reason="+mreason+"&"+"providerId="+providerId+"&"+"phone="+phone+"&"+"amount="+amount+">"+ "View Details" +"</a> </div> </div></td>"
                     mTr.innerHTML = htmlString;
                     mainContainer.appendChild(mTr);
                 }
