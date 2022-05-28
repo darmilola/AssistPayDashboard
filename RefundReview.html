@@ -59,6 +59,61 @@
     $("#refund_phone").append(phone);
     $("#refund_reason").append(reason);
 
+
+    $('#refund_approve').click(function(event) {
+        approveRefund(userId,amount)
+    });
+
+    $('#refund_reject').click(function(event) {
+        rejectRefund(userId)
+    });
+
+
+    function approveRefund(userId,amount){
+        Loader.open()
+        const verifyUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/refund/approve"
+        const data = {
+            userId:userId,
+            amount:amount
+        }
+        $.ajax({
+            url:verifyUrl,
+            type:'POST',
+            data:data,
+            success: function(result){
+                Loader.close()
+                alert("Refund Completed Successfully")
+                history.back()
+            },
+            error: function(error){
+                Loader.close()
+                alert(error.message)
+            }
+        })
+    }
+
+    function rejectRefund(userId){
+        Loader.open()
+        const verifyUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/refund/reject"
+        const data = {
+            userId:userId
+        }
+        $.ajax({
+            url:verifyUrl,
+            type:'POST',
+            data:data,
+            success: function(result){
+                Loader.close()
+                alert("Refund Rejected Successfully")
+                history.back()
+            },
+            error: function(error){
+                Loader.close()
+                alert(error.message)
+            }
+        })
+    }
+
 </script>
 
 
