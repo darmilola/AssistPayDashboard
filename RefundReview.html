@@ -62,11 +62,11 @@
 
 
     $('#refund_approve').click(function(event) {
-        approveRefund(userId,amount)
+        approveRefund(userId,amount,bid)
     });
 
     $('#refund_reject').click(function(event) {
-        rejectRefund(userId)
+        rejectRefund(userId,bid)
     });
 
 
