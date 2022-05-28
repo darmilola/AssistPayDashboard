@@ -181,7 +181,8 @@
                     providerId = result["data_from_user"][i].providerId;
                     userId = result["data_from_user"][i].email;
                     amount = result["data_from_user"][i].amount;
-                    let reviewUrl = "https://secure-ocean-32806.herokuapp.com/RefundReview.html?userId="+userId+"&"+"providerId="+providerId+"&"+"phone="+phone+"&"+"amount="+amount+"&"+"reason="+mreason
+                    bid = result["data_from_user"][i].bid;
+                    let reviewUrl = "https://secure-ocean-32806.herokuapp.com/RefundReview.html?userId="+userId+"&"+"providerId="+providerId+"&"+"phone="+phone+"&"+"amount="+amount+"&"+"reason="+mreason+"&"+"bid="+bid
                     htmlString = "<th scope='row'><div class='media align-items-center'><div class='media-body'> <span class='name mb-0 text-sm'>"+result["data_from_user"][i].mfirstname+" "+ result["data_from_user"][i].mlastname+"</span>"
                         + " </div></div></th><td class='budget'>"+result["data_from_user"][i].email+"</td><td><span class='status'>"+result["data_from_user"][i].amount+"</span></td><td><span class='status'>"+result["data_from_user"][i].type+"</span></td><td><span class='status'>"+result["data_from_user"][i].providerId+"</span></td>"
                         + "  </span>"
@@ -201,7 +202,8 @@
                     providerId = result["data_from_business"][j].providerId;
                     userId = result["data_from_business"][j].email;
                     amount = result["data_from_business"][j].amount;
-                    let mreviewUrl = "https://secure-ocean-32806.herokuapp.com/RefundReview.html?userId="+userId+"&"+"providerId="+providerId+"&"+"phone="+phone+"&"+"amount="+amount+"&"+"reason="+mreason
+                    bid = result["data_from_business"][i].bid;
+                    let mreviewUrl = "https://secure-ocean-32806.herokuapp.com/RefundReview.html?userId="+userId+"&"+"providerId="+providerId+"&"+"phone="+phone+"&"+"amount="+amount+"&"+"reason="+mreason+"&"+"bid="+bid
                     htmlString = "<th scope='row'><div class='media align-items-center'><div class='media-body'> <span class='name mb-0 text-sm'>"+result["data_from_business"][j].mfirstname+" "+ result["data_from_business"][j].mlastname+"</span>"
                         + " </div></div></th><td class='budget'>"+result["data_from_business"][j].email+"</td><td><span class='status'>"+result["data_from_business"][j].amount+"</span></td><td><span class='status'>"+result["data_from_business"][j].type+"</span></td><td><span class='status'>"+result["data_from_business"][j].providerId+"</span></td>"
                         + "  </span>"

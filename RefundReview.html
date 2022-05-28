@@ -55,6 +55,7 @@
     amount = params.get('amount')
     reason = params.get("reason")
     phone = params.get("phone")
+    bid = params.get("bid")
 
     $("#refund_phone").append(phone);
     $("#refund_reason").append(reason);
@@ -69,12 +70,13 @@
     });
 
 
-    function approveRefund(userId,amount){
+    function approveRefund(userId,amount,bid){
         Loader.open()
         const verifyUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/refund/approve"
         const data = {
             userId:userId,
-            amount:amount
+            amount:amount,
+            bid,bid
         }
         $.ajax({
             url:verifyUrl,
@@ -92,11 +94,12 @@
         })
     }
 
-    function rejectRefund(userId){
+    function rejectRefund(userId,bid){
         Loader.open()
         const verifyUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/refund/reject"
         const data = {
-            userId:userId
+            userId:userId,
+            bid,bid
         }
         $.ajax({
             url:verifyUrl,
