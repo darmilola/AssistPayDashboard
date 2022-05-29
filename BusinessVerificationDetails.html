@@ -49,6 +49,7 @@
 
     let params = new URLSearchParams(location.search);
     mUserId = params.get('userId')
+    alert(mUserId)
     var id = 1;
     loadPage()
 
@@ -64,13 +65,13 @@
         const jsonString = JSON.stringify(json);
 
         const transportUrl =   "https://gentle-mountain-10412.herokuapp.com/public/api/verification/business/details";
+
         $.ajax({
             url:transportUrl,
             type:'POST',
             data:jsonString,
             success: function(result){
                 Loader.close()
-
 
                 var businessName =   result["data"][0].business_name
                 var RegistrationNumber =   result["data"][0].reg_number

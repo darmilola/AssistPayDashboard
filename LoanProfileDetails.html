@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile Details</title>
+    <link rel="stylesheet" href="./assets/css/bankdetails.css"/>
+    <!-- Favicon -->
+    <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <!-- Icons -->
+    <link rel="stylesheet" href="assets/vendor/nucleo/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+    <!-- Argon CSS -->
+    <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
+
+
+</head>
+<body>
+
+<div class="container d-flex justify-content-center mt-5" style="align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;">
+    <div class="card" id="account_details">
+
+    </div>
+
+
+</div>
+
+
+<!-- Argon Scripts -->
+<!-- Core -->
+<script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/js-cookie/js.cookie.js"></script>
+<script src="assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+<script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+<script src="assets/js/loader.js"/>
+<!-- Argon JS -->
+<script src="assets/js/argon.js?v=1.2.0"></script>
+
+
+<script>
+
+    let params = new URLSearchParams(location.search);
+    mUserId = params.get('userId')
+    var id = 1;
+    loadPage()
+
+
+
+    function loadPage(){
+        Loader.open()
+
+        const json = {
+            userId:mUserId
+        }
+
+        const jsonString = JSON.stringify(json);
+
+        const transportUrl =   "https://gentle-mountain-10412.herokuapp.com/public/api/verification/business/details";
+        $.ajax({
+            url:transportUrl,
+            type:'POST',
+            data:jsonString,
+            success: function(result){
+                Loader.close()
+
+
+                var firstName =   result["data"][0].firstname
+                var lastName =   result["data"][0].lastname
+                var mPhone =   result["data"][0].phone
+
+                id = result["data"][0].id
+
+                var NameStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
+                    "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Verified Name</span> <span class=\"amount\">"+firstName+" "+lastName</span> </div>\n" +
+                    "        </div>"
+
+                var phoneStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
+                    "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Phone Number</span> <span class=\"amount\">"+mPhone+"</span> </div>\n" +
+                    "        </div>"
+
+
+                $("#account_details").append(NameStr)
+                $("#account_details").append(phoneStr)
+
+            },
+            error: function(error){
+                Loader.close()
+                alert(error.message)
+            }
+        })
+
+
+
+
+        const transportUrl =   "https://gentle-mountain-10412.herokuapp.com/public/api/verification/business/details";
+        $.ajax({
+            url:transportUrl,
+            type:'POST',
+            data:jsonString,
+            success: function(result){
+                Loader.close()
+
+
+                var firstName =   result["data"][0].firstname
+                var lastName =   result["data"][0].lastname
+                var mPhone =   result["data"][0].phone
+
+                id = result["data"][0].id
+
+                var NameStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
+                    "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Verified Name</span> <span class=\"amount\">"+firstName+" "+lastName</span> </div>\n" +
+                "        </div>"
+
+                var phoneStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
+                    "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Phone Number</span> <span class=\"amount\">"+mPhone+"</span> </div>\n" +
+                    "        </div>"
+
+
+                $("#account_details").append(NameStr)
+                $("#account_details").append(phoneStr)
+
+            },
+            error: function(error){
+                Loader.close()
+                alert(error.message)
+            }
+        })
+
+    }
+
+
+    $('#verify_approve').click(function(event) {
+        verifyUser("approved",mUserId,"true","Approved",id)
+    });
+
+    $('#verify_reject').click(function(event) {
+        verifyUser("rejected",mUserId,"false","Rejected",id)
+    });
+
+
+
+    function verifyUser(status,userId,isVerified,verifiedStatus,id){
+        Loader.open()
+        const verifyUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/verification/business/verify"
+        const data = {
+            userId:userId,
+            status:status,
+            isVerified:isVerified,
+            verifiedStatus:verifiedStatus,
+            id:id
+        }
+        $.ajax({
+            url:verifyUrl,
+            type:'POST',
+            data:data,
+            success: function(result){
+                Loader.close()
+                alert("Completed Successfully")
+            },
+            error: function(error){
+                Loader.close()
+                alert(error.message)
+            }
+        })
+    }
+</script>
+
+
+</body>
+
+</html>
