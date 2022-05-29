@@ -50,16 +50,15 @@
     let params = new URLSearchParams(location.search);
     mUserId = params.get('userId')
     alert(mUserId)
-    var id = 1;
-    loadPage()
+    loadPage(mUserId)
 
 
 
-    function loadPage(){
+    function loadPage(userId){
         Loader.open()
 
         const json = {
-            userId:mUserId
+            userId:userId
         }
 
         const jsonString = JSON.stringify(json);
@@ -130,6 +129,7 @@
             },
             error: function(error){
                 Loader.close()
+                alert(error.message)
 
             }
         })
