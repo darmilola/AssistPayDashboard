@@ -63,12 +63,12 @@
 
         const jsonString = JSON.stringify(json);
 
-        const transportUrl =   "https://gentle-mountain-10412.herokuapp.com/public/api/verification/business/details";
+        const transportUrl =  "https://gentle-mountain-10412.herokuapp.com/public/api/verification/business/details";
 
         $.ajax({
             url:transportUrl,
             type:'POST',
-            data:jsonString,
+            data:json,
             success: function(result){
                 Loader.close()
 
@@ -123,8 +123,6 @@
                 $("#account_details").append(cacStr)
                 $("#account_details").append(cacCertStr)
                 $("#account_details").append(memoCACStr)
-
-
 
             },
             error: function(error){
