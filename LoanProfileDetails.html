@@ -59,9 +59,9 @@
 
         const jsonString = JSON.stringify(json);
 
-        const transportUrl =   "https://gentle-mountain-10412.herokuapp.com/public/api/verification/business/details";
+        const firstUrl =   "https://gentle-mountain-10412.herokuapp.com/public/api/verification/business/details";
         $.ajax({
-            url:transportUrl,
+            url:firstUrl,
             type:'POST',
             data:jsonString,
             success: function(result){
@@ -89,16 +89,15 @@
             },
             error: function(error){
                 Loader.close()
-                alert(error.message)
             }
         })
 
 
 
 
-        const transportUrl =   "https://gentle-mountain-10412.herokuapp.com/public/api/verification/business/details";
+        const secondUrl =   "https://gentle-mountain-10412.herokuapp.com/public/api/verification/business/details";
         $.ajax({
-            url:transportUrl,
+            url:secondUrl,
             type:'POST',
             data:jsonString,
             success: function(result){
@@ -126,47 +125,12 @@
             },
             error: function(error){
                 Loader.close()
-                alert(error.message)
             }
         })
 
     }
 
 
-    $('#verify_approve').click(function(event) {
-        verifyUser("approved",mUserId,"true","Approved",id)
-    });
-
-    $('#verify_reject').click(function(event) {
-        verifyUser("rejected",mUserId,"false","Rejected",id)
-    });
-
-
-
-    function verifyUser(status,userId,isVerified,verifiedStatus,id){
-        Loader.open()
-        const verifyUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/verification/business/verify"
-        const data = {
-            userId:userId,
-            status:status,
-            isVerified:isVerified,
-            verifiedStatus:verifiedStatus,
-            id:id
-        }
-        $.ajax({
-            url:verifyUrl,
-            type:'POST',
-            data:data,
-            success: function(result){
-                Loader.close()
-                alert("Completed Successfully")
-            },
-            error: function(error){
-                Loader.close()
-                alert(error.message)
-            }
-        })
-    }
 </script>
 
 
