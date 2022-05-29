@@ -82,8 +82,8 @@
                 var mAccountName =   result["data"][0].accountName
                 var mBankName =   result["data"][0].bankName
                 var mAccountNumber =   result["data"][0].accountNumber
-                var verifiedFirstname = result["verifiedName"][0].firstname
-                var verifiedLastname = result["verifiedName"][0].lastname
+                var verifiedFirstname = result["verifiedName"].firstname
+                var verifiedLastname = result["verifiedName"].lastname
 
                 var NameStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
                     "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Name</span> <span class=\"amount\">"+Name+"</span> </div>\n" +
