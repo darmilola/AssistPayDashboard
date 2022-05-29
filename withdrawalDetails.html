@@ -74,6 +74,8 @@
             success: function(result){
                 Loader.close()
 
+                console.log(result)
+
                 var Name =   result["data"][0].firstname +" "+result["data"][0].lastname
                 var email =   result["data"][0].email
                 var amount =   result["data"][0].amount
