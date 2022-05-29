@@ -82,9 +82,15 @@
                 var mAccountName =   result["data"][0].accountName
                 var mBankName =   result["data"][0].bankName
                 var mAccountNumber =   result["data"][0].accountNumber
+                var verifiedFirstname = result["verifiedName"][0].firstname
+                var verifiedLastname = result["verifiedName"][0].lastname
 
                 var NameStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
                     "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Name</span> <span class=\"amount\">"+Name+"</span> </div>\n" +
+                    "        </div>"
+
+                var VerifiedNameStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
+                    "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Verified Name</span> <span class=\"amount\">"+verifiedFirstname+" "+verifiedLastname+"</span> </div>\n" +
                     "        </div>"
 
                 var emailStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
@@ -114,6 +120,7 @@
 
 
                 $("#account_details").append(NameStr)
+                $("#account_details").append(VerifiedNameStr)
                 $("#account_details").append(emailStr)
                 $("#account_details").append(amountStr)
                 $("#account_details").append(walletBalanceStr)
