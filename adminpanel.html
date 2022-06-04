@@ -263,11 +263,12 @@
 
     function loadPage(){
         Loader.open()
-        const transportUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/users/admin/get";
+        const adminUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/users/admin/get";
         $.ajax({
-            url:transportUrl,
+            url:adminUrl,
             type:'POST',
             success: function(result){
+                console.log(result)
                 Loader.close()
                 var strHTML = '';
                 result["data"].forEach(element => {
