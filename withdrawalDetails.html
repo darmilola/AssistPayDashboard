@@ -50,7 +50,7 @@
     let params = new URLSearchParams(location.search);
      mUserId = params.get('userId')
     mId = params.get("w_id")
-    mAmount = 0;
+    mAmount = params.get("amount")
     console.log(mId)
     console.log(mUserId)
     loadPage()
@@ -79,7 +79,6 @@
                 var Name =   result["data"][0].firstname +" "+result["data"][0].lastname
                 var email =   result["data"][0].email
                 var amount =   result["data"][0].amount
-                mAmount = amount
                 var mWalletBalance =   result["data"][0].walletBalance
                 var mAccountName =   result["data"][0].accountName
                 var mBankName =   result["data"][0].bankName
@@ -156,7 +155,7 @@
         Loader.open()
         const verifyUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/withdrawal/pay"
 
-        mCharge = (3.5/100) * amount
+        mCharge = (3.5/100) * parseInt(amount)
 
         alert(mCharge)
 
