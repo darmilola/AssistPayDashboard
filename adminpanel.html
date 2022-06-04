@@ -21,10 +21,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
     <meta name="author" content="Creative Tim">
-    <title>Assits Dashboard</title>
+    <title>Assist Dashboard</title>
     <!-- Favicon -->
     <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
     <!-- Fonts -->
+    <!-- Main CSS-->
+    <link href="./assets/css/main.css" rel="stylesheet" media="all">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
     <!-- Icons -->
     <link rel="stylesheet" href="assets/vendor/nucleo/css/nucleo.css" type="text/css">
@@ -34,8 +36,7 @@
     <script src="./assets/js/loader.js"></script>
     <link rel="stylesheet" href="./assets/css/loader.css"/>
     <link rel="stylesheet" href="./assets/css/dropdown.css"/>
-    <link rel="stylesheet" href="./assets/css/userprofile.css"/>
-    <link rel="stylesheet" href="./assets/css/transactionstb.css"/>
+
 </head>
 
 <body>
@@ -115,49 +116,87 @@
             <div class="header-body">
                 <div class="row align-items-center py-4">
                     <div class="col-lg-6 col-7">
-                        <h6 class="h2 text-white d-inline-block mb-0">Loans</h6>
+                        <h6 class="h2 text-white d-inline-block mb-0">Admin Panel</h6>
                     </div>
                     <div class="col-lg-6 col-5 text-right">
-                        <a href = "https://secure-ocean-32806.herokuapp.com/ApprovedLoan.html" class="btn btn-sm btn-neutral">View Approved</a>
-                        <a href = "https://secure-ocean-32806.herokuapp.com/RejectedLoan.html" class="btn btn-sm btn-neutral">View Rejected</a>
+                        <a href="#" class="btn btn-sm btn-neutral" id="add-new-admin-button">Add New Admin</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
     <!-- Page content -->
-    <div class="container-fluid mt--6" id="loan_application_card">
-        <div class="row">
+    <div class="container-fluid mt--6">
+
+        <!-- admin Starts here ---->
+        <div class="row" id="admins_list">
             <div class="col">
                 <div class="card">
                     <!-- Card header -->
                     <div class="card-header border-0">
-                        <h3 class="mb-0">Pending Applications</h3>
+                        <h3 class="mb-0">Admins</h3>
                     </div>
                     <!-- Light table -->
-                    <div class="table-responsive" style="min-height: 300px;">
-                        <table>
-                            <thead>
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
                             <tr>
-                                <th>User Id</th>
-                                <th>Amount</th>
+                                <th scope="col" class="sort" data-sort="name">Email</th>
+                                <th scope="col" class="sort" data-sort="name">Name</th>
                             </tr>
                             </thead>
-                            <tbody id="pending_loan_list">
-                           
+                            <tbody class="list" id="admin_list">
+
                             </tbody>
                         </table>
                     </div>
                 </div>
-
-             
-                </div>
             </div>
         </div>
 
+        <!-- drivers ends here ---->
+
+
+
+
+
+
+        <!--- Add New Route Page ---->
+
+        <div class="page-wrapper bg-dark p-t-100 p-b-50" id="add-new-route" style="display: none">
+            <div class="wrapper wrapper--w900">
+                <div class="cardm cardm-6">
+                    <div class="cardm-heading">
+                        <h2 class="title" id="add_admin_button">Add New Admin</h2>
+                    </div>
+                    <div class="cardm-body">
+                        <form method="POST">
+                            <div class="form-row">
+                                <div class="name">Email</div>
+                                <div class="value">
+                                    <input class="input--style-6" id="email" type="text">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="cardm-footer">
+                        <button class="btn btn--radius-2 btn--blue-2" id="add-admin" type="submit">Save</button>
+                        <button class="btn btn--radius-2 btn--blue-2" id="cancel-add" type="submit">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+</div>
 </div>
 <!-- Argon Scripts -->
 <!-- Core -->
@@ -168,59 +207,112 @@
 <script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
 <!-- Argon JS -->
 <script src="assets/js/argon.js?v=1.2.0"></script>
+<script src="assets/js/transportation.js"></script>
 
-</body>
 
 <script>
-    loadApplications()   
+    loadPage()
+
+    $('#add-admin').click(function(event) {
+        event.preventDefault();
+        CreateTransport()
+
+    });
 
 
-function loadApplications(){
-      Loader.open()
-      const loanUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/users/loan/applications";
-      $.ajax({
-        url:loanUrl,
-        type:'POST',
-        success: function(result){
-             Loader.close()
-             var strHTML = '';
-             result["data"].forEach(element => {
+    function CreateAdmin(){
 
-              strHTML += "<tr><td class='budget'>"+element.userId+"</td>"
-                            +"<td class='budget'>"+ element.amount+"<div class='dropdown'>"
-                                +"<a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>"
-                                  +"<i class='fas fa-ellipsis-v'></i> </a>"
-                                  +"<div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'>"
-                                   +"<a class='dropdown-item' href = " +'https://secure-ocean-32806.herokuapp.com/Transactions.html?token='+ element.accountToken+">"+"View Transactions</a>"
-                                    +"<a class='dropdown-item' href = " +'https://secure-ocean-32806.herokuapp.com/BankDetails.html?token='+ element.accountToken+">"+"View Bank Details</a>"
-                                    +"<a class='dropdown-item' href = " +'https://secure-ocean-32806.herokuapp.com/LoanHistory.html?userId='+ element.userId+">"+"View Loan History</a>"
-                                    +"<a class='dropdown-item' href = " +'https://secure-ocean-32806.herokuapp.com/LoanProfileDetails.html?userId='+ element.userId+">"+"View Profile</a>"
-                                    +"<a class='dropdown-item' href = " +'https://secure-ocean-32806.herokuapp.com/LoanApproval.html?userId='+ element.userId+'&token='+element.accountToken+'&amount='+element.amount+'&payback='+element.payback+'&monthlyDue='+element.monthlyDue+">"+"Review</a></div></div></td></tr>";
 
-                    });
-                    $("#pending_loan_list").empty()
-                    $("#pending_loan_list").append(strHTML)
-             
-        },
-        error: function(error){
-          Loader.close()
+        if(!$("#email").val()){
+
+            alert("Provide required input")
+
+        }else{
+
+            Loader.open()
+            email = $("#email").val()
+
+            const createUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/users/admin/assign"
+
+            const data = {
+                userId:email,
+                role:"admin"
+            }
+
+            $.ajax({
+                url:createUrl,
+                type:'POST',
+                data:data,
+                success: function(result){
+                    Loader.close()
+                    alert("Admin Added Successfully")
+                    $('#admin_list').toggle();
+                    $('#add-new-admin').toggle();
+                    loadPage()
+
+                },
+                error: function(error){
+                    Loader.close()
+                    alert("Error Occurred please check the Email and try again")
+                }
+            })
         }
-      })
+
     }
 
-    function ShowProfile(){
-    $("#userprofile_card").toggle()
-    $("#loan_application_card").toggle()
 
-   }    
+    function loadPage(){
+        Loader.open()
+        const transportUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/users/admin/get";
+        $.ajax({
+            url:transportUrl,
+            type:'POST',
+            success: function(result){
+                Loader.close()
+                var strHTML = '';
+                result["data"].forEach(element => {
+                    strHTML += "<tr><th scope='row'><div class='media align-items-center'><div class='media-body'> <span class='name mb-0 text-sm'>"+element.email+"</span>"
+                        + " </div></div></th>"
+                        +"  <td class='text-left'>"+element.firstname+" "+element.lastname+"<div class='dropdown'>"
+                        +"    <a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'> <i class='fas fa-ellipsis-v'></i>"
+                        +"     </a><div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'><a class='dropdown-item' onClick=getBookings("+element.id+")>"+"View Bookings"+"</a>"
+                        +"       <a class='dropdown-item' href=" +'https://gentle-mountain-10412.herokuapp.com/public/api/users/admin/remove/?userId='+ element.email+">"+ "Remove Admin" +"</a> </div> </div></td></tr>";
+
+                });
+                $("#admin_list").empty()
+                $("#admin_list").append(strHTML)
+
+            },
+            error: function(error){
+                Loader.close()
+            }
+        })
+
+    }
 
 
-$('#transactions_dismiss').click(function(event) {
-    event.preventDefault();
-    $("#loan_application_card").toggle()
-    $("#transactions_card").toggle();
-});
+    $('#add-new-admin-button').click(function(event) {
+        event.preventDefault();
+        $('#admins_list').toggle();
+        $('#add-new-admin').toggle();
+    });
+
+
+
+
+
+    $('#cancel-add').click(function(event) {
+        event.preventDefault();
+        $('#admin_list').toggle();
+        $('#add-new-admin').toggle();
+    });
+
+
+
+
 
 </script>
+
+</body>
 
 </html>
