@@ -163,11 +163,11 @@
 
         <!--- Add New Route Page ---->
 
-        <div class="page-wrapper bg-dark p-t-100 p-b-50" id="add-new-route" style="display: none">
+        <div class="page-wrapper bg-dark p-t-100 p-b-50" id="add-new-admin-root" style="display: none">
             <div class="wrapper wrapper--w900">
                 <div class="cardm cardm-6">
                     <div class="cardm-heading">
-                        <h2 class="title" id="add_admin_button">Add New Admin</h2>
+                        <h2 class="title">Add New Admin</h2>
                     </div>
                     <div class="cardm-body">
                         <form method="POST">
@@ -186,8 +186,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
 
 
 
@@ -215,7 +213,7 @@
 
     $('#add-admin').click(function(event) {
         event.preventDefault();
-        CreateTransport()
+        CreateAdmin()
 
     });
 
@@ -246,8 +244,8 @@
                 success: function(result){
                     Loader.close()
                     alert("Admin Added Successfully")
-                    $('#admin_list').toggle();
-                    $('#add-new-admin').toggle();
+                    $('#admins_list').toggle();
+                    $('#add-new-admin-root').toggle();
                     loadPage()
 
                 },
@@ -295,7 +293,7 @@
     $('#add-new-admin-button').click(function(event) {
         event.preventDefault();
         $('#admins_list').toggle();
-        $('#add-new-admin').toggle();
+        $('#add-new-admin-root').toggle();
     });
 
 
@@ -304,8 +302,8 @@
 
     $('#cancel-add').click(function(event) {
         event.preventDefault();
-        $('#admin_list').toggle();
-        $('#add-new-admin').toggle();
+        $('#admins_list').toggle();
+        $('#add-new-admin-root').toggle();
     });
 
 
