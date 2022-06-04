@@ -40,6 +40,20 @@
     <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
     <link href="assets/css/search-filter.css" rel="stylesheet">
 
+    <script>
+        email = sessionStorage.getItem("isLoggedIn")
+        if(email === null){
+            window.location.href = "login.html";
+        }
+
+        $( "#logout_item" ).click(function() {
+            sessionStorage.removeItem("isLoggedIn")
+            window.location.href = "login.html"
+        });
+
+
+    </script>
+
 </head>
 
 <body>

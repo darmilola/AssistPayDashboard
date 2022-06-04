@@ -17,6 +17,20 @@
     <!-- Main CSS-->
     <link href="./assets/css/main.css" rel="stylesheet" media="all">
 
+    <script>
+        email = sessionStorage.getItem("isLoggedIn")
+        if(email === null){
+            window.location.href = "login.html";
+        }
+
+        $( "#logout_item" ).click(function() {
+            sessionStorage.removeItem("isLoggedIn")
+            window.location.href = "login.html"
+        });
+
+
+    </script>
+
 </head>
 
 <body>

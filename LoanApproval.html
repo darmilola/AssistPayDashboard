@@ -15,6 +15,20 @@
     <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
     <script src="./assets/js/loader.js"></script>
     <link rel="stylesheet" href="./assets/css/loader.css"/>
+
+    <script>
+        email = sessionStorage.getItem("isLoggedIn")
+        if(email === null){
+            window.location.href = "login.html";
+        }
+
+        $( "#logout_item" ).click(function() {
+            sessionStorage.removeItem("isLoggedIn")
+            window.location.href = "login.html"
+        });
+
+
+    </script>
 </head>
 <body>
 

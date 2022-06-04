@@ -46,6 +46,19 @@
 <script src="assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
 <script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
 <!-- Argon JS -->
+<script>
+    email = sessionStorage.getItem("isLoggedIn")
+    if(email === null){
+        window.location.href = "login.html";
+    }
+
+    $( "#logout_item" ).click(function() {
+        sessionStorage.removeItem("isLoggedIn")
+        window.location.href = "login.html"
+    });
+
+
+</script>
 <script src="assets/js/argon.js?v=1.2.0"></script>
 
 <script>

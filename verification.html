@@ -33,7 +33,21 @@
     <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
     <script src="./assets/js/loader.js"></script>
     <link rel="stylesheet" href="./assets/css/loader.css"/>
-    <link rel="stylesheet" href="./assets/css/dropdown.css"/> 
+    <link rel="stylesheet" href="./assets/css/dropdown.css"/>
+
+    <script>
+        email = sessionStorage.getItem("isLoggedIn")
+        if(email === null){
+            window.location.href = "login.html";
+        }
+
+        $( "#logout_item" ).click(function() {
+            sessionStorage.removeItem("isLoggedIn")
+            window.location.href = "login.html"
+        });
+
+
+    </script>
 </head>
 
 <body>
@@ -93,11 +107,11 @@
                             <span class="nav-link-text">Admin Panel</span>
                         </a>
                     </li>
-                    <li class="nav-item" id="logout_item">
-                        <div class="nav-link">
-                            <i class="ni ni-send text-dark"></i>
+                    <li class="nav-item"id="logout_item">
+                        <a class="nav-link" href="login.html">
+                            <i class="ni ni-pin-3 text-primary"></i>
                             <span class="nav-link-text">Log Out</span>
-                        </div>
+                        </a>
                     </li>
                 </ul>
             </div>

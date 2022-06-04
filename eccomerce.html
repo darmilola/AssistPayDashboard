@@ -43,6 +43,20 @@
     <link rel="stylesheet" href="assets/css/fontawesome.css">
     <link rel="stylesheet" href="assets/css/tooplate-main.css">
     <link rel="stylesheet" href="assets/css/owl.css">
+
+    <script>
+        email = sessionStorage.getItem("isLoggedIn")
+        if(email === null){
+            window.location.href = "login.html";
+        }
+
+        $( "#logout_item" ).click(function() {
+            sessionStorage.removeItem("isLoggedIn")
+            window.location.href = "login.html"
+        });
+
+
+    </script>
 </head>
 
 <body>

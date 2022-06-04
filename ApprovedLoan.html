@@ -36,6 +36,20 @@
     <link rel="stylesheet" href="./assets/css/dropdown.css"/>
     <link rel="stylesheet" href="./assets/css/userprofile.css"/>
     <link rel="stylesheet" href="./assets/css/transactionstb.css"/>
+
+    <script>
+        email = sessionStorage.getItem("isLoggedIn")
+        if(email === null){
+            window.location.href = "login.html";
+        }
+
+        $( "#logout_item" ).click(function() {
+            sessionStorage.removeItem("isLoggedIn")
+            window.location.href = "login.html"
+        });
+
+
+    </script>
 </head>
 
 <body>

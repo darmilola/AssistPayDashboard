@@ -20,6 +20,20 @@
     <link rel="stylesheet" href="./assets/css/owl.css">
     <link rel="stylesheet" href="./assets/css/flex-slider.css"/>
 
+    <script>
+      email = sessionStorage.getItem("isLoggedIn")
+      if(email === null){
+        window.location.href = "login.html";
+      }
+
+      $( "#logout_item" ).click(function() {
+        sessionStorage.removeItem("isLoggedIn")
+        window.location.href = "login.html"
+      });
+
+
+    </script>
+
 
 
 <!--

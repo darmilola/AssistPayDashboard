@@ -41,6 +41,13 @@
     if(email === null){
       window.location.href = "login.html";
     }
+
+    $( "#logout_item" ).click(function() {
+      sessionStorage.removeItem("isLoggedIn")
+      window.location.href = "login.html"
+    });
+
+
   </script>
 
 </head>
@@ -132,34 +139,53 @@
     <div class="container justify-content-center mt-5" style="text-align: -webkit-center; display: flex; flex-wrap: wrap">
       <div class="card" style="margin-left: 20px;">
         <div class="middle-container d-flex justify-content-between align-items-center mt-3 p-2">
-          <div class="d-flex flex-column mr-2"> <span class="current-balance">Total Platform Charge</span> <span class="amount">20,000</span> </div>
+          <div class="d-flex flex-column mr-2"> <span class="current-balance">Total Platform Charge</span> <span class="amount"  id="platform_charge"></span> </div>
         </div>
         <div class="cardm-footer">
-          <button class="btn btn--radius-2 btn--blue-2" style="color: blue; top: 10px;" id="loan_approve" type="submit">Withdraw</button>
+          <button class="btn btn--radius-2 btn--blue-2" style="color: blue; top: 10px;"  id="withdraw_charge" type="submit">Withdraw</button>
         </div>
       </div>
 
           <div class="card" style="margin-left: 20px;">
           <div class="middle-container d-flex justify-content-between align-items-center mt-3 p-2">
-            <div class="d-flex flex-column mr-2"> <span class="current-balance">Total Transactions Made</span> <span class="amount">25,340,120</span> </div>
+            <div class="d-flex flex-column mr-2"> <span class="current-balance" >Total Transactions Made</span> <span id="transaction_made" class="amount"></span> </div>
           </div>
         </div>
 
       <div class="card" style="margin-left: 20px;">
         <div class="middle-container d-flex justify-content-between align-items-center mt-3 p-2">
-          <div class="d-flex flex-column mr-2"> <span class="current-balance">Total Users</span> <span class="amount">20,000</span> </div>
+          <div class="d-flex flex-column mr-2"> <span class="current-balance" >Total Users</span> <span class="amount" id="total_users"></span> </div>
         </div>
       </div>
 
       <div class="card" style="margin-left: 20px;">
         <div class="middle-container d-flex justify-content-between align-items-center mt-3 p-2">
-          <div class="d-flex flex-column mr-2"> <span class="current-balance">Total Loan Applications</span> <span class="amount">2220</span> </div>
+          <div class="d-flex flex-column mr-2"> <span class="current-balance">Total Loan Applications</span> <span class="amount"  id="total_loans"></span> </div>
         </div>
       </div>
 
       <div class="card" style="margin-left: 20px;">
         <div class="middle-container d-flex justify-content-between align-items-center mt-3 p-2">
-          <div class="d-flex flex-column mr-2"> <span class="current-balance">Total Loan Approved</span> <span class="amount">2220</span> </div>
+          <div class="d-flex flex-column mr-2"> <span class="current-balance">Total Loan Approved</span> <span class="amount"  id="total_approved"></span> </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-left: 20px;">
+        <div class="middle-container d-flex justify-content-between align-items-center mt-3 p-2">
+          <div class="d-flex flex-column mr-2"> <span class="current-balance">Total House Agents</span> <span class="amount" id="total_agents"></span> </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-left: 20px;">
+        <div class="middle-container d-flex justify-content-between align-items-center mt-3 p-2">
+          <div class="d-flex flex-column mr-2"> <span class="current-balance">Total Service Provider</span> <span class="amount"  id="total_provider"></span> </div>
+        </div>
+      </div>
+
+
+      <div class="card" style="margin-left: 20px;">
+        <div class="middle-container d-flex justify-content-between align-items-center mt-3 p-2">
+          <div class="d-flex flex-column mr-2"> <span class="current-balance">Total Retailers</span> <span class="amount"  id="total_retailers"></span> </div>
         </div>
       </div>
 
@@ -182,32 +208,70 @@
   <script src="assets/js/argon.js?v=1.2.0"></script>
 
   <script>
-    $( "#logout_item" ).click(function() {
-         sessionStorage.removeItem("isLoggedIn")
-         window.location.href = "login.html"
-});
+
+    loadPage()
 
 
-    new Chart(document.getElementById("line-chart"), {
-      type: 'line',
-      data: {
-        labels: ["January","February","March","April","May", "June","July","August","September","October","November","December"],
-        datasets: [{
-          data: [86,114,106,106,107,111,133,221,783,2478,114,106],
-          label: "Daily Users",
-          borderColor: "#3e95cd",
-          fill: false
+
+    function loadPage(){
+      Loader.open()
+      const adminUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/users/admin/stats";
+      $.ajax({
+        url:adminUrl,
+        type:'GET',
+        success: function(result){
+          console.log(result)
+          Loader.close()
+          var strHTML = '';
+          document.getElementById("platform_charge").innerHTML = result["charge"];
+          document.getElementById("transaction_made").innerHTML = result["transaction"];
+          document.getElementById("total_loans").innerHTML = result["loans"];
+          document.getElementById("total_approved").innerHTML = result["approved"];
+          document.getElementById("total_agents").innerHTML = result["agents"];
+          document.getElementById("total_provider").innerHTML = result["provider"];
+          document.getElementById("total_users").innerHTML = result["users"];
+          document.getElementById("total_retailers").innerHTML = result["retailers"];
+
+
+
+
+        },
+        error: function(error){
+          Loader.close()
         }
-        ]
-      },
-      options: {
-        title: {
-          display: true,
-          text: 'Daily Active users per month'
+      })
+
+    }
+
+
+    function updateCharge(){
+      Loader.open()
+      const adminUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/users/admin/update/charge";
+      $.ajax({
+        url:adminUrl,
+        type:'GET',
+        success: function(result){
+          console.log(result)
+          Loader.close()
+          alert("Withdraw Successfully")
+          loadPage()
+        },
+        error: function(error){
+          Loader.close()
         }
-      }
+      })
+
+    }
+
+    $('#withdraw_charge').click(function(event) {
+      updateCharge()
+
     });
+
+
   </script>
+
+
 </body>
 
 </html>
