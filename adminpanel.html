@@ -55,7 +55,7 @@
                 <!-- Nav items -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html">
+                        <a class="nav-link" href="index.html">
                             <i class="ni ni-tv-2 text-primary"></i>
                             <span class="nav-link-text">Dashboard</span>
                         </a>
@@ -91,7 +91,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="adminpanel.html">
+                        <a class="nav-link active" href="adminpanel.html">
                             <i class="ni ni-pin-3 text-primary"></i>
                             <span class="nav-link-text">Admin Panel</span>
                         </a>
@@ -237,6 +237,8 @@
                 role:"admin"
             }
 
+            console.log(data)
+
             $.ajax({
                 url:createUrl,
                 type:'POST',
@@ -259,6 +261,40 @@
     }
 
 
+    function removeAdmin(userEmail){
+
+            alert(userEmail)
+            Loader.open()
+            const createUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/users/admin/assign"
+
+
+
+            const data = {
+                email:userEmail,
+                role:"none"
+            }
+
+            alert(data)
+
+            $.ajax({
+                url:createUrl,
+                type:'POST',
+                data:data,
+                success: function(result){
+                    Loader.close()
+                    alert("Admin Removed Successfully")
+                    loadPage()
+
+                },
+                error: function(error){
+                    Loader.close()
+                    alert("Error Occurred please check the Email and try again")
+                }
+            })
+
+    }
+
+
     function loadPage(){
         Loader.open()
         const adminUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/users/admin/get";
@@ -274,8 +310,8 @@
                         + " </div></div></th>"
                         +"  <td class='text-left'>"+element.firstname+" "+element.lastname+"<div class='dropdown'>"
                         +"    <a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'> <i class='fas fa-ellipsis-v'></i>"
-                        +"     </a><div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'><a class='dropdown-item' onClick=getBookings("+element.id+")>"+"View Bookings"+"</a>"
-                        +"       <a class='dropdown-item' href=" +'https://gentle-mountain-10412.herokuapp.com/public/api/users/admin/remove/?userId='+ element.email+">"+ "Remove Admin" +"</a> </div> </div></td></tr>";
+                        +"     </a><div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'>"
+                        +"       <a class='dropdown-item'href="+'https://gentle-mountain-10412.herokuapp.com/public/api/users/admin/remove/?email='+element.email+"&"+"role="+"none"+">"+ "Remove Admin" +"</a> </div> </div></td></tr>";
 
                 });
                 $("#admin_list").empty()
@@ -294,6 +330,12 @@
         event.preventDefault();
         $('#admins_list').toggle();
         $('#add-new-admin-root').toggle();
+    });
+
+    $('remove-admin').click(function(event) {
+        event.preventDefault();
+
+
     });
 
 
