@@ -142,6 +142,7 @@
 
 
     $('#withdraw_approve').click(function(event) {
+        alert(mAmount)
         approveWithdrawal(mId,mUserId,mAmount)
     });
 
@@ -155,7 +156,7 @@
         Loader.open()
         const verifyUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/withdrawal/pay"
 
-        mCharge = (3.5/100) * amount;
+        mCharge = (3.5/100) * amount
 
         alert(mCharge)
 
