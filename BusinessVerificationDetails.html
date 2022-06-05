@@ -179,9 +179,9 @@
                 alert("Completed Successfully")
             },
             error: function(error){
-                console.log(error)
+                console.log(error.responseText)
                 Loader.close()
-                alert(error.message)
+                alert(error.responseText)
             }
         })
     }
