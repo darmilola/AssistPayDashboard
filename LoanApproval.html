@@ -131,7 +131,8 @@
             Loader.close()
             var id = response["id"];
             if(id !== ""){
-                ApproveLoan(mToken,mUserId,mAmount)
+                mUserAmount = mAmount - mCharges
+                ApproveLoan(mToken,mUserId,mUserAmount)
                 alert("Direct debit started successfully")
                 history.back()
             }
