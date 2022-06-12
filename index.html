@@ -146,6 +146,17 @@
         </div>
       </div>
 
+
+      <div class="container justify-content-center mt-5" style="text-align: -webkit-center; display: flex; flex-wrap: wrap">
+        <div class="card" style="margin-left: 20px;">
+          <div class="middle-container d-flex justify-content-between align-items-center mt-3 p-2">
+            <div class="d-flex flex-column mr-2"> <span class="current-balance">Total Loan Charge</span> <span class="amount"  id="loan_charge"></span> </div>
+          </div>
+          <div class="cardm-footer">
+            <button class="btn btn--radius-2 btn--blue-2" style="color: blue; top: 10px;"  id="withdraw_loan" type="submit">Withdraw</button>
+          </div>
+        </div>
+
           <div class="card" style="margin-left: 20px;">
           <div class="middle-container d-flex justify-content-between align-items-center mt-3 p-2">
             <div class="d-flex flex-column mr-2"> <span class="current-balance" >Total Transactions Made</span> <span id="transaction_made" class="amount"></span> </div>
@@ -231,9 +242,7 @@
           document.getElementById("total_provider").innerHTML = result["provider"];
           document.getElementById("total_users").innerHTML = result["users"];
           document.getElementById("total_retailers").innerHTML = result["retailers"];
-
-
-
+          document.getElementById("loan_charge").innerHTML = result["loanCharge"];
 
         },
         error: function(error){
