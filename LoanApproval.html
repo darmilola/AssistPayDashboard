@@ -95,14 +95,14 @@
 
 
     $('#loan_approve').click(function(event) {
-        StartRecurringDebit(mMonthlyDue,mPaybackMonth,mToken)
+        StartRecurringDebit(mMonthlyDue,mPaybackMonth,mToken,amount,userId)
     });
 
     $('#loan_reject').click(function(event) {
         RejectLoan(mToken)
     });
 
-    function StartRecurringDebit(monthlyPay,durationOfPay,accountToken){
+    function StartRecurringDebit(monthlyPay,durationOfPay,accountToken, loanAmount, userId){
 
         Loader.open()
         var now = new Date();
@@ -131,7 +131,7 @@
             Loader.close()
             var id = response["id"];
             if(id !== ""){
-                ApproveLoan(mToken)
+                ApproveLoan(mToken,mUserId,mAmount)
                 alert("Direct debit started successfully")
                 history.back()
             }
@@ -150,12 +150,14 @@
     }
 
 
-    function ApproveLoan(token){
+    function ApproveLoan(token,userId,amount){
 
         const url = "https://gentle-mountain-10412.herokuapp.com/public/api/users/loan/approve"
 
         const data = {
-            token:token
+            token:token,
+            userId:userId,
+            amount:amount
         }
 
         $.ajax({
