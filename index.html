@@ -153,7 +153,7 @@
             <div class="d-flex flex-column mr-2"> <span class="current-balance">Total Loan Charge</span> <span class="amount"  id="loan_charge"></span> </div>
           </div>
           <div class="cardm-footer">
-            <button class="btn btn--radius-2 btn--blue-2" style="color: blue; top: 10px;"  id="withdraw_loan" type="submit">Withdraw</button>
+            <button class="btn btn--radius-2 btn--blue-2" style="color: blue; top: 10px;"  id="withdraw_loan_charge" type="submit">Withdraw</button>
           </div>
         </div>
 
@@ -272,8 +272,33 @@
 
     }
 
+
+    function withdrawLoanCharge(){
+      Loader.open()
+      const loanUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/users/dashboard/loan/withdraw";
+      $.ajax({
+        url:loanUrl,
+        type:'POST',
+        success: function(result){
+          console.log(result)
+          Loader.close()
+          alert("Withdraw Successfully")
+          loadPage()
+        },
+        error: function(error){
+          Loader.close()
+        }
+      })
+
+    }
+
     $('#withdraw_charge').click(function(event) {
       updateCharge()
+
+    });
+
+    $('#withdraw_loan_charge').click(function(event) {
+      withdrawLoanCharge()
 
     });
 

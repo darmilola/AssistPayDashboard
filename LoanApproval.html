@@ -132,7 +132,7 @@
             var id = response["id"];
             if(id !== ""){
                 mUserAmount = mAmount - mCharges
-                ApproveLoan(mToken,mUserId,mUserAmount)
+                ApproveLoan(mToken,mUserId,mUserAmount,mCharges)
                 alert("Direct debit started successfully")
                 history.back()
             }
@@ -151,14 +151,22 @@
     }
 
 
-    function ApproveLoan(token,userId,amount){
+    function ApproveLoan(token,userId,amount,charge){
 
         const url = "https://gentle-mountain-10412.herokuapp.com/public/api/users/loan/approve"
+
+        const loanurl = "https://gentle-mountain-10412.herokuapp.com/public/api/users/dashboard/loan/update"
+
 
         const data = {
             token:token,
             userId:userId,
             amount:amount
+        }
+
+        const loanData = {
+            amount:charge
+
         }
 
         $.ajax({
@@ -168,6 +176,19 @@
             success: function(result){
                // var strHTML = '';
                // var data =  result["data"]
+            },
+            error: function(error){
+
+            }
+        })
+
+        $.ajax({
+            url:loanurl,
+            type:'POST',
+            data:loanData,
+            success: function(result){
+                // var strHTML = '';
+                // var data =  result["data"]
             },
             error: function(error){
 
