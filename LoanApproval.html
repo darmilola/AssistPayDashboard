@@ -95,14 +95,14 @@
 
 
     $('#loan_approve').click(function(event) {
-        StartRecurringDebit(mMonthlyDue,mPaybackMonth,mToken,amount,userId)
+        StartRecurringDebit(mMonthlyDue,mPaybackMonth,mToken)
     });
 
     $('#loan_reject').click(function(event) {
         RejectLoan(mToken)
     });
 
-    function StartRecurringDebit(monthlyPay,durationOfPay,accountToken, loanAmount, userId){
+    function StartRecurringDebit(monthlyPay,durationOfPay,accountToken){
 
         Loader.open()
         var now = new Date();
