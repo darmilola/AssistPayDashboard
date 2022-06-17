@@ -67,7 +67,7 @@
     mPaybackMonth = params.get('payback')
     mMonthlyDue = params.get('monthlyDue')
 
-    mCharges = (3.5/100) * mAmount;
+    mCharges = (700 * mPaybackMonth) + 250;
 
 
     var amountStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
