@@ -60,6 +60,8 @@
     let params = new URLSearchParams(location.search);
     mUserId = params.get('userId')
     var id = 1;
+
+    console.log(mUserId)
     loadPage()
 
 
@@ -71,8 +73,10 @@
             userId:mUserId
         }
 
+
         const jsonString = JSON.stringify(json);
 
+        console.log(jsonString)
         const firstUrl =   "https://gentle-mountain-10412.herokuapp.com/public/api/verification/user/details";
         $.ajax({
             url:firstUrl,
