@@ -82,11 +82,11 @@
                 Loader.close()
 
 
-                var firstName =   result["data"][0].firstname
-                var lastName =   result["data"][0].lastname
-                var mPhone =   result["data"][0].phone
+                var firstName =   result["data"][0]['firstname']
+                var lastName =   result["data"][0]['lastname']
+                var mPhone =   result["data"][0]['phone']
 
-                id = result["data"][0].id
+               var  id = result["data"][0]['id']
 
                 var NameStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
                     "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Verified Name</span> <span class=\"amount\">"+firstName+" "+lastName+"</span> </div>\n" +
@@ -118,11 +118,11 @@
                 Loader.close()
 
 
-                var firstName =   result["data"][0].firstname
-                var lastName =   result["data"][0].lastname
-                var mPhone =   result["data"][0].phone
+                var firstName =   result["data"][0]['firstname']
+                var lastName =   result["data"][0]['lastname']
+                var mPhone =   result["data"][0]['phone']
 
-                id = result["data"][0].id
+                var id = result["data"][0]['id']
 
                 var NameStr = "<div class=\"middle-container d-flex justify-content-between align-items-center mt-3 p-2\">\n" +
                     "            <div class=\"d-flex flex-column mr-2\"> <span class=\"current-balance\">Verified Name</span> <span class=\"amount\">"+firstName+" "+lastName+"</span> </div>\n" +
