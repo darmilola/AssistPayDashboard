@@ -70,7 +70,7 @@
         Loader.open()
 
         const json = {
-            userId:mUserId
+            'userId':mUserId
         }
 
 
@@ -80,7 +80,7 @@
         $.ajax({
             url:firstUrl,
             type:'POST',
-            data:jsonString,
+            data:json,
             success: function(result){
                 Loader.close()
 
