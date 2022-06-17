@@ -70,7 +70,7 @@
         Loader.open()
 
         const json = {
-            'userId':mUserId
+            userId:mUserId
         }
 
 
@@ -80,7 +80,7 @@
         $.ajax({
             url:firstUrl,
             type:'POST',
-            data:json,
+            data:jsonString,
             success: function(result){
                 Loader.close()
 
@@ -88,7 +88,7 @@
 
                 var firstName =   result["data"][0]['firstname']
                 var lastName =   result["data"][0]['lastname']
-                var mPhone =   result["data"][0]['phone']
+                var mPhone =   result["data"][0]['phonenumber']
 
                var  id = result["data"][0]['id']
 
