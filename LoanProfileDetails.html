@@ -70,13 +70,12 @@
         Loader.open()
 
         const json = {
-            userId:mUserId
+            'userId':mUserId
         }
 
 
         const jsonString = JSON.stringify(json);
 
-        console.log(jsonString)
         const firstUrl =   "https://gentle-mountain-10412.herokuapp.com/public/api/verification/user/details";
         $.ajax({
             url:firstUrl,
