@@ -99,7 +99,7 @@
     });
 
     $('#loan_reject').click(function(event) {
-        RejectLoan(mToken)
+        RejectLoan(mToken,mUserId)
     });
 
     function StartRecurringDebit(monthlyPay,durationOfPay,accountToken){
@@ -197,12 +197,13 @@
 
     }
 
-    function RejectLoan(token){
+    function RejectLoan(token,userId){
 
         const url = "https://gentle-mountain-10412.herokuapp.com/public/api/users/loan/reject"
         Loader.open()
         const data = {
-            token:token
+            token:token,
+            userId:userId
         }
 
         $.ajax({
