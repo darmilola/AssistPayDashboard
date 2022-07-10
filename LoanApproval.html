@@ -43,7 +43,8 @@
     </div>
 
     <div class="cardm-footer">
-        <button class="btn btn--radius-2 btn--blue-2" id="loan_reject" type="submit">Reject</button>
+        <button class="btn btn--radius-2 btn--blue-2" id="loan_reject_type2" type="submit">Reject For Pending Loan</button>
+        <button class="btn btn--radius-2 btn--blue-2" id="loan_reject_type1" type="submit">Reject For Ineligibility</button>
         <button class="btn btn--radius-2 btn--blue-2" id="loan_approve" type="submit">Approve</button>
     </div>
 </div>
@@ -98,8 +99,12 @@
         StartRecurringDebit(mMonthlyDue,mPaybackMonth,mToken)
     });
 
-    $('#loan_reject').click(function(event) {
-        RejectLoan(mToken,mUserId)
+    $('#loan_reject_type1').click(function(event) {
+        RejectLoan(mToken,mUserId,"1")
+    });
+
+    $('#loan_reject_type2').click(function(event) {
+        RejectLoan(mToken,mUserId,"2")
     });
 
     function StartRecurringDebit(monthlyPay,durationOfPay,accountToken){
@@ -197,13 +202,14 @@
 
     }
 
-    function RejectLoan(token,userId){
+    function RejectLoan(token,userId,type){
 
         const url = "https://gentle-mountain-10412.herokuapp.com/public/api/users/loan/reject"
         Loader.open()
         const data = {
             token:token,
-            userId:userId
+            userId:userId,
+            type:type
         }
 
         $.ajax({
