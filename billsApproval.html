@@ -53,12 +53,10 @@
             amount:amount,
             billId:billId
         }
-        console.log(data)
-        encodedData = JSON.stringify(data)
         $.ajax({
             url:verifyUrl,
             type:'POST',
-            data:encodedData,
+            data:data,
             success: function(result){
                 Loader.close()
                 alert("Bill Paid Successfully")
