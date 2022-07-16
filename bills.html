@@ -1,0 +1,218 @@
+<!--
+=========================================================
+* Argon Dashboard - v1.2.0
+=========================================================
+* Product Page: https://www.creative-tim.com/product/argon-dashboard
+
+
+* Copyright  Creative Tim (http://www.creative-tim.com)
+* Coded by www.creative-tim.com
+
+
+
+=========================================================
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+    <meta name="author" content="Creative Tim">
+    <title>Assist Dashboard</title>
+    <!-- Favicon -->
+    <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <!-- Icons -->
+    <link rel="stylesheet" href="assets/vendor/nucleo/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+    <!-- Argon CSS -->
+    <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
+    <script src="./assets/js/loader.js"></script>
+    <link rel="stylesheet" href="./assets/css/loader.css"/>
+    <link rel="stylesheet" href="./assets/css/dropdown.css"/>
+
+</head>
+
+<body>
+<!-- Sidenav -->
+<nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
+    <div class="scrollbar-inner">
+        <!-- Brand -->
+        <div class="sidenav-header  align-items-center">
+            <a class="navbar-brand" href="javascript:void(0)">
+                <img src="assets/img/brand/assistlogo.jpg" class="navbar-brand-img" alt="...">
+            </a>
+        </div>
+        <div class="navbar-inner">
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+                <!-- Nav items -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="ni ni-tv-2 text-primary"></i>
+                            <span class="nav-link-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="transportation.html">
+                            <i class="ni ni-pin-3 text-primary"></i>
+                            <span class="nav-link-text">Transportation</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="loans.html">
+                            <i class="ni ni-single-02 text-yellow"></i>
+                            <span class="nav-link-text">Loans</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="verification.html">
+                            <i class="ni ni-circle-08 text-pink"></i>
+                            <span class="nav-link-text">Verification</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="Withdrawals.html">
+                            <i class="ni ni-circle-08 text-pink"></i>
+                            <span class="nav-link-text">Withdrawals</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Refunds.html">
+                            <i class="ni ni-circle-08 text-pink"></i>
+                            <span class="nav-link-text">Refund</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="adminpanel.html">
+                            <i class="ni ni-pin-3 text-primary"></i>
+                            <span class="nav-link-text">Admin Panel</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item"id="logout_item">
+                        <a class="nav-link" href="login.html">
+                            <i class="ni ni-pin-3 text-primary"></i>
+                            <span class="nav-link-text">Log Out</span>
+                        </a>
+                    </li>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- Main content -->
+<div class="main-content" id="panel">
+    <!-- Header -->
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+        <div class="container-fluid">
+            <div class="header-body">
+                <div class="row align-items-center py-4">
+
+                    <div class="col-lg-6 col-7">
+                        <h6 class="h2 text-white d-inline-block mb-0">Bills</h6>
+                    </div>
+
+                    <div class="col-lg-6 col-5 text-right">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- drivers Starts here ---->
+    <div class="row" id="verification_list_header">
+        <div class="col">
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Pending</h3>
+                </div>
+                <!-- Light table -->
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                        <tr>
+                            <th scope="col" class="sort" data-sort="name">Payer ID</th>
+                            <th scope="col" class="sort" data-sort="budget">Payee ID</th>
+                            <th scope="col" class="sort" data-sort="status">Amount</th>
+                        </tr>
+                        </thead>
+                        <tbody class="list" id="verification_list">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- drivers ends here ---->
+</div>
+
+
+</div>
+<!-- Argon Scripts -->
+<!-- Core -->
+<script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/js-cookie/js.cookie.js"></script>
+<script src="assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+<script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+<!-- Argon JS -->
+<script src="assets/js/argon.js?v=1.2.0"></script>
+<script src="assets/js/verification.js"></script>
+
+<script>
+
+    loadPage()
+
+    function loadPage(){
+        Loader.open()
+        const transportUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/bills/all";
+        $.ajax({
+            url:transportUrl,
+            type:'POST',
+            success: function(result){
+                Loader.close()
+
+                var mainContainer = document.getElementById("verification_list");
+                for (var i = 0; i < result["data"].length; i++) {
+                    var mTr = document.createElement("tr");
+                    //div.innerHTML = 'Name: ' + data[i].firstName + ' ' + data[i].lastName;
+                    valid_id = result["data"][i].valid_id;
+                    htmlString = "<th scope='row'><div class='media align-items-center'><div class='media-body'> <span class='name mb-0 text-sm'>"+result["data"][i].payerId+"</span>"
+                        + " </div></div></th><td class='budget'>"+result["data"][i].payeeId+"</td><td><span class='status'>"+result["data"][i].mCost+"</span></td>"
+                        + "  </span>"
+                        +"<div class='dropdown'>"
+                        +"    <a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'> <i class='fas fa-ellipsis-v'></i>"
+                        +"     </a><div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'>"
+                        +"       <a class='dropdown-item' href="+' https://secure-ocean-32806.herokuapp.com/billsApproval.html?payeeId='+result['data'][i].payeeId+"&"+"payerId="+result['data'][i].payerId+"&"+"amount="+result['data'][i].amount+"&"+"billId="+result['data'][i].billId+">"+ "Force Pay Bill Now" +"</a> </div> </div></td>"
+                    mTr.innerHTML = htmlString;
+                    mainContainer.appendChild(mTr);
+                }
+
+            },
+            error: function(error){
+                Loader.close()
+            }
+        })
+
+    }
+
+
+</script>
+
+
+</body>
+
+</html>
