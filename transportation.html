@@ -36,18 +36,9 @@
   <script src="./assets/js/loader.js"></script>
   <link rel="stylesheet" href="./assets/css/loader.css"/>
   <link rel="stylesheet" href="./assets/css/dropdown.css"/>
+  <script src="./assets/js/calender.js"></script>
 
   <script>
-    email = sessionStorage.getItem("isLoggedIn")
-    if(email === null){
-      window.location.href = "login.html";
-    }
-
-    $( "#logout_item" ).click(function() {
-      sessionStorage.removeItem("isLoggedIn")
-      window.location.href = "login.html"
-    });
-
 
   </script>
 
@@ -164,6 +155,7 @@
                     <th scope="col" class="sort" data-sort="name">Type</th>
                     <th scope="col" class="sort" data-sort="budget">From</th>
                     <th scope="col" class="sort" data-sort="status">To</th>
+                    <th scope="col" class="sort" data-sort="date">Date</th>
                     <th scope="col">Fare</th>
                     <th scope="col" class="sort" data-sort="completion">Phone</th>
                     <th scope="col" class="sort" data-sort="completion">Available Seats</th>
@@ -336,8 +328,9 @@
                 </div>
                 <div class="form-row">
                   <div class="name">Travel Date</div>
-                  <div class="value">
-                    <input class="input--style-6" id="travel_date" type="text">
+                  <div class="value" style="display: flex">
+                    <select id="month" class="bear-months"></select>
+                    <select id="date" class="bear-dates"></select>
                   </div>
                 </div>
                 <div class="form-row">
@@ -382,6 +375,11 @@
   <script>
    loadPage()
 
+   dates('option');
+   months('option');
+   //You can change the startYear(1990) and endYear(2017)
+   years('option', 2000, 2017);
+
    $('#add-route').click(function(event) {
     event.preventDefault();
     CreateTransport()
@@ -392,7 +390,7 @@
    function CreateTransport(){
         
       
-      if($("#from").val() === '0' || !$("#to").val() === '0' || !$("#type").val() === '0' || !$("#fare").val() || !$("#meeting_point").val() || !$("#company").val() || !$("#phone").val() || !$("#seats").val()|| !$("#from_area").val()|| !$("#to_area").val()|| !$("#travel_date").val()|| !$("#departure_time").val()){
+      if($("#from").val() === '0' || !$("#to").val() === '0' || !$("#type").val() === '0' || !$("#fare").val() || !$("#meeting_point").val() || !$("#company").val() || !$("#phone").val() || !$("#seats").val()|| !$("#from_area").val()|| !$("#to_area").val()|| !$("#month").val()|| !$("#date").val()|| !$("#departure_time").val()){
             
             alert("Provide all required input")
         
@@ -410,7 +408,7 @@
       company = $("#company").val()
       fromArea = $("#from_area").val()  
       toArea = $("#to_area").val() 
-      travelDate = $("#travel_date").val()  
+      travelDate = $("#month").val() +", "+$("#date").val()
       departureTime = $("#departure_time").val()   
       
       const createRouteUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/drivers/create"
@@ -464,7 +462,7 @@
              result["data"].forEach(element => {
               strHTML += "<tr><th scope='row'><div class='media align-items-center'><div class='media-body'> <span class='name mb-0 text-sm'>"+element.mType+"</span>"
                        + " </div></div></th><td class='budget'>"+element.mFrom+"</td><td><span> <span class='status'>"+element.mTo+"</span>"
-                     + "  </span> </td><td><div class='d-flex align-items-center'><span class='completion mr-2'>"+element.fare+"</span> </div> </td>"
+                     + "  </span> </td><td class='date'>"+element.travelDate+"</td><td><div class='d-flex align-items-center'><span class='completion mr-2'>"+element.fare+"</span> </div> </td>"
                     +"  <td class='text-left'>"+ element.phone +"</div></td><td class='text-left'>"+element.seats+"<div class='dropdown'>"
                     +"    <a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'> <i class='fas fa-ellipsis-v'></i>"
                    +"     </a><div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'><a class='dropdown-item' onClick=getBookings("+element.id+")>"+"View Bookings"+"</a>"
