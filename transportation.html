@@ -192,6 +192,7 @@
                     <th scope="col" class="sort" data-sort="email">Firstname</th>
                     <th scope="col" class="sort" data-sort="email">Lastname</th>
                     <th scope="col" class="sort" data-sort="email">Email</th>
+                    <th scope="col" class="sort" data-sort="email">Booking ID</th>
                     <th scope="col" class="sort" data-sort="phone">Contact Phone</th>
                   </tr>
                 </thead>
@@ -505,7 +506,7 @@
              var strHTML = '';
              console.log(result["data"])
              result["data"].forEach(element => {
-               strHTML += "<tr><td class='budget'>"+element.firstname+"</td><td class='budget'>"+element.lastname+"</td><td class='budget'>"+element.userId+"</td><td class='budget'>"+element.contactPhone+"</td></tr>";
+               strHTML += "<tr><td class='budget'>"+element.firstname+"</td><td class='budget'>"+element.lastname+"</td><td class='budget'>"+element.userId+"</td><td class='budget'>"+element.bookingId+"</td><td class='budget'>"+element.contactPhone+"</td></tr>";
 
                     });
                     $("#booking_list").empty()
