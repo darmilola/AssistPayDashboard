@@ -209,7 +209,7 @@
                     userId = result["data_from_user"][i].email;
                     amount = result["data_from_user"][i].amount;
                     mbid = result["data_from_user"][i].bid;
-                    let reviewUrl = encodeURI("https://secure-ocean-32806.herokuapp.com/RefundReview.html?hack ="+"hack"+"&"+"userId="+userId+"&"+"bid="+mbid+"&"+"providerId="+providerId+"&"+"phone="+phone+"&"+"amount="+amount+"&"+"reason="+mreason)
+                    let reviewUrl = encodeURI("https://secure-ocean-32806.herokuapp.com/RefundReview.html?hack ="+"hack"+"&"+"userId="+result["data_from_user"][i].email+"&"+"bid="+mbid+"&"+"providerId="+providerId+"&"+"phone="+phone+"&"+"amount="+amount+"&"+"reason="+mreason)
                     htmlString = "<th scope='row'><div class='media align-items-center'><div class='media-body'> <span class='name mb-0 text-sm'>"+result["data_from_user"][i].mfirstname+" "+ result["data_from_user"][i].mlastname+"</span>"
                         + " </div></div></th><td class='budget'>"+result["data_from_user"][i].email+"</td><td><span class='status'>"+result["data_from_user"][i].amount+"</span></td><td><span class='status'>"+result["data_from_user"][i].type+"</span></td><td><span class='status'>"+result["data_from_user"][i].providerId+"</span></td>"
                         + "  </span>"
@@ -219,6 +219,7 @@
                         +"    <a class='dropdown-item' href="+reviewUrl+">"+ "View Details" +"</a> </div> </div></td>"
                     mTr.innerHTML = htmlString;
                     mainContainer.appendChild(mTr);
+                    console.log(userId)
                 }
 
                 for (var j = 0; j < result["data_from_business"].length; j++) {
@@ -230,7 +231,7 @@
                     userId = result["data_from_business"][j].email;
                     amount = result["data_from_business"][j].amount;
                     mbid = result["data_from_business"][j].bid;
-                    let mreviewUrl = encodeURI("https://secure-ocean-32806.herokuapp.com/RefundReview.html?hack ="+"hack"+"&"+"userId="+userId+"&"+"bid="+mbid+"&"+"providerId="+providerId+"&"+"phone="+phone+"&"+"amount="+amount+"&"+"reason="+mreason)
+                    let mreviewUrl = encodeURI("https://secure-ocean-32806.herokuapp.com/RefundReview.html?hack ="+"hack"+"&"+"userId="+result["data_from_business"][j].email+"&"+"bid="+mbid+"&"+"providerId="+providerId+"&"+"phone="+phone+"&"+"amount="+amount+"&"+"reason="+mreason)
                     htmlString = "<th scope='row'><div class='media align-items-center'><div class='media-body'> <span class='name mb-0 text-sm'>"+result["data_from_business"][j].mfirstname+" "+ result["data_from_business"][j].mlastname+"</span>"
                         + " </div></div></th><td class='budget'>"+result["data_from_business"][j].email+"</td><td><span class='status'>"+result["data_from_business"][j].amount+"</span></td><td><span class='status'>"+result["data_from_business"][j].type+"</span></td><td><span class='status'>"+result["data_from_business"][j].providerId+"</span></td>"
                         + "  </span>"
@@ -240,6 +241,7 @@
                         +"       <a class='dropdown-item' href="+mreviewUrl+">"+ "View Details" +"</a> </div> </div></td>"
                     mTr.innerHTML = htmlString;
                     mainContainer.appendChild(mTr);
+                    console.log(userId)
                 }
             },
             error: function(error){
