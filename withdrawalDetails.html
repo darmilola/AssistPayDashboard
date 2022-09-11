@@ -64,6 +64,7 @@
     let params = new URLSearchParams(location.search);
      mUserId = params.get('userId')
     mId = params.get("w_id")
+    var mTransactionId = "";
     mAmount = params.get("amount")
     console.log(mId)
     console.log(mUserId)
@@ -97,6 +98,7 @@
                 var mAccountName =   result["data"][0].accountName
                 var mBankName =   result["data"][0].bankName
                 var mAccountNumber =   result["data"][0].accountNumber
+                mTransactionId =   result["data"][0].transactionId
                 var verifiedFirstname = result["verifiedName"][0].firstname
                 var verifiedLastname = result["verifiedName"][0].lastname
 
@@ -155,16 +157,16 @@
 
 
     $('#withdraw_approve').click(function(event) {
-        approveWithdrawal(mId,mUserId,mAmount)
+        approveWithdrawal(mId,mUserId,mAmount,mTransactionId)
     });
 
     $('#withdraw_reject').click(function(event) {
-        rejectWithdrawal(mId,mUserId,mAmount)
+        rejectWithdrawal(mId,mUserId,mAmount,mTransactionId)
     });
 
 
 
-    function approveWithdrawal(id,userId,amount){
+    function approveWithdrawal(id,userId,amount,transactionId){
         Loader.open()
         const verifyUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/withdrawal/pay"
 
@@ -175,7 +177,8 @@
         const data = {
             userId:userId,
             id:id,
-            charge:mCharge
+            charge:mCharge,
+            transactionId:transactionId
         }
         $.ajax({
             url:verifyUrl,
@@ -193,13 +196,14 @@
         })
     }
 
-    function rejectWithdrawal(id,userId,amount){
+    function rejectWithdrawal(id,userId,amount,transactionId){
         Loader.open()
         const verifyUrl = "https://gentle-mountain-10412.herokuapp.com/public/api/withdrawal/pay/reject"
         const data = {
             userId:userId,
             id:id,
-            amount:amount
+            amount:amount,
+            transactionId:transactionId
         }
         $.ajax({
             url:verifyUrl,
